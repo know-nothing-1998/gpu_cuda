@@ -1,0 +1,13 @@
+Test project D:/gpu_cuda/build
+    Start 1: numerical_harness
+1/4 Test #1: numerical_harness ................   Passed    0.04 sec
+    Start 2: cublas_correctness
+2/4 Test #2: cublas_correctness ...............   Passed    0.29 sec
+    Start 3: cublas_unseen_boundary
+3/4 Test #3: cublas_unseen_boundary ...........   Passed    0.21 sec
+    Start 4: cli_contract
+4/4 Test #4: cli_contract .....................   Passed    2.44 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   3.06 sec

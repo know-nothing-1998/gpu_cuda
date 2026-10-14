@@ -1,0 +1,4 @@
+id,m,n,k,dtype,seed,warmup,iters,rounds,purpose
+P1,2048,2048,2048,fp32,42,20,100,5,regular_throughput_and_reuse
+P2,16,4096,4096,fp32,42,20,100,5,small_m_parallelism_and_tile_waste
+P3,1001,769,513,fp32,42,20,100,5,irregular_tail_and_path_boundary

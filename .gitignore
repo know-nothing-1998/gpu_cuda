@@ -1,0 +1,9 @@
+/build*/
+__pycache__/
+*.pyc
+*.ncu-rep
+*.nsys-rep
+*.qdrep
+*.sqlite
+*.etl
+*.dmp

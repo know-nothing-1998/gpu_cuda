@@ -1,0 +1,5 @@
+========= COMPUTE-SANITIZER
+source_sha256=fecb259c6699e29afe0c57490f36373e65941bf6f150f2b5d36f949c95893d50 build_type=Release seed=42 requested=naive actual=naive
+check kernel=naive shape=65x97x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=1.907348633e-06 relative_frob=1.333627348e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.236810661e-06 cpu_relative_frob=1.057817166e-07 cpu_failed=0
+check kernel=cublas shape=65x97x33 pattern=random status=valid reference=cpu_double_full compared=6305 max_abs=1.017011201e-06 relative_frob=8.55530639e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.017011201e-06 cpu_relative_frob=8.55530639e-08 cpu_failed=0
+========= ERROR SUMMARY: 0 errors

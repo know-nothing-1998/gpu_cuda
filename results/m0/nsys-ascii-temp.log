@@ -1,0 +1,13 @@
+Collecting data...
+Generating 'D:\gpu_cuda\build\profiler-temp\nsys-report-902e.qdstrm'
+
+[1/1] [0%                          ] cublas-nsys.nsys-rep
+[1/1] [0%                          ] cublas-nsys.nsys-rep
+[1/1] [=========46%                ] cublas-nsys.nsys-rep
+[1/1] [==========47%               ] cublas-nsys.nsys-rep
+[1/1] [===========50%              ] cublas-nsys.nsys-rep
+[1/1] [========================100%] cublas-nsys.nsys-rep
+[1/1] [========================100%] cublas-nsys.nsys-rep
+Generated:
+	D:\gpu_cuda\results\m0\cublas-nsys.nsys-rep
+exit_code=0

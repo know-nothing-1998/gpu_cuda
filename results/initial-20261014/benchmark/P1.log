@@ -1,0 +1,17 @@
+source_sha256=fecb259c6699e29afe0c57490f36373e65941bf6f150f2b5d36f949c95893d50 build_type=Release seed=42 requested=naive actual=naive
+check kernel=naive shape=2048x2048x2048 pattern=random status=valid reference=cublas_full compared=4194304 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_sample cpu_compared=51 cpu_max_abs=5.331881746e-05 cpu_relative_frob=9.52354374e-07 cpu_failed=0
+check kernel=cublas shape=2048x2048x2048 pattern=random status=valid reference=cpu_double_sample compared=51 max_abs=5.331881746e-05 relative_frob=9.52354374e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_sample cpu_compared=51 cpu_max_abs=5.331881746e-05 cpu_relative_frob=9.52354374e-07 cpu_failed=0
+round=1 kernel=naive mean_ms=18.04083252 batch_ms=180.4083252
+round=1 kernel=cublas mean_ms=1.799888039 batch_ms=17.99888039
+round=2 kernel=cublas mean_ms=2.136473656 batch_ms=21.36473656
+round=2 kernel=naive mean_ms=19.46091461 batch_ms=194.6091461
+round=3 kernel=naive mean_ms=17.97806091 batch_ms=179.7806091
+round=3 kernel=cublas mean_ms=1.898156738 batch_ms=18.98156738
+round=4 kernel=cublas mean_ms=2.15398407 batch_ms=21.5398407
+round=4 kernel=naive mean_ms=20.48481293 batch_ms=204.8481293
+round=5 kernel=naive mean_ms=18.5117691 batch_ms=185.117691
+round=5 kernel=cublas mean_ms=1.933619118 batch_ms=19.33619118
+bench kernel=naive status=valid median_ms=18.5117691 min_ms=17.97806091 max_ms=20.48481293 gflops=928.0511813 cublas_over_self=0.1044535024
+timing_note: batch outside 50-200 ms; adjust --iters equally for both kernels and record it
+bench kernel=cublas status=valid median_ms=1.933619118 min_ms=1.799888039 max_ms=2.15398407 gflops=8884.825882 cublas_over_self=1
+timing_note: batch outside 50-200 ms; adjust --iters equally for both kernels and record it

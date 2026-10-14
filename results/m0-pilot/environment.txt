@@ -1,0 +1,12 @@
+started_local=2026-10-14T15:59:57.6567633+08:00
+timezone=China Standard Time
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2026 NVIDIA Corporation
+Built on Thu_Mar_19_22:28:55_Pacific_Daylight_Time_2026
+Cuda compilation tools, release 13.2, V13.2.78
+Build cuda_13.2.r13.2/compiler.37668154_0
+cmake version 4.0.2
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+电源方案 GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  (高性能)
+finished_local=2026-10-14T16:00:00.4902273+08:00

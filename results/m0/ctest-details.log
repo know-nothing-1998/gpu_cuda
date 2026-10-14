@@ -1,0 +1,101 @@
+Start testing: Oct 14 16:02 中国标准时间
+----------------------------------------------------------
+1/4 Testing: numerical_harness
+1/4 Test: numerical_harness
+Command: "D:/gpu_cuda/build/harness_tests.exe"
+Directory: D:/gpu_cuda/build
+"numerical_harness" start time: Oct 14 16:02 中国标准时间
+Output:
+----------------------------------------------------------
+harness tests passed: layout, corruption, NaN/Inf, tolerance, overflow, RNG, timing
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"numerical_harness" end time: Oct 14 16:02 中国标准时间
+"numerical_harness" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/4 Testing: cublas_correctness
+2/4 Test: cublas_correctness
+Command: "D:/gpu_cuda/build/gemm.exe" "--mode" "check" "--kernel" "cublas"
+Directory: D:/gpu_cuda/build
+"cublas_correctness" start time: Oct 14 16:02 中国标准时间
+Output:
+----------------------------------------------------------
+source_sha256=0ed11bacc29211db971d6781cdf100e613b289d859ad325ae2463952d902fc26 build_type=Release seed=42 requested=cublas actual=cublas
+check kernel=cublas shape=1x1x1 pattern=random status=valid reference=cpu_double_full compared=1 max_abs=8.213874025e-11 relative_frob=5.519445942e-10 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1 cpu_max_abs=8.213874025e-11 cpu_relative_frob=5.519445942e-10 cpu_failed=0
+check kernel=cublas shape=1x1x1 pattern=zero status=valid reference=cpu_double_full compared=1 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=1x1x1 pattern=identity status=valid reference=cpu_double_full compared=1 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=1x1x1 pattern=integer status=valid reference=cpu_double_full compared=1 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=2x2x3 pattern=random status=valid reference=cpu_double_full compared=4 max_abs=4.146346555e-08 relative_frob=3.043400504e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=4 cpu_max_abs=4.146346555e-08 cpu_relative_frob=3.043400504e-08 cpu_failed=0
+check kernel=cublas shape=2x2x3 pattern=zero status=valid reference=cpu_double_full compared=4 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=4 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=2x2x3 pattern=identity status=valid reference=cpu_double_full compared=4 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=4 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=2x2x3 pattern=integer status=valid reference=cpu_double_full compared=4 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=4 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=17x19x23 pattern=random status=valid reference=cpu_double_full compared=323 max_abs=6.224740901e-07 relative_frob=9.178302914e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=323 cpu_max_abs=6.224740901e-07 cpu_relative_frob=9.178302914e-08 cpu_failed=0
+check kernel=cublas shape=17x19x23 pattern=zero status=valid reference=cpu_double_full compared=323 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=323 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=17x19x23 pattern=identity status=valid reference=cpu_double_full compared=323 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=323 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=17x19x23 pattern=integer status=valid reference=cpu_double_full compared=323 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=323 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=65x97x33 pattern=random status=valid reference=cpu_double_full compared=6305 max_abs=1.017011201e-06 relative_frob=8.55530639e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.017011201e-06 cpu_relative_frob=8.55530639e-08 cpu_failed=0
+check kernel=cublas shape=65x97x33 pattern=zero status=valid reference=cpu_double_full compared=6305 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=65x97x33 pattern=identity status=valid reference=cpu_double_full compared=6305 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=65x97x33 pattern=integer status=valid reference=cpu_double_full compared=6305 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=15x16x17 pattern=random status=valid reference=cpu_double_full compared=240 max_abs=3.172109473e-07 relative_frob=6.092394326e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=240 cpu_max_abs=3.172109473e-07 cpu_relative_frob=6.092394326e-08 cpu_failed=0
+check kernel=cublas shape=15x16x17 pattern=zero status=valid reference=cpu_double_full compared=240 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=240 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=15x16x17 pattern=identity status=valid reference=cpu_double_full compared=240 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=240 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=15x16x17 pattern=integer status=valid reference=cpu_double_full compared=240 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=240 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=16x17x16 pattern=random status=valid reference=cpu_double_full compared=272 max_abs=3.152363632e-07 relative_frob=5.816053695e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=272 cpu_max_abs=3.152363632e-07 cpu_relative_frob=5.816053695e-08 cpu_failed=0
+check kernel=cublas shape=16x17x16 pattern=zero status=valid reference=cpu_double_full compared=272 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=272 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=16x17x16 pattern=identity status=valid reference=cpu_double_full compared=272 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=272 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=16x17x16 pattern=integer status=valid reference=cpu_double_full compared=272 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=272 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=33x31x32 pattern=random status=valid reference=cpu_double_full compared=1023 max_abs=7.732837588e-07 relative_frob=8.706392489e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1023 cpu_max_abs=7.732837588e-07 cpu_relative_frob=8.706392489e-08 cpu_failed=0
+check kernel=cublas shape=33x31x32 pattern=zero status=valid reference=cpu_double_full compared=1023 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1023 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=33x31x32 pattern=identity status=valid reference=cpu_double_full compared=1023 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1023 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=33x31x32 pattern=integer status=valid reference=cpu_double_full compared=1023 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1023 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=17x17x17 pattern=random status=valid reference=cpu_double_full compared=289 max_abs=4.421530377e-07 relative_frob=7.211649507e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=289 cpu_max_abs=4.421530377e-07 cpu_relative_frob=7.211649507e-08 cpu_failed=0
+check kernel=cublas shape=17x17x17 pattern=zero status=valid reference=cpu_double_full compared=289 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=289 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=17x17x17 pattern=identity status=valid reference=cpu_double_full compared=289 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=289 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+check kernel=cublas shape=17x17x17 pattern=integer status=valid reference=cpu_double_full compared=289 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=289 cpu_max_abs=0 cpu_relative_frob=0 cpu_failed=0
+suite_cases=32 status=valid
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"cublas_correctness" end time: Oct 14 16:02 中国标准时间
+"cublas_correctness" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/4 Testing: cublas_unseen_boundary
+3/4 Test: cublas_unseen_boundary
+Command: "D:/gpu_cuda/build/gemm.exe" "--mode" "check" "--kernel" "cublas" "--m" "31" "--n" "37" "--k" "29"
+Directory: D:/gpu_cuda/build
+"cublas_unseen_boundary" start time: Oct 14 16:02 中国标准时间
+Output:
+----------------------------------------------------------
+source_sha256=0ed11bacc29211db971d6781cdf100e613b289d859ad325ae2463952d902fc26 build_type=Release seed=42 requested=cublas actual=cublas
+check kernel=cublas shape=31x37x29 pattern=random status=valid reference=cpu_double_full compared=1147 max_abs=6.298818533e-07 relative_frob=7.951145822e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=1147 cpu_max_abs=6.298818533e-07 cpu_relative_frob=7.951145822e-08 cpu_failed=0
+<end of output>
+Test time =   0.21 sec
+----------------------------------------------------------
+Test Passed.
+"cublas_unseen_boundary" end time: Oct 14 16:02 中国标准时间
+"cublas_unseen_boundary" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/4 Testing: cli_contract
+4/4 Test: cli_contract
+Command: "D:/python12/python.exe" "D:/gpu_cuda/tests/cli_tests.py" "D:/gpu_cuda/build/gemm.exe"
+Directory: D:/gpu_cuda/build
+"cli_contract" start time: Oct 14 16:02 中国标准时间
+Output:
+----------------------------------------------------------
+CLI contract passed (23 invocations).
+<end of output>
+Test time =   2.44 sec
+----------------------------------------------------------
+Test Passed.
+"cli_contract" end time: Oct 14 16:02 中国标准时间
+"cli_contract" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Oct 14 16:02 中国标准时间
