@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Build an SM 8.9 scalar-FP32/DRAM Roofline from existing NCU reports only.
+"""Build an SM 8.9 scalar-FP32/DRAM Roofline from NCU reports or an archived model.
 
 Each report must contain exactly one captured kernel implementing the entire
 declared M x N x K SGEMM. The hardware Roofline uses NCU's instruction counters;
 2*M*N*K is recorded separately as useful GEMM work. No GPU workload is launched.
+Use --model to redraw archived data with matplotlib, without NCU or a GPU.
 """
 
 import argparse
@@ -19,6 +20,7 @@ import re
 import shutil
 import subprocess
 import sys
+import textwrap
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,6 +42,60 @@ METRICS = {
     "device__attribute_compute_capability_major": "",
     "device__attribute_compute_capability_minor": "",
 }
+PLOT_FIELDS = (
+    "fp32_peak_gflops", "dram_peak_gbytes_per_second", "ridge_ai_flop_per_byte",
+    "hw_gflops", "hw_ai_flop_per_byte", "hw_peak_percent",
+)
+
+
+def validate_model(model):
+    """Validate the values used on logarithmic axes before plotting archived data."""
+    if (not isinstance(model, dict) or type(model.get("schema_version")) is not int
+            or model["schema_version"] != 1):
+        raise ValueError("Expected a Roofline model with schema_version 1.")
+    shape = model.get("shape")
+    if not isinstance(shape, dict) or any(
+        type(shape.get(dim)) is not int or shape[dim] <= 0 for dim in ("m", "n", "k")
+    ):
+        raise ValueError("Model shape must contain positive integer m, n and k.")
+    reports = model.get("reports")
+    if not isinstance(reports, list) or not reports:
+        raise ValueError("Model reports must be a nonempty list.")
+    labels = set()
+    for index, sample in enumerate(reports):
+        if not isinstance(sample, dict):
+            raise ValueError(f"Model reports[{index}] must be an object.")
+        for name in ("label", "gpu"):
+            if not isinstance(sample.get(name), str) or not sample[name].strip():
+                raise ValueError(f"Model reports[{index}].{name} must be nonempty text.")
+        label = sample["label"]
+        if label.strip().casefold() in labels:
+            raise ValueError(f"Duplicate report label: {label}")
+        labels.add(label.strip().casefold())
+        derived = sample.get("derived")
+        if not isinstance(derived, dict):
+            raise ValueError(f"Model {label}.derived must be an object.")
+        for name in PLOT_FIELDS:
+            value = derived.get(name)
+            try:
+                valid = type(value) in (int, float) and math.isfinite(value) and value > 0
+            except OverflowError:
+                valid = False
+            if not valid:
+                raise ValueError(f"Model {label}.derived.{name} must be finite and positive.")
+        # These identities catch accidental unit/field mismatches in edited archives.
+        expected = {
+            "ridge_ai_flop_per_byte": derived["fp32_peak_gflops"]
+            / derived["dram_peak_gbytes_per_second"],
+            "hw_peak_percent": 100 * derived["hw_gflops"] / derived["fp32_peak_gflops"],
+        }
+        for name, value in expected.items():
+            if not math.isclose(derived[name], value, rel_tol=0.005):
+                raise ValueError(f"Model {label}.derived.{name} disagrees with its ceiling/performance.")
+    for name in ("comparison_note", "title_note"):
+        if name in model and not isinstance(model[name], str):
+            raise ValueError(f"Model {name} must be text.")
+    return model
 
 
 def find_ncu(explicit):
@@ -126,18 +182,20 @@ def profiler_command(session):
     for line in lines:
         if line.startswith("Profiler Command Line"):
             continuation_column = len("Profiler Command Line ")
-            result.append(line[continuation_column:].rstrip())
+            result.append(line[continuation_column:])
         elif result:
             if not line.strip() or not line[:continuation_column].isspace():
                 break
-            result.append(line[continuation_column:].rstrip())
-    return "\n".join(result) if result else None
+            result.append(line[continuation_column:])
+    # NCU hard-wraps at a fixed column, including inside paths/options/numbers.
+    # A space at the end of an intermediate line may separate two arguments.
+    return "\n".join(result).rstrip() if result else None
 
 
 def check_shape(command, shape):
-    # NCU wraps even in the middle of an option, e.g. '-' followed by '-mode'.
-    # Ordinary whitespace joins suffice for the M/N/K options in these reports.
-    normalized = re.sub(r"-\s*\n\s*-", "--", command or "")
+    # Restore the hard-wrapped text without inventing or removing separators:
+    # '--n 204\n8' is 2048, while 'off \n--section' needs its existing space.
+    normalized = (command or "").replace("\r", "").replace("\n", "")
     found = {}
     for name, expected in shape.items():
         matches = re.findall(rf"(?<!\S)--{name}(?:\s+|=)(\d+)(?=\s|$)", normalized)
@@ -219,6 +277,7 @@ def analyze(label, path, shape, ncu, env):
 
 
 def plot_model(model, output):
+    validate_model(model)
     cache = ROOT / "build/matplotlib-cache"
     cache.mkdir(parents=True, exist_ok=True)
     os.environ.setdefault("MPLCONFIGDIR", str(cache))
@@ -238,7 +297,7 @@ def plot_model(model, output):
     # Nearby points/ceilings can otherwise hide each other's annotations.
     comparison = len(reports) > 2
     fig, ax = plt.subplots(figsize=(14 if comparison else 11,
-                                    max(7.5, 1.5 * len(reports) + 1.5)))
+                                    max(7.5, 1.8 * len(reports) + 1.5)))
     fig.subplots_adjust(left=0.08 if comparison else 0.10,
                         right=0.65 if comparison else 0.96, bottom=0.20, top=0.84)
     details = fig.add_axes((0.70, 0.20, 0.28, 0.64)) if comparison else None
@@ -251,11 +310,17 @@ def plot_model(model, output):
     gpu = reports[0]["gpu"] if len({r["gpu"] for r in reports}) == 1 else "SM 8.9 GPUs"
     fig.text(0.5, 0.91, f"{gpu}  |  SGEMM {shape['m']} x {shape['n']} x {shape['k']}",
              ha="center", fontsize=11, color="#444444")
+    if model.get("title_note"):
+        fig.text(0.5, 0.875, textwrap.fill(model["title_note"], width=115),
+                 ha="center", fontsize=10, color="#444444")
     colors = plt.get_cmap("tab10")
     styles = {
         "naive": ("#0072B2", "o", "-"),
         "coalesced": ("#E69F00", "^", "--"),
         "shared": ("#009E73", "D", "-."),
+        "register": ("#D55E00", "v", "--"),
+        "tuned": ("#6F4C9B", "P", "-."),
+        "warptiled": ("#3A8C94", "X", "-"),
         "cublas": ("#CC79A7", "s", ":"),
     }
     summary = []
@@ -323,6 +388,9 @@ def plot_model(model, output):
              "Theoretical ceilings at recorded clocks; DRAM traffic from NCU. No sustained microbenchmark calibration.\n"
              "Points use executed FADD + FMUL + 2 x FFMA; useful 2MNK throughput is recorded separately in model.json.",
              fontsize=9, color="#555555", linespacing=1.6)
+    if model.get("comparison_note"):
+        fig.text(0.10, 0.035, textwrap.fill(model["comparison_note"], width=135),
+                 fontsize=9, color="#555555", linespacing=1.4)
     for suffix in ("png", "svg"):
         fig.savefig(output / f"roofline.{suffix}", dpi=180, facecolor="white")
     plt.close(fig)
@@ -330,14 +398,32 @@ def plot_model(model, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--report", action="append", metavar="LABEL=PATH",
+    source = parser.add_mutually_exclusive_group()
+    source.add_argument("--report", action="append", metavar="LABEL=PATH",
                         help="Repeat for each single-kernel report; replaces defaults.")
+    source.add_argument("--model", type=Path,
+                        help="Redraw an archived model.json offline; no NCU/GPU required.")
     for dimension in ("m", "n", "k"):
-        parser.add_argument(f"--{dimension}", type=int, default=2048)
-    parser.add_argument("--output", type=Path, default=DEFAULT_BASELINE / "roofline")
+        parser.add_argument(f"--{dimension}", type=int, help="Report dimension (default: 2048).")
+    parser.add_argument("--output", type=Path,
+                        help="Output directory (default: model directory, or the baseline roofline directory).")
     parser.add_argument("--ncu", help="Path to the real ncu executable, not its .bat wrapper.")
     args = parser.parse_args()
-    shape = {dimension: getattr(args, dimension) for dimension in ("m", "n", "k")}
+    if args.model:
+        if args.ncu or any(getattr(args, dim) is not None for dim in ("m", "n", "k")):
+            parser.error("--model uses its archived shape; do not combine it with --ncu or --m/--n/--k.")
+        model = validate_model(json.loads(args.model.read_text(encoding="utf-8-sig")))
+        output = (args.output or args.model.parent).resolve()
+        output.mkdir(parents=True, exist_ok=True)
+        plot_model(model, output)
+        # Preserve the original provenance and capture date; redrawing is not a new measurement.
+        if (output / "model.json").resolve() != args.model.resolve():
+            (output / "model.json").write_text(json.dumps(model, ensure_ascii=False, indent=2,
+                                                          allow_nan=False) + "\n", encoding="utf-8")
+        print(f"Redrawn {output / 'roofline.png'} and roofline.svg from {args.model}")
+        return
+    shape = {dim: getattr(args, dim) if getattr(args, dim) is not None else 2048
+             for dim in ("m", "n", "k")}
     if any(number <= 0 for number in shape.values()):
         parser.error("M, N and K must be positive.")
     inputs = args.report or [f"naive={DEFAULT_BASELINE / 'naive-p1.ncu-rep'}",
@@ -380,7 +466,7 @@ def main():
         ],
         "reports": [analyze(label, path, shape, ncu, env) for label, path in reports],
     }
-    output = args.output.resolve()
+    output = (args.output or DEFAULT_BASELINE / "roofline").resolve()
     output.mkdir(parents=True, exist_ok=True)
     plot_model(model, output)
     (output / "model.json").write_text(json.dumps(model, ensure_ascii=False, indent=2,
