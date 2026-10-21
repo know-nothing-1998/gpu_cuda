@@ -1,0 +1,68 @@
+{
+  "P1": {
+    "shape": {
+      "m": 2048,
+      "n": 2048,
+      "k": 2048
+    },
+    "variant": "warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1",
+    "kernel": "warptiled",
+    "params": {
+      "BM": 64,
+      "BN": 64,
+      "BK": 16,
+      "WM": 32,
+      "WN": 32,
+      "TM": 4,
+      "TN": 4,
+      "WNITER": 1
+    },
+    "median_ms": 2.58917999268,
+    "gflops": 6635.254880915991,
+    "min_ms": 2.53328288685,
+    "max_ms": 2.61138621244,
+    "pass_medians_ms": [
+      2.60619631681,
+      2.5825512626
+    ],
+    "cublas_median_ms": 2.26358621771,
+    "cublas_gflops": 7589.668575284197,
+    "cublas_over_self": 0.8742483041385679,
+    "source_sha256": "049d804f6d83740e6dd5c72b094622aa9586cd3670571686418844bdf557470f",
+    "csv_files": [
+      "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/P1-confirm-1.csv",
+      "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/P1-confirm-2.csv"
+    ],
+    "default_tuned_over_self": 1.1929974184694538,
+    "prior_tuned_winner_over_self": 1.0969912007797742,
+    "config": "warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1",
+    "baseline_over_self": 1.0,
+    "within_3_percent_of_best": true,
+    "exe_sha256": "3448f60131b4c2c303df44146b052ebbc7126979e2ce1d379c490e96c91074c6",
+    "source_snapshot": "source-snapshot.zip",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_CUDA_ARCHITECTURES=89",
+      "-DGEMM_TUNED_BM=64",
+      "-DGEMM_TUNED_BN=64",
+      "-DGEMM_TUNED_BK=64",
+      "-DGEMM_TUNED_TM=4",
+      "-DGEMM_TUNED_TN=4",
+      "-DGEMM_WARP_BM=64",
+      "-DGEMM_WARP_BN=64",
+      "-DGEMM_WARP_BK=16",
+      "-DGEMM_WARP_WM=32",
+      "-DGEMM_WARP_WN=32",
+      "-DGEMM_WARP_TM=4",
+      "-DGEMM_WARP_TN=4",
+      "-DGEMM_WARP_WNITER=1"
+    ],
+    "scope": "best measured in this search and current source/GPU, not a global optimum",
+    "source_hashes": "source-sha256.json"
+  }
+}

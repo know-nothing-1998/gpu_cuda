@@ -1,5 +1,0 @@
-========= COMPUTE-SANITIZER
-source_sha256=0ed11bacc29211db971d6781cdf100e613b289d859ad325ae2463952d902fc26 build_type=Release seed=42 requested=cublas actual=cublas
-check kernel=cublas shape=65x97x33 pattern=random status=valid reference=cpu_double_full compared=6305 max_abs=1.017011201e-06 relative_frob=8.55530639e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.017011201e-06 cpu_relative_frob=8.55530639e-08 cpu_failed=0
-========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)
-exit_code=0

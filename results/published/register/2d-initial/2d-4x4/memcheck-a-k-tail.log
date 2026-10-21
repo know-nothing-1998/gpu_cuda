@@ -1,0 +1,2431 @@
+========= COMPUTE-SANITIZER
+========= Invalid __global__ read of size 4 bytes
+=========     at sgemm_kernel_register_rowTM_colTN(const float *, const float *, float *, int, int, int)+0xa70 in register.cu:40
+=========     by thread (0,7,0) in block (0,0,0)
+=========     Access to 0x706421480 is out of bounds
+=========     and is 1 bytes after the nearest allocation at 0x706420400 of size 4,224 bytes
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========         Host Frame: cuLaunchKernel [0x7ff97cf398d8] in nvcuda64.dll
+=========         Host Frame:  [0xc134] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4118fb7] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a40e5641] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x13a1a] in gemm.exe
+=========         Host Frame:  [0x114f0] in gemm.exe
+=========         Host Frame:  [0x1139c] in gemm.exe
+=========         Host Frame:  [0x9aee] in gemm.exe
+=========         Host Frame:  [0x7c1f] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaMemcpyAsync.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a412266d] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x11bcb] in gemm.exe
+=========         Host Frame:  [0x7c55] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuMemFree_v2 [0x7ff97cedcbd5] in nvcuda64.dll
+=========         Host Frame:  [0x49b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aa65] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4d27] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aaa2] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4d27] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+source_sha256=2533e9ddd1b980fd028621153b4a0f34e802781fb6ffbc81593fe1cadd4061a4 build_type=Release seed=42 requested=register actual=register
+cleanup error: device buffer: unknown error
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuMemFree_v2 [0x7ff97cedcbd5] in nvcuda64.dll
+=========         Host Frame:  [0x49b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aa65] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4d27] in gemm.exe
+=========         Host Frame:  [0x4f92] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aaa2] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4d27] in gemm.exe
+=========         Host Frame:  [0x4f92] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+cleanup error: device buffer: unknown error
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuMemFree_v2 [0x7ff97cedcbd5] in nvcuda64.dll
+=========         Host Frame:  [0x49b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aa65] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4d27] in gemm.exe
+=========         Host Frame:  [0x4f9b] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aaa2] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4d27] in gemm.exe
+=========         Host Frame:  [0x4f9b] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+cleanup error: device buffer: unknown error
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuMemFree_v2 [0x7ff97cedcbd5] in nvcuda64.dll
+=========         Host Frame:  [0x49b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aa65] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4d27] in gemm.exe
+=========         Host Frame:  [0x4fa4] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aaa2] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4d27] in gemm.exe
+=========         Host Frame:  [0x4fa4] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+cleanup error: device buffer: unknown error
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuCtxSynchronize_v2 [0x7ff97ced34d5] in nvcuda64.dll
+=========         Host Frame:  [0x405e] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41093b8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b2f9] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaDeviceSynchronize.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41093f5] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b2f9] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuMemFree_v2 [0x7ff97cedcbd5] in nvcuda64.dll
+=========         Host Frame:  [0x49b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aa65] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b381] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aaa2] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b381] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acbe] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuCtxSynchronize_v2 [0x7ff97ced34d5] in nvcuda64.dll
+=========         Host Frame:  [0x405e] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41093b8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b2f9] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaDeviceSynchronize.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41093f5] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b2f9] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuMemFree_v2 [0x7ff97cedcbd5] in nvcuda64.dll
+=========         Host Frame:  [0x49b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aa65] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b381] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aaa2] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b381] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062acc7] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuCtxSynchronize_v2 [0x7ff97ced34d5] in nvcuda64.dll
+=========         Host Frame:  [0x405e] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41093b8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b2f9] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaDeviceSynchronize.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41093f5] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b2f9] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuEventDestroy_v2 [0x7ff97cef9475] in nvcuda64.dll
+=========         Host Frame:  [0x42b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109ae8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaEventDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4109b25] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b32d] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuMemFree_v2 [0x7ff97cedcbd5] in nvcuda64.dll
+=========         Host Frame:  [0x49b1] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aa65] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b381] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a410aaa2] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062b381] in cublas64_13.dll
+=========         Host Frame: cublasXtZtrmm [0x7ff9a062cbeb] in cublas64_13.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a97c1] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuCtxSynchronize_v2 [0x7ff97ced34d5] in nvcuda64.dll
+=========         Host Frame:  [0x405e] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41093b8] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a9827] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaDeviceSynchronize.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41093f5] in nvcudart_hybrid64.dll
+=========         Host Frame: cublasDestroy_v2 [0x7ff9a05a9827] in cublas64_13.dll
+=========         Host Frame:  [0x4cd7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= CUDA API Error: Sticky error detected
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuStreamDestroy_v2 [0x7ff97cef7275] in nvcuda64.dll
+=========         Host Frame:  [0x13141] in nvcudart_hybrid64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a41296cb] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4ef7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+========= Program hit cudaErrorUnknown (error 999) due to "unknown error" on CUDA API call to cudaStreamDestroy.
+=========     Saved host backtrace up to driver entry point at error
+=========         Host Frame: cuProfilerStop [0x7ff97d05c0d5] in nvcuda64.dll
+=========         Host Frame: _cudaGetProcAddress [0x7ff9a4129708] in nvcudart_hybrid64.dll
+=========         Host Frame:  [0x4ef7] in gemm.exe
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26045ca] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x2c2c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x3cff] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x20cd] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x15680] in gemm.exe
+=========         Host Frame: _chkstk [0x7ffae518652f] in ntdll.dll
+=========         Host Frame: RtlUnwindEx [0x7ffae503dd30] in ntdll.dll
+=========         Host Frame:  [0x401c] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x18f3] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21a5] in VCRUNTIME140_1.dll
+=========         Host Frame:  [0x21f6] in VCRUNTIME140_1.dll
+=========         Host Frame: _CxxFrameHandler4 [0x7ffac26043f5] in VCRUNTIME140_1.dll
+=========         Host Frame: _chkstk [0x7ffae51864af] in ntdll.dll
+=========         Host Frame: RtlWow64GetCurrentMachine [0x7ffae50e4065] in ntdll.dll
+=========         Host Frame: RtlRaiseException [0x7ffae5039f3d] in ntdll.dll
+=========         Host Frame: RaiseException [0x7ffae239408a] in KERNELBASE.dll
+=========         Host Frame:  [0xffea] in InterceptorInjectionTarget.dll
+=========         Host Frame: CxxThrowException [0x7ffac76555a9] in VCRUNTIME140.dll
+=========         Host Frame:  [0x8a62] in gemm.exe
+=========         Host Frame:  [0x7c69] in gemm.exe
+=========         Host Frame:  [0xdf99] in gemm.exe
+=========         Host Frame:  [0x5236] in gemm.exe
+=========         Host Frame:  [0xcb8f] in gemm.exe
+=========         Host Frame:  [0xc4cd] in gemm.exe
+=========         Host Frame:  [0x10429] in gemm.exe
+=========         Host Frame:  [0x1594c] in gemm.exe
+=========         Host Frame: BaseThreadInitThunk [0x7ffae386dda7] in KERNEL32.DLL
+=========         Host Frame: RtlUserThreadStart [0x7ffae509ee4c] in ntdll.dll
+========= 
+cleanup error: stream: unknown error
+error: cudaMemcpyAsync(host.data(), output, w.layout.c_bytes, cudaMemcpyDeviceToHost, ctx.stream.value) at line 334: unknown error
+========= Target application returned an error
+========= ERROR SUMMARY: 62 errors

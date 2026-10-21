@@ -1,0 +1,490 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-18T05:16:27.390436+00:00",
+  "import_tool": {
+    "path": "C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\target\\windows-desktop-win7-x64\\ncu.exe",
+    "version": "NVIDIA (R) Nsight Compute Command Line Profiler\nCopyright (c) 2018-2026 NVIDIA Corporation\nVersion 2026.1.1.0 (build 37634170) (public-release)"
+  },
+  "shape": {
+    "m": 2048,
+    "n": 2048,
+    "k": 2048
+  },
+  "useful_gemm_flop": 17179869184,
+  "method": {
+    "reference": "Nsight Compute 2026.1.1 SpeedOfLight_RooflineChart.section scalar FP32 / DRAM formulas",
+    "compute_peak": "2 * sm__sass_thread_inst_executed_op_ffma_pred_on.sum.peak_sustained * sm__cycles_elapsed.avg.per_second",
+    "bandwidth_peak": "dram__bytes.sum.peak_sustained * dram__cycles_elapsed.avg.per_second",
+    "hw_performance": "(FADD + FMUL + 2*FFMA instruction sum.per_cycle_elapsed) * smsp__cycles_elapsed.avg.per_second",
+    "hw_arithmetic_intensity": "hw_performance / dram__bytes.sum.per_second",
+    "effective_performance": "2*M*N*K / gpu__time_duration.sum_seconds",
+    "effective_arithmetic_intensity": "2*M*N*K / (dram__bytes_read.sum + dram__bytes_write.sum)"
+  },
+  "limitations": [
+    "Theoretical ceilings use each report's recorded clocks; no sustained compute or bandwidth microbenchmark calibration.",
+    "This is a scalar FP32 / DRAM model for SM 8.9; it does not model Tensor Cores, L1 or L2 roofs.",
+    "Hardware FP32 instructions and useful GEMM operations differ; use matching work definitions for intensity and performance.",
+    "Each input must be one kernel performing the entire declared SGEMM; one captured row alone does not establish this for arbitrary applications.",
+    "NCU replay, cache policy and clock control can differ from normal benchmark timing; recorded clocks are not proof of successful clock locking.",
+    "Raw metric CSV values are rounded by NCU; derived results inherit that precision.",
+    "Reports do not embed the source commit; use capture logs and source fingerprints to identify the measured implementation."
+  ],
+  "reports": [
+    {
+      "label": "naive",
+      "report": {
+        "path": "D:\\gpu_cuda\\results\\kernel-comparison-20261018\\naive-p1.ncu-rep",
+        "sha256": "558c350df377698573f9b88a272409e815cc26cf16c1f277b0b61d8ea95331ab",
+        "mtime_utc": "2026-10-18T05:15:13.191151+00:00",
+        "source_commit": null,
+        "source_commit_note": "Not recovered from the report; current Git is not substituted. See capture logs for the build fingerprint.",
+        "profiler_command_line_wrapped": "\"C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\target\\windows-desktop-win7-x64\\ncu.exe\" --config-file off\n--section-folder \"C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\sections\" --set full --replay-mode kernel\n--cache-control all --clock-control boost --launch-skip 20 --launch-count 1 --export D:\\gpu_cuda\\results\\kernel-comparis\non-20261018\\naive-p1 D:\\gpu_cuda\\build\\gemm.exe --mode profile --kernel naive --m 2048 --n 2048 --k 2048 --warmup 20 --i\nters 1"
+      },
+      "kernel": "sgemm_kernel_naive(const float *, const float *, float *, int, int, int)",
+      "block": "(32, 32, 1)",
+      "grid": "(64, 64, 1)",
+      "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "8.9",
+      "shape_check": {
+        "matched_dimensions": {
+          "m": 2048,
+          "n": 2048,
+          "k": 2048
+        },
+        "status": "matched_report_command",
+        "assumption": "The captured kernel implements the complete declared SGEMM."
+      },
+      "metrics": {
+        "gpu__time_duration.sum": {
+          "value": 206116832.0,
+          "unit": "ns",
+          "raw_value": "206,116,832"
+        },
+        "sm__sass_thread_inst_executed_op_ffma_pred_on.sum.peak_sustained": {
+          "value": 3072.0,
+          "unit": "inst/cycle",
+          "raw_value": "3,072"
+        },
+        "sm__cycles_elapsed.avg.per_second": {
+          "value": 1823184572.98,
+          "unit": "hz",
+          "raw_value": "1,823,184,572.98"
+        },
+        "dram__bytes.sum.peak_sustained": {
+          "value": 32.0,
+          "unit": "byte/cycle",
+          "raw_value": "32"
+        },
+        "dram__cycles_elapsed.avg.per_second": {
+          "value": 7710440571.88,
+          "unit": "hz",
+          "raw_value": "7,710,440,571.88"
+        },
+        "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum.per_cycle_elapsed": {
+          "value": 0.0,
+          "unit": "inst/cycle",
+          "raw_value": "0"
+        },
+        "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum.per_cycle_elapsed": {
+          "value": 0.0,
+          "unit": "inst/cycle",
+          "raw_value": "0"
+        },
+        "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum.per_cycle_elapsed": {
+          "value": 22.86,
+          "unit": "inst/cycle",
+          "raw_value": "22.86"
+        },
+        "smsp__cycles_elapsed.avg.per_second": {
+          "value": 1823184572.98,
+          "unit": "hz",
+          "raw_value": "1,823,184,572.98"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": 3171138201.85,
+          "unit": "byte/s",
+          "raw_value": "3,171,138,201.85"
+        },
+        "dram__bytes_read.sum": {
+          "value": 617297152.0,
+          "unit": "byte",
+          "raw_value": "617,297,152"
+        },
+        "dram__bytes_write.sum": {
+          "value": 36327808.0,
+          "unit": "byte",
+          "raw_value": "36,327,808"
+        },
+        "device__attribute_compute_capability_major": {
+          "value": 8.0,
+          "unit": "",
+          "raw_value": "8"
+        },
+        "device__attribute_compute_capability_minor": {
+          "value": 9.0,
+          "unit": "",
+          "raw_value": "9"
+        }
+      },
+      "derived": {
+        "duration_ms": 206.116832,
+        "sm_clock_ghz": 1.82318457298,
+        "dram_clock_ghz": 7.71044057188,
+        "fp32_peak_gflops": 11201.64601638912,
+        "dram_peak_gbytes_per_second": 246.73409830016,
+        "ridge_ai_flop_per_byte": 45.39966747020899,
+        "hw_gflops": 83.3559986766456,
+        "hw_ai_flop_per_byte": 26.285829683492448,
+        "hw_peak_percent": 0.7441406249999999,
+        "dram_bytes_per_second": 3171138201.85,
+        "dram_read_bytes": 617297152,
+        "dram_write_bytes": 36327808,
+        "dram_total_bytes": 653624960,
+        "effective_gflops": 83.3501515490011,
+        "effective_ai_flop_per_byte": 26.28398582575549
+      }
+    },
+    {
+      "label": "coalesced",
+      "report": {
+        "path": "D:\\gpu_cuda\\results\\kernel-comparison-20261018\\coalesced-p1.ncu-rep",
+        "sha256": "6cde97f42a5b13bd100f6b702fae5805c592dd7660179222229934fb684932cf",
+        "mtime_utc": "2026-10-18T05:15:23.518726+00:00",
+        "source_commit": null,
+        "source_commit_note": "Not recovered from the report; current Git is not substituted. See capture logs for the build fingerprint.",
+        "profiler_command_line_wrapped": "\"C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\target\\windows-desktop-win7-x64\\ncu.exe\" --config-file off\n--section-folder \"C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\sections\" --set full --replay-mode kernel\n--cache-control all --clock-control boost --launch-skip 20 --launch-count 1 --export D:\\gpu_cuda\\results\\kernel-comparis\non-20261018\\coalesced-p1 D:\\gpu_cuda\\build\\gemm.exe --mode profile --kernel coalesced --m 2048 --n 2048 --k 2048 --warmu\np 20 --iters 1"
+      },
+      "kernel": "sgemm_kernel_coalesced(const float *, const float *, float *, int, int, int)",
+      "block": "(32, 32, 1)",
+      "grid": "(64, 64, 1)",
+      "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "8.9",
+      "shape_check": {
+        "matched_dimensions": {
+          "m": 2048,
+          "n": 2048,
+          "k": 2048
+        },
+        "status": "matched_report_command",
+        "assumption": "The captured kernel implements the complete declared SGEMM."
+      },
+      "metrics": {
+        "gpu__time_duration.sum": {
+          "value": 25115744.0,
+          "unit": "ns",
+          "raw_value": "25,115,744"
+        },
+        "sm__sass_thread_inst_executed_op_ffma_pred_on.sum.peak_sustained": {
+          "value": 3072.0,
+          "unit": "inst/cycle",
+          "raw_value": "3,072"
+        },
+        "sm__cycles_elapsed.avg.per_second": {
+          "value": 1813942123.32,
+          "unit": "hz",
+          "raw_value": "1,813,942,123.32"
+        },
+        "dram__bytes.sum.peak_sustained": {
+          "value": 32.0,
+          "unit": "byte/cycle",
+          "raw_value": "32"
+        },
+        "dram__cycles_elapsed.avg.per_second": {
+          "value": 7671394006.88,
+          "unit": "hz",
+          "raw_value": "7,671,394,006.88"
+        },
+        "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum.per_cycle_elapsed": {
+          "value": 0.0,
+          "unit": "inst/cycle",
+          "raw_value": "0"
+        },
+        "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum.per_cycle_elapsed": {
+          "value": 0.0,
+          "unit": "inst/cycle",
+          "raw_value": "0"
+        },
+        "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum.per_cycle_elapsed": {
+          "value": 188.55,
+          "unit": "inst/cycle",
+          "raw_value": "188.55"
+        },
+        "smsp__cycles_elapsed.avg.per_second": {
+          "value": 1813942123.32,
+          "unit": "hz",
+          "raw_value": "1,813,942,123.32"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": 5486116756.09,
+          "unit": "byte/s",
+          "raw_value": "5,486,116,756.09"
+        },
+        "dram__bytes_read.sum": {
+          "value": 116294144.0,
+          "unit": "byte",
+          "raw_value": "116,294,144"
+        },
+        "dram__bytes_write.sum": {
+          "value": 21493760.0,
+          "unit": "byte",
+          "raw_value": "21,493,760"
+        },
+        "device__attribute_compute_capability_major": {
+          "value": 8.0,
+          "unit": "",
+          "raw_value": "8"
+        },
+        "device__attribute_compute_capability_minor": {
+          "value": 9.0,
+          "unit": "",
+          "raw_value": "9"
+        }
+      },
+      "derived": {
+        "duration_ms": 25.115744,
+        "sm_clock_ghz": 1.81394212332,
+        "dram_clock_ghz": 7.67139400688,
+        "fp32_peak_gflops": 11144.86040567808,
+        "dram_peak_gbytes_per_second": 245.48460822016,
+        "ridge_ai_flop_per_byte": 45.39942640999693,
+        "hw_gflops": 684.037574703972,
+        "hw_ai_flop_per_byte": 124.6852017767648,
+        "hw_peak_percent": 6.1376953125,
+        "dram_bytes_per_second": 5486116756.09,
+        "dram_read_bytes": 116294144,
+        "dram_write_bytes": 21493760,
+        "dram_total_bytes": 137787904,
+        "effective_gflops": 684.0278824310361,
+        "effective_ai_flop_per_byte": 124.68343508585485
+      }
+    },
+    {
+      "label": "shared",
+      "report": {
+        "path": "D:\\gpu_cuda\\results\\kernel-comparison-20261018\\shared-p1.ncu-rep",
+        "sha256": "21f8eace6d452c5689e616ebfb43d382d9754f89461227cd43db6d28e0820399",
+        "mtime_utc": "2026-10-18T05:15:30.176225+00:00",
+        "source_commit": null,
+        "source_commit_note": "Not recovered from the report; current Git is not substituted. See capture logs for the build fingerprint.",
+        "profiler_command_line_wrapped": "\"C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\target\\windows-desktop-win7-x64\\ncu.exe\" --config-file off\n--section-folder \"C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\sections\" --set full --replay-mode kernel\n--cache-control all --clock-control boost --launch-skip 20 --launch-count 1 --export D:\\gpu_cuda\\results\\kernel-comparis\non-20261018\\shared-p1 D:\\gpu_cuda\\build\\gemm.exe --mode profile --kernel shared --m 2048 --n 2048 --k 2048 --warmup 20 -\n-iters 1"
+      },
+      "kernel": "sgemm_kernel_shared(const float *, const float *, float *, int, int, int)",
+      "block": "(32, 32, 1)",
+      "grid": "(64, 64, 1)",
+      "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "8.9",
+      "shape_check": {
+        "matched_dimensions": {
+          "m": 2048,
+          "n": 2048,
+          "k": 2048
+        },
+        "status": "matched_report_command",
+        "assumption": "The captured kernel implements the complete declared SGEMM."
+      },
+      "metrics": {
+        "gpu__time_duration.sum": {
+          "value": 18932448.0,
+          "unit": "ns",
+          "raw_value": "18,932,448"
+        },
+        "sm__sass_thread_inst_executed_op_ffma_pred_on.sum.peak_sustained": {
+          "value": 3072.0,
+          "unit": "inst/cycle",
+          "raw_value": "3,072"
+        },
+        "sm__cycles_elapsed.avg.per_second": {
+          "value": 1889993958.17,
+          "unit": "hz",
+          "raw_value": "1,889,993,958.17"
+        },
+        "dram__bytes.sum.peak_sustained": {
+          "value": 32.0,
+          "unit": "byte/cycle",
+          "raw_value": "32"
+        },
+        "dram__cycles_elapsed.avg.per_second": {
+          "value": 7992982207.06,
+          "unit": "hz",
+          "raw_value": "7,992,982,207.06"
+        },
+        "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum.per_cycle_elapsed": {
+          "value": 0.0,
+          "unit": "inst/cycle",
+          "raw_value": "0"
+        },
+        "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum.per_cycle_elapsed": {
+          "value": 0.0,
+          "unit": "inst/cycle",
+          "raw_value": "0"
+        },
+        "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum.per_cycle_elapsed": {
+          "value": 240.06,
+          "unit": "inst/cycle",
+          "raw_value": "240.06"
+        },
+        "smsp__cycles_elapsed.avg.per_second": {
+          "value": 1889993958.17,
+          "unit": "hz",
+          "raw_value": "1,889,993,958.17"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": 5103125385.58,
+          "unit": "byte/s",
+          "raw_value": "5,103,125,385.58"
+        },
+        "dram__bytes_read.sum": {
+          "value": 84016000.0,
+          "unit": "byte",
+          "raw_value": "84,016,000"
+        },
+        "dram__bytes_write.sum": {
+          "value": 12598656.0,
+          "unit": "byte",
+          "raw_value": "12,598,656"
+        },
+        "device__attribute_compute_capability_major": {
+          "value": 8.0,
+          "unit": "",
+          "raw_value": "8"
+        },
+        "device__attribute_compute_capability_minor": {
+          "value": 9.0,
+          "unit": "",
+          "raw_value": "9"
+        }
+      },
+      "derived": {
+        "duration_ms": 18.932448,
+        "sm_clock_ghz": 1.88999395817,
+        "dram_clock_ghz": 7.992982207060001,
+        "fp32_peak_gflops": 11612.12287899648,
+        "dram_peak_gbytes_per_second": 255.77543062592002,
+        "ridge_ai_flop_per_byte": 45.399680690908866,
+        "hw_gflops": 907.4238991965805,
+        "hw_ai_flop_per_byte": 177.81728463123906,
+        "hw_peak_percent": 7.814453125,
+        "dram_bytes_per_second": 5103125385.58,
+        "dram_read_bytes": 84016000,
+        "dram_write_bytes": 12598656,
+        "dram_total_bytes": 96614656,
+        "effective_gflops": 907.4298888342385,
+        "effective_ai_flop_per_byte": 177.8184583506668
+      }
+    },
+    {
+      "label": "cublas",
+      "report": {
+        "path": "D:\\gpu_cuda\\results\\kernel-comparison-20261018\\cublas-p1.ncu-rep",
+        "sha256": "244644adfa9baf39e161316e009a1dbb2355c8d88d777d9fd1f409735ea442ac",
+        "mtime_utc": "2026-10-18T05:15:34.271886+00:00",
+        "source_commit": null,
+        "source_commit_note": "Not recovered from the report; current Git is not substituted. See capture logs for the build fingerprint.",
+        "profiler_command_line_wrapped": "\"C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\target\\windows-desktop-win7-x64\\ncu.exe\" --config-file off\n--section-folder \"C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.1.1\\sections\" --set full --replay-mode kernel\n--cache-control all --clock-control boost --launch-skip 20 --launch-count 1 --export D:\\gpu_cuda\\results\\kernel-comparis\non-20261018\\cublas-p1 D:\\gpu_cuda\\build\\gemm.exe --mode profile --kernel cublas --m 2048 --n 2048 --k 2048 --warmup 20 -\n-iters 1"
+      },
+      "kernel": "ampere_sgemm_64x64_nn",
+      "block": "(64, 1, 1)",
+      "grid": "(32, 32, 1)",
+      "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "8.9",
+      "shape_check": {
+        "matched_dimensions": {
+          "m": 2048,
+          "n": 2048,
+          "k": 2048
+        },
+        "status": "matched_report_command",
+        "assumption": "The captured kernel implements the complete declared SGEMM."
+      },
+      "metrics": {
+        "gpu__time_duration.sum": {
+          "value": 2473888.0,
+          "unit": "ns",
+          "raw_value": "2,473,888"
+        },
+        "sm__sass_thread_inst_executed_op_ffma_pred_on.sum.peak_sustained": {
+          "value": 3072.0,
+          "unit": "inst/cycle",
+          "raw_value": "3,072"
+        },
+        "sm__cycles_elapsed.avg.per_second": {
+          "value": 1889680400.51,
+          "unit": "hz",
+          "raw_value": "1,889,680,400.51"
+        },
+        "dram__bytes.sum.peak_sustained": {
+          "value": 32.0,
+          "unit": "byte/cycle",
+          "raw_value": "32"
+        },
+        "dram__cycles_elapsed.avg.per_second": {
+          "value": 7992756341.44,
+          "unit": "hz",
+          "raw_value": "7,992,756,341.44"
+        },
+        "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum.per_cycle_elapsed": {
+          "value": 0.0,
+          "unit": "inst/cycle",
+          "raw_value": "0"
+        },
+        "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum.per_cycle_elapsed": {
+          "value": 0.9,
+          "unit": "inst/cycle",
+          "raw_value": "0.90"
+        },
+        "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum.per_cycle_elapsed": {
+          "value": 1837.48,
+          "unit": "inst/cycle",
+          "raw_value": "1,837.48"
+        },
+        "smsp__cycles_elapsed.avg.per_second": {
+          "value": 1889680400.51,
+          "unit": "hz",
+          "raw_value": "1,889,680,400.51"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": 27306264471.15,
+          "unit": "byte/s",
+          "raw_value": "27,306,264,471.15"
+        },
+        "dram__bytes_read.sum": {
+          "value": 53671808.0,
+          "unit": "byte",
+          "raw_value": "53,671,808"
+        },
+        "dram__bytes_write.sum": {
+          "value": 13880832.0,
+          "unit": "byte",
+          "raw_value": "13,880,832"
+        },
+        "device__attribute_compute_capability_major": {
+          "value": 8.0,
+          "unit": "",
+          "raw_value": "8"
+        },
+        "device__attribute_compute_capability_minor": {
+          "value": 9.0,
+          "unit": "",
+          "raw_value": "9"
+        }
+      },
+      "derived": {
+        "duration_ms": 2.473888,
+        "sm_clock_ghz": 1.88968040051,
+        "dram_clock_ghz": 7.99275634144,
+        "fp32_peak_gflops": 11610.19638073344,
+        "dram_peak_gbytes_per_second": 255.76820292608,
+        "ridge_ai_flop_per_byte": 45.3934314270055,
+        "hw_gflops": 6946.200597018688,
+        "hw_ai_flop_per_byte": 254.3812100097978,
+        "hw_peak_percent": 59.82845052083333,
+        "dram_bytes_per_second": 27306264471.15,
+        "dram_read_bytes": 53671808,
+        "dram_write_bytes": 13880832,
+        "dram_total_bytes": 67552640,
+        "effective_gflops": 6944.481392852062,
+        "effective_ai_flop_per_byte": 254.31824994552397
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "description": "Initial FP32 SIMT search; float4 global loads, current tuned compute loop.",
+  "baseline": [64, 64, 64, 4, 4],
+  "block_tiles": [[16, 64], [32, 64], [64, 64], [64, 128], [128, 64], [128, 128]],
+  "bk": [16, 32],
+  "thread_tiles": [[4, 4], [8, 4], [4, 8]]
+}

@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "description": "Structured excerpts from original successful check logs and compiler resource reports; original files remain in the local experiment directory. Counts are derived only from check kernel=register lines. Known failed 2D cases are included in the summary; two original failure logs are retained. This is historical evidence, not a fresh validation run.",
+  "records": [
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm1/check-suite.log",
+      "original_sha256": "1bb62e35b8135f7abdb1d5e30ea1dca6f56701ae6343e942385de57eafadc223",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm1/check-tall.log",
+      "original_sha256": "cce0c0d42017254a5d0725461a090b22480115f768743cacadf1ae4435ddc320",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=97x65x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=2.384185791e-06 relative_frob=1.32816109e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.418225111e-06 cpu_relative_frob=1.043934255e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm1/resources.log",
+      "original_sha256": "6a81da64d22ddd9ec69b205a0348af36e86be2e2b35178bf39e867f468a8b3df",
+      "register_resources": [
+        {
+          "function": "Function _Z21sgemm_kernel_registerPKfS0_Pfiii:",
+          "usage": "REG:36 STACK:0 SHARED:8192 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm16/check-suite.log",
+      "original_sha256": "c095d32a6a79eaa747a3c28c7c1bb34aab12ae426c064778f539169446a00108",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm16/check-tall.log",
+      "original_sha256": "004a445f81b057372866c0163b50c8ebff81047b4dd12c667e34674f5546d339",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=97x65x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=2.384185791e-06 relative_frob=1.32816109e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.418225111e-06 cpu_relative_frob=1.043934255e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm16/resources.log",
+      "original_sha256": "2e89fa4f4edd7ac5e1ae2ef14132da8eef39b877e8185b4a68ea95af01c5d7c4",
+      "register_resources": [
+        {
+          "function": "Function _Z21sgemm_kernel_registerPKfS0_Pfiii:",
+          "usage": "REG:56 STACK:0 SHARED:8192 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm2/check-suite.log",
+      "original_sha256": "4200f1011bcf7d2b1728dcfd0020bb5fb38973cefe0d913e381493c65c947315",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm2/check-tall.log",
+      "original_sha256": "855374b3ebb8e3ec79261cf06e040eca32a7eeb95233827705c573e2fcc07a88",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=97x65x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=2.384185791e-06 relative_frob=1.32816109e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.418225111e-06 cpu_relative_frob=1.043934255e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm2/resources.log",
+      "original_sha256": "dc08505b882bfd02bf29114c10fee6d08d9b25327ac592e826ba27f5bf4f340f",
+      "register_resources": [
+        {
+          "function": "Function _Z21sgemm_kernel_registerPKfS0_Pfiii:",
+          "usage": "REG:39 STACK:0 SHARED:8192 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm32/check-suite.log",
+      "original_sha256": "e4fbbb4b0378c0fed7da53b2f74588dd11cea797abf94043567035026d8b2a7c",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm32/check-tall.log",
+      "original_sha256": "c0f7a6334ac95f56ee35c3d94a958f23d9f63a58a5e313f465945806f7aafa21",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=97x65x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=2.384185791e-06 relative_frob=1.32816109e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.418225111e-06 cpu_relative_frob=1.043934255e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm32/resources.log",
+      "original_sha256": "569a962ae5858e9fdd07b61cc57baa82a514dda6188c7c0e62e91849d618379a",
+      "register_resources": [
+        {
+          "function": "Function _Z21sgemm_kernel_registerPKfS0_Pfiii:",
+          "usage": "REG:127 STACK:0 SHARED:8192 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm4/check-suite.log",
+      "original_sha256": "385fa5357261b3bd1cbbe0f50ed24d0f0b6354cb9a00df6fefab518a8393bc42",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm4/check-tall.log",
+      "original_sha256": "7844515fd44d213fe8fc8c99a0b0ab9cb5b13cb1b544b5729cab16bb15316d8a",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=97x65x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=2.384185791e-06 relative_frob=1.32816109e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.418225111e-06 cpu_relative_frob=1.043934255e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm4/resources.log",
+      "original_sha256": "64b2dbf6c69d8dff7fed0f48a04da8e573bda37c10bb1c5be9f16dddeeae934c",
+      "register_resources": [
+        {
+          "function": "Function _Z21sgemm_kernel_registerPKfS0_Pfiii:",
+          "usage": "REG:42 STACK:0 SHARED:8192 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm8/check-suite.log",
+      "original_sha256": "fa320621f5d6016c8cecb836b369bcf0e62fd1cbe5b44c727e1ae788c582fff4",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm8/check-tall.log",
+      "original_sha256": "a58bf1dadf18ecb9b70202c79439908036023c6561c274235f7a9a2a3eda89c3",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=97x65x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=2.384185791e-06 relative_frob=1.32816109e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.418225111e-06 cpu_relative_frob=1.043934255e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-tm-sweep-20261018-232909/variants/tm8/resources.log",
+      "original_sha256": "b0444eefcbecd231619573c29070a08b7e4dc0bb516981aba693e16a63ea0a70",
+      "register_resources": [
+        {
+          "function": "Function _Z21sgemm_kernel_registerPKfS0_Pfiii:",
+          "usage": "REG:50 STACK:0 SHARED:8192 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    }
+  ]
+}

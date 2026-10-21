@@ -1,0 +1,51 @@
+{
+  "P4": {
+    "shape": {
+      "m": 16,
+      "n": 256,
+      "k": 128
+    },
+    "config": "bm16_bn32_bk32_tm2_tn2",
+    "params": {
+      "BM": 16,
+      "BN": 32,
+      "BK": 32,
+      "TM": 2,
+      "TN": 2
+    },
+    "median_ms": 0.007402897644045,
+    "gflops": 141.64399542164279,
+    "min_ms": 0.00716492767334,
+    "max_ms": 0.00760194549561,
+    "pass_medians_ms": [
+      0.00753868789673,
+      0.00721336288452
+    ],
+    "cublas_median_ms": 0.006704156875615,
+    "cublas_over_self": 0.9056125314670429,
+    "source_sha256": "bcafdf6f7ca6d7b7ba88eeb10f03eeab76de3e54de52a4836afff73c22b20ce5",
+    "csv_files": [
+      "variants/bm16_bn32_bk32_tm2_tn2/P4-confirm-1.csv",
+      "variants/bm16_bn32_bk32_tm2_tn2/P4-confirm-2.csv"
+    ],
+    "baseline_over_self": 1.1327203727948814,
+    "within_3_percent_of_best": true,
+    "configure_argv": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_CUDA_ARCHITECTURES=89",
+      "-DGEMM_TUNED_BM=16",
+      "-DGEMM_TUNED_BN=32",
+      "-DGEMM_TUNED_BK=32",
+      "-DGEMM_TUNED_TM=2",
+      "-DGEMM_TUNED_TN=2"
+    ],
+    "scope": "best measured in this search and current source/GPU, not a global optimum",
+    "source_snapshot": "source-snapshot.zip",
+    "source_hashes": "source-sha256.json"
+  }
+}

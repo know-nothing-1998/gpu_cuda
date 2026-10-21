@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "description": "Structured excerpts from original successful check logs and compiler resource reports; original files remain in the local experiment directory. Counts are derived only from check kernel=register lines. Known failed 2D cases are included in the summary; two original failure logs are retained. This is historical evidence, not a fresh validation run.",
+  "records": [
+    {
+      "original_source": "results/register-2d-review-20261019-114039/1d-8x1/check-P3.log",
+      "original_sha256": "cd2031a3c39994e265cecd64529da9055364d4a7881c0cd6e146fba77dd10bb0",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=1001x769x513 pattern=random status=valid reference=cublas_full compared=769769 max_abs=3.433227539e-05 relative_frob=4.235143999e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_sample cpu_compared=50 cpu_max_abs=5.757747587e-06 cpu_relative_frob=3.468222084e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-2d-review-20261019-114039/1d-8x1/check-suite.log",
+      "original_sha256": "fa320621f5d6016c8cecb836b369bcf0e62fd1cbe5b44c727e1ae788c582fff4",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-2d-review-20261019-114039/1d-8x1/resources.log",
+      "original_sha256": "e92351a68a2d0e36daee0fb9aa5ab73ec3fa371352ccf642f530ff3322b1bba2",
+      "register_resources": [
+        {
+          "function": "Function _Z21sgemm_kernel_registerPKfS0_Pfiii:",
+          "usage": "REG:50 STACK:0 SHARED:8192 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    },
+    {
+      "original_source": "results/register-2d-review-20261019-114039/2d-4x4/check-suite.log",
+      "original_sha256": "6273941bc0c46c8d31d24096582de2b5e9dc03d7e62a00c0fe746c4cb9033f1b",
+      "target_check_counts": {
+        "valid": 20,
+        "invalid": 12
+      },
+      "summary_lines": [
+        "suite_cases=32 status=invalid"
+      ]
+    },
+    {
+      "original_source": "results/register-2d-review-20261019-114039/2d-4x4/resources.log",
+      "original_sha256": "842714c6800c27fc3bb11909328b85f46b69e4317f0fa3c05d1c03360ee4837e",
+      "register_resources": [
+        {
+          "function": "Function _Z33sgemm_kernel_register_rowTM_colTNPKfS0_Pfiii:",
+          "usage": "REG:66 STACK:0 SHARED:8192 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    }
+  ]
+}

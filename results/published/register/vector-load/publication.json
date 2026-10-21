@@ -1,0 +1,225 @@
+{
+  "publication_date": "2026-10-22",
+  "original_local_directory": "results/register-vector-comparison-20261020-151759",
+  "copy_policy": "Listed files are byte-for-byte copies; original local directory is not needed to read this archive. Absolute paths inside historical logs/JSON describe the original run, not current reproduction locations.",
+  "files": [
+    {
+      "path": "P2-analysis/profile-summary.json",
+      "source": "results/register-vector-comparison-20261020-151759/P2-analysis/profile-summary.json",
+      "bytes": 6949,
+      "sha256": "65d3b2e22c5675f95e1aceff85e3639bf04ff2677d4949dfba86645199f8e7b3"
+    },
+    {
+      "path": "P3-analysis/profile-summary.json",
+      "source": "results/register-vector-comparison-20261020-151759/P3-analysis/profile-summary.json",
+      "bytes": 7008,
+      "sha256": "60ec7ba44274b258510767577792b1c4ed0979b74b3b1ec044d8699e0dd46234"
+    },
+    {
+      "path": "load-vectorization.diff",
+      "source": "results/register-vector-comparison-20261020-151759/load-vectorization.diff",
+      "bytes": 2912,
+      "sha256": "706b1f2930b0079b9b356643daf93965f0ffa02324eb4031b690d97c6b7790e4"
+    },
+    {
+      "path": "manifest.json",
+      "source": "results/register-vector-comparison-20261020-151759/manifest.json",
+      "bytes": 3263,
+      "sha256": "882734aa0e8cbf7c4bc6e3af03a1f19d97f8a58784d17caa2347f06dc45e48c2"
+    },
+    {
+      "path": "matrix.csv",
+      "source": "results/register-vector-comparison-20261020-151759/matrix.csv",
+      "bytes": 245,
+      "sha256": "4511ed1cdd0bae4340dd2fd56949d9bcfe5194dfcf179b1e3abef59ab1999cb8"
+    },
+    {
+      "path": "p1-confirmation/records.json",
+      "source": "results/register-vector-comparison-20261020-151759/p1-confirmation/records.json",
+      "bytes": 11141,
+      "sha256": "ff06cec73bfdcdf60bf84725239b3ae9d4897020a86315e2e97cc73dc8c80d5c"
+    },
+    {
+      "path": "p1-confirmation/scalar-load-pass1.csv",
+      "source": "results/register-vector-comparison-20261020-151759/p1-confirmation/scalar-load-pass1.csv",
+      "bytes": 1384,
+      "sha256": "d28bdb4d95cefa604da1e13a65720eca5c48b9bdd34a57b7b113d9deb2fcab4b"
+    },
+    {
+      "path": "p1-confirmation/scalar-load-pass2.csv",
+      "source": "results/register-vector-comparison-20261020-151759/p1-confirmation/scalar-load-pass2.csv",
+      "bytes": 1387,
+      "sha256": "b00a316323e4a28b716659ccb6c072fd8cf7501ab3a1d87117bfb95670cf56fe"
+    },
+    {
+      "path": "p1-confirmation/summary.json",
+      "source": "results/register-vector-comparison-20261020-151759/p1-confirmation/summary.json",
+      "bytes": 1037,
+      "sha256": "ce2014e1449fffdcb27c457bcb430b05ce51733ba6b41466e3d76284ce6ba28f"
+    },
+    {
+      "path": "p1-confirmation/vector-load-pass1.csv",
+      "source": "results/register-vector-comparison-20261020-151759/p1-confirmation/vector-load-pass1.csv",
+      "bytes": 1388,
+      "sha256": "ec6e1a3c152e4ecfd05b902e50036484f1197978a03cab336821ab46c2236822"
+    },
+    {
+      "path": "p1-confirmation/vector-load-pass2.csv",
+      "source": "results/register-vector-comparison-20261020-151759/p1-confirmation/vector-load-pass2.csv",
+      "bytes": 1385,
+      "sha256": "f853b0be3132dbd9a1573b8b6204fb834620f79ea710513cef247aa25b4bf661"
+    },
+    {
+      "path": "profile-metrics.json",
+      "source": "results/register-vector-comparison-20261020-151759/profile-metrics.json",
+      "bytes": 12619,
+      "sha256": "3c852462ef03da25d2fa8dc16f5ff69da806ee9ff7ce57fcbeb324cd427ea539"
+    },
+    {
+      "path": "profile-source-evidence.json",
+      "source": "results/register-vector-comparison-20261020-151759/profile-source-evidence.json",
+      "bytes": 33667,
+      "sha256": "d41d51a731ebc47a4e83345c4de99fddbdaaaeb938f1a6da195b679df69f5622"
+    },
+    {
+      "path": "profile-summary.json",
+      "source": "results/register-vector-comparison-20261020-151759/profile-summary.json",
+      "bytes": 6998,
+      "sha256": "64ba5062d47b33b2bb31fea7c610e9a8a943241ed334d13c8f3138cf5f53a12e"
+    },
+    {
+      "path": "scalar-load/P1-pass1.csv",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/P1-pass1.csv",
+      "bytes": 1385,
+      "sha256": "68090b2dd536bf465ac80e08a401e771f2fe03e70dd76f318b4dbd8b37e048ad"
+    },
+    {
+      "path": "scalar-load/P1-pass2.csv",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/P1-pass2.csv",
+      "bytes": 1386,
+      "sha256": "632d804fce36a5ce8ff44452f5b98ff39942db24c570c3af6695a59ce82e7d28"
+    },
+    {
+      "path": "scalar-load/P2-pass1.csv",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/P2-pass1.csv",
+      "bytes": 1428,
+      "sha256": "df472d5d01412ea430d35553893361050a8d6bc5776b9a874fbe203ec9031fb4"
+    },
+    {
+      "path": "scalar-load/P2-pass2.csv",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/P2-pass2.csv",
+      "bytes": 1426,
+      "sha256": "c336300b7d9421e828fed91e5ad2984e052bd0c3c40d222015e897824cbe3794"
+    },
+    {
+      "path": "scalar-load/P3-pass1.csv",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/P3-pass1.csv",
+      "bytes": 1428,
+      "sha256": "e1007173305ca7e1a5cb11678b4ecc9d6739e56f2cdab16af8491b3bd423885e"
+    },
+    {
+      "path": "scalar-load/P3-pass2.csv",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/P3-pass2.csv",
+      "bytes": 1428,
+      "sha256": "ecf886a0353fb2513330cfeddf7a9a2cf498e5010c268f124f0df8929b3e578d"
+    },
+    {
+      "path": "scalar-load/build_info.h",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/build_info.h",
+      "bytes": 241,
+      "sha256": "45d509581f5ee22b5ee7f90435d122971d788cfa67b8a6829ea8dace30d5ed9e"
+    },
+    {
+      "path": "scalar-load/register.cu",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/register.cu",
+      "bytes": 4050,
+      "sha256": "61c4d238eba0e465a3024c414352f6c2cfd282085a9eb6c8568f0405f44ba9b6"
+    },
+    {
+      "path": "scalar-load/register.cuh",
+      "source": "results/register-vector-comparison-20261020-151759/scalar-load/register.cuh",
+      "bytes": 605,
+      "sha256": "a963bb2fec9bbf42884bf83d2248e547b532a18af73e50feaeac79acdb9513e7"
+    },
+    {
+      "path": "source-snapshot.zip",
+      "source": "results/register-vector-comparison-20261020-151759/source-snapshot.zip",
+      "bytes": 17824,
+      "sha256": "4aee7669c358ac29094e043d6fc24373c773da84ddcda92526a7b379304b160e"
+    },
+    {
+      "path": "summary.csv",
+      "source": "results/register-vector-comparison-20261020-151759/summary.csv",
+      "bytes": 781,
+      "sha256": "63023d91f14bd162346724a7225c59f2030203a1c6c3639985448dc19443348a"
+    },
+    {
+      "path": "summary.json",
+      "source": "results/register-vector-comparison-20261020-151759/summary.json",
+      "bytes": 2398,
+      "sha256": "01e6314f3b87c8d07a8a53e78349b63547e4618005b2c0f8aee8f3f358b335ba"
+    },
+    {
+      "path": "vector-load/P1-pass1.csv",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/P1-pass1.csv",
+      "bytes": 1385,
+      "sha256": "024f2542b818bc81fbb3e1313697b9b43d554dfd0e553b9513501f0e94df02b4"
+    },
+    {
+      "path": "vector-load/P1-pass2.csv",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/P1-pass2.csv",
+      "bytes": 1386,
+      "sha256": "2cb68ed268b09221f6a37b4764604f6dff84d65d11e541facf820f7e08645285"
+    },
+    {
+      "path": "vector-load/P2-pass1.csv",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/P2-pass1.csv",
+      "bytes": 1426,
+      "sha256": "ed13d840bd9ea0c3fafd18b62f67b45cd06b4d64fb87faf105d3a9295dc6e9fa"
+    },
+    {
+      "path": "vector-load/P2-pass2.csv",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/P2-pass2.csv",
+      "bytes": 1428,
+      "sha256": "4ec8555ed4d8a3bb4d749c6c85f44404fd9b13e9ddd0588732724777a11891f2"
+    },
+    {
+      "path": "vector-load/P3-pass1.csv",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/P3-pass1.csv",
+      "bytes": 1427,
+      "sha256": "9a8fc1ddd48e1674b08d520a2c54b39474c7ec3a231133241f6fe1f6ef06f388"
+    },
+    {
+      "path": "vector-load/P3-pass2.csv",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/P3-pass2.csv",
+      "bytes": 1426,
+      "sha256": "f7bfc1f64efb5162f70e5c10f7c39da9fb4a5bb6a3074713f67258d3a85dc6ce"
+    },
+    {
+      "path": "vector-load/build_info.h",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/build_info.h",
+      "bytes": 241,
+      "sha256": "e79fc27cddc95435cf9e113d97ba21ffb34e00e82f263d9a740706f852e6da0c"
+    },
+    {
+      "path": "vector-load/register.cu",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/register.cu",
+      "bytes": 5573,
+      "sha256": "845ee189a6595982dae0b32816a632df5f73d088809025a733f8dcd8e1eb0aff"
+    },
+    {
+      "path": "vector-load/register.cuh",
+      "source": "results/register-vector-comparison-20261020-151759/vector-load/register.cuh",
+      "bytes": 605,
+      "sha256": "a963bb2fec9bbf42884bf83d2248e547b532a18af73e50feaeac79acdb9513e7"
+    }
+  ],
+  "derived_files": [
+    {
+      "path": "validation-summary.json",
+      "bytes": 5977,
+      "sha256": "fffbce35935a31efb0e564003309596f681436f57cf2e626ba9eaea59089f93c",
+      "derivation": "Target check counts, terminal summaries and register resource lines from the original logs named within this JSON."
+    }
+  ]
+}

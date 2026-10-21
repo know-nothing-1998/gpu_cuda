@@ -1,0 +1,177 @@
+{
+  "publication_date": "2026-10-22",
+  "original_local_directory": "results/register-memory-comparison-20261019-191833",
+  "copy_policy": "Listed files are byte-for-byte copies; original local directory is not needed to read this archive. Absolute paths inside historical logs/JSON describe the original run, not current reproduction locations.",
+  "files": [
+    {
+      "path": "coalesced-load/P1-pass1.csv",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/P1-pass1.csv",
+      "bytes": 1380,
+      "sha256": "100bbb13653d78b1d136a5071fdcdfd8e5ed79d72d8fafa0450c51352af6006b"
+    },
+    {
+      "path": "coalesced-load/P1-pass2.csv",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/P1-pass2.csv",
+      "bytes": 1381,
+      "sha256": "0fa5e7295a7876f0edec0f977c35495442bd9d6093ccf7be7a69d425676c3783"
+    },
+    {
+      "path": "coalesced-load/P2-pass1.csv",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/P2-pass1.csv",
+      "bytes": 1427,
+      "sha256": "150249af2b08de42ac911088f5d3cc2f277333c46c7a5380a6a70bc0ff29639f"
+    },
+    {
+      "path": "coalesced-load/P2-pass2.csv",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/P2-pass2.csv",
+      "bytes": 1428,
+      "sha256": "4fd222f783d6cc03486d6254c79d65b3e4eafe2988fe4169d0108f020806a203"
+    },
+    {
+      "path": "coalesced-load/P3-pass1.csv",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/P3-pass1.csv",
+      "bytes": 1425,
+      "sha256": "8e38dbf610ac08b11e7e6e081cc868047b907653a461d1fcb0b93506f5a74cd1"
+    },
+    {
+      "path": "coalesced-load/P3-pass2.csv",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/P3-pass2.csv",
+      "bytes": 1427,
+      "sha256": "e449e1b6bca410e391d5dc9a3d110eb5663a2b1787846ffae2737d1fb8daa099"
+    },
+    {
+      "path": "coalesced-load/build_info.h",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/build_info.h",
+      "bytes": 241,
+      "sha256": "45d509581f5ee22b5ee7f90435d122971d788cfa67b8a6829ea8dace30d5ed9e"
+    },
+    {
+      "path": "coalesced-load/register.cu",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/register.cu",
+      "bytes": 4050,
+      "sha256": "61c4d238eba0e465a3024c414352f6c2cfd282085a9eb6c8568f0405f44ba9b6"
+    },
+    {
+      "path": "coalesced-load/register.cuh",
+      "source": "results/register-memory-comparison-20261019-191833/coalesced-load/register.cuh",
+      "bytes": 605,
+      "sha256": "a963bb2fec9bbf42884bf83d2248e547b532a18af73e50feaeac79acdb9513e7"
+    },
+    {
+      "path": "load-mapping.diff",
+      "source": "results/register-memory-comparison-20261019-191833/load-mapping.diff",
+      "bytes": 3701,
+      "sha256": "1b77fc6ac52e8767c88742673d4f70eb2194989c3fce67fe76cbe26070cacf04"
+    },
+    {
+      "path": "manifest.json",
+      "source": "results/register-memory-comparison-20261019-191833/manifest.json",
+      "bytes": 2807,
+      "sha256": "a3fafbf0a16cb83a629617dda5cb588cec5afd2e742f27d62669accdd3933b8f"
+    },
+    {
+      "path": "matrix.csv",
+      "source": "results/register-memory-comparison-20261019-191833/matrix.csv",
+      "bytes": 245,
+      "sha256": "4511ed1cdd0bae4340dd2fd56949d9bcfe5194dfcf179b1e3abef59ab1999cb8"
+    },
+    {
+      "path": "profile-metrics.json",
+      "source": "results/register-memory-comparison-20261019-191833/profile-metrics.json",
+      "bytes": 12158,
+      "sha256": "23329cb2e4c097c1f6f6a1f0cc2c809dc4119068c53e2e4630df1edb913b6313"
+    },
+    {
+      "path": "profile-source-evidence.json",
+      "source": "results/register-memory-comparison-20261019-191833/profile-source-evidence.json",
+      "bytes": 55111,
+      "sha256": "1e4d2b78af17394e61b3d186bb8ea8c5f4803a4ef025824dfdcafc8da586a547"
+    },
+    {
+      "path": "profile-summary.json",
+      "source": "results/register-memory-comparison-20261019-191833/profile-summary.json",
+      "bytes": 7026,
+      "sha256": "3159ef70026a1351f59f2c6c5e58bd3c6f41c9f13980477899d5977c985e860c"
+    },
+    {
+      "path": "source-snapshot.zip",
+      "source": "results/register-memory-comparison-20261019-191833/source-snapshot.zip",
+      "bytes": 17512,
+      "sha256": "6a2602aac5fb896eb13df7b3aad5f3be0e6dd5e0ccef97048dabd2b1ad466ea8"
+    },
+    {
+      "path": "strided-load/P1-pass1.csv",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/P1-pass1.csv",
+      "bytes": 1384,
+      "sha256": "1d7d4e23d616b7b08e82082f06c49723ec8eb9f159bb85fd447eb180b0f3dbc0"
+    },
+    {
+      "path": "strided-load/P1-pass2.csv",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/P1-pass2.csv",
+      "bytes": 1386,
+      "sha256": "216ccecf83e21ae8c6d84f55050ae630fbf962c353c3ccc5cfa7743aa1e33ab9"
+    },
+    {
+      "path": "strided-load/P2-pass1.csv",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/P2-pass1.csv",
+      "bytes": 1428,
+      "sha256": "90392a2696e886e1d95b8f0b528c83f67609db9aaebfa816cadb3dad9fa5ff37"
+    },
+    {
+      "path": "strided-load/P2-pass2.csv",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/P2-pass2.csv",
+      "bytes": 1428,
+      "sha256": "2d013c67bf64f2420c2fb752acde5d0227371349f1e3e51cd670ca1976b7db7e"
+    },
+    {
+      "path": "strided-load/P3-pass1.csv",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/P3-pass1.csv",
+      "bytes": 1428,
+      "sha256": "97b68fafda3cbd7b47e0a6d291787cb9fedec86e42013bcadeb60a5311b72068"
+    },
+    {
+      "path": "strided-load/P3-pass2.csv",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/P3-pass2.csv",
+      "bytes": 1426,
+      "sha256": "e54135135a059aa491998f005cacdd28b63d68ff35d34d7325fe597e3159e357"
+    },
+    {
+      "path": "strided-load/build_info.h",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/build_info.h",
+      "bytes": 241,
+      "sha256": "c0dab4198e531d6746ca97fa03a6d39d1a10985cd145fc83f9c61af2048868b5"
+    },
+    {
+      "path": "strided-load/register.cu",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/register.cu",
+      "bytes": 3258,
+      "sha256": "cc17c94785283564fa853e80fe60d74d56722573d927182a2144827121e85b3c"
+    },
+    {
+      "path": "strided-load/register.cuh",
+      "source": "results/register-memory-comparison-20261019-191833/strided-load/register.cuh",
+      "bytes": 605,
+      "sha256": "a963bb2fec9bbf42884bf83d2248e547b532a18af73e50feaeac79acdb9513e7"
+    },
+    {
+      "path": "summary.csv",
+      "source": "results/register-memory-comparison-20261019-191833/summary.csv",
+      "bytes": 786,
+      "sha256": "a67945084dc2f9619197e1ac6c931a58eba173f1538dc36e594d2dc4e555ffed"
+    },
+    {
+      "path": "summary.json",
+      "source": "results/register-memory-comparison-20261019-191833/summary.json",
+      "bytes": 2400,
+      "sha256": "6b1e2069e03058d26095e79ee2974cd46fe556215f3c3283844ce370b32d837b"
+    }
+  ],
+  "derived_files": [
+    {
+      "path": "validation-summary.json",
+      "bytes": 5997,
+      "sha256": "b530ebbadcf708a45bd4b4e4debe4d253517463ae6d612736ea4ae366a088748",
+      "derivation": "Target check counts, terminal summaries and register resource lines from the original logs named within this JSON."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "shared": {
+    "median_ms": 0.008669939041135,
+    "gflops": 120.94387227233939,
+    "pass_medians_ms": [
+      0.00868198394775,
+      0.0086376449585
+    ],
+    "min_ms": 0.00849273910522,
+    "max_ms": 0.0107069473267,
+    "cublas_median_ms": 0.00750647354126,
+    "source_sha256": "bcafdf6f7ca6d7b7ba88eeb10f03eeab76de3e54de52a4836afff73c22b20ce5",
+    "csv_files": [
+      "shared-pass1.csv",
+      "shared-pass2.csv"
+    ],
+    "source_snapshot": "../source-snapshot.zip"
+  },
+  "register": {
+    "median_ms": 0.008401817703245,
+    "gflops": 124.80346956290339,
+    "pass_medians_ms": [
+      0.00830497283936,
+      0.00881571807861
+    ],
+    "min_ms": 0.00812357406616,
+    "max_ms": 0.00903075866699,
+    "cublas_median_ms": 0.00689200973511,
+    "source_sha256": "bcafdf6f7ca6d7b7ba88eeb10f03eeab76de3e54de52a4836afff73c22b20ce5",
+    "csv_files": [
+      "register-pass1.csv",
+      "register-pass2.csv"
+    ],
+    "source_snapshot": "../source-snapshot.zip"
+  },
+  "tuned-baseline": {
+    "median_ms": 0.00789140472412,
+    "gflops": 132.8757092884918,
+    "pass_medians_ms": [
+      0.0078557182312,
+      0.00792197113037
+    ],
+    "min_ms": 0.00782008285522,
+    "max_ms": 0.00815859832764,
+    "cublas_median_ms": 0.006817334365845,
+    "source_sha256": "a160c04b9cbdc914162fbb8e86a2c743dd3acc8da721baeb90880539d924a311",
+    "csv_files": [
+      "tuned-baseline-pass1.csv",
+      "tuned-baseline-pass2.csv"
+    ],
+    "source_snapshot": "../../p1-p3/source-snapshot.zip"
+  },
+  "tuned-best": {
+    "median_ms": 0.0073548461914049994,
+    "gflops": 142.56939883058112,
+    "pass_medians_ms": [
+      0.00745062408447,
+      0.00724920349121
+    ],
+    "min_ms": 0.00710922241211,
+    "max_ms": 0.00753008651733,
+    "cublas_median_ms": 0.006631577682495,
+    "source_sha256": "bcafdf6f7ca6d7b7ba88eeb10f03eeab76de3e54de52a4836afff73c22b20ce5",
+    "csv_files": [
+      "tuned-best-pass1.csv",
+      "tuned-best-pass2.csv"
+    ],
+    "source_snapshot": "../source-snapshot.zip"
+  }
+}

@@ -1,8 +1,0 @@
-source_sha256=0ed11bacc29211db971d6781cdf100e613b289d859ad325ae2463952d902fc26 build_type=Release seed=42 requested=cublas actual=cublas
-check kernel=cublas shape=2048x2048x2048 pattern=random status=valid reference=cpu_double_sample compared=51 max_abs=5.331881746e-05 relative_frob=9.52354374e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_sample cpu_compared=51 cpu_max_abs=5.331881746e-05 cpu_relative_frob=9.52354374e-07 cpu_failed=0
-round=1 kernel=cublas mean_ms=2.750323556 batch_ms=121.0142365
-round=2 kernel=cublas mean_ms=2.729309082 batch_ms=120.0895996
-round=3 kernel=cublas mean_ms=2.576868404 batch_ms=113.3822098
-round=4 kernel=cublas mean_ms=2.533282887 batch_ms=111.464447
-round=5 kernel=cublas mean_ms=2.532375336 batch_ms=111.4245148
-bench kernel=cublas status=valid median_ms=2.576868404 min_ms=2.532375336 max_ms=2.750323556 gflops=6666.956356 cublas_over_self=1

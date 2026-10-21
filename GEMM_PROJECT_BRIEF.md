@@ -2,6 +2,10 @@
 
 日期：2026-10-14。项目代号：`cuda-gemm-lab`。预计周期：7–10 天。
 
+2026-10-22 状态：用户已实现 naive/coalesced/shared/register/tuned/warptiled。统一 autotune 支持五参数和八参数搜索，关键历史结果整理在 `results/published/`。以下保留原计划及早期阶段说明；当前命令与分支工作流以 [README](README.md) 和 [CONTRIBUTING](CONTRIBUTING.md) 为准。
+
+2026-10-17 工程状态补充：当前用户编写的 `naive` 采用 `x→row、y→col`，作为原始跨行访问基线。工程已经接入 `coalesced/shared/register/tuned` 四个待实现接口，由用户自行编写计算 kernel；Codex 负责公共构建、校验、计时、profiling 和结果管理。旧 `x→col` naive 的测量属于历史记录，不沿用为当前版本证据。具体可运行命令与当前验证状态以 [README](README.md) 为准。
+
 ## 1 项目目标
 
 开发一个单 GPU 的 CUDA GEMM 工程，完成多版 kernel 实现、正确性验证、同精度 cuBLAS 对照、可靠性能测量和基于 GPU 架构的瓶颈分析。最终交付可复现代码与性能研究记录，支持算子开发岗位的项目展示和技术讨论。
@@ -35,13 +39,17 @@
 | 路径 | 职责 |
 |---|---|
 | `CMakeLists.txt` | CUDA/C++ 构建、目标架构参数、cuBLAS 链接、Release 配置 |
-| `src/gemm.cu` | 初期集中放参数处理、设备查询、kernel、检查与计时 |
-| `src/kernels.cuh` | 实现增多后按需拆出 kernel；首轮不要求拆分 |
+| `src/gemm.cu` | 参数处理、设备查询、统一检查、cuBLAS 和计时 |
+| `src/kernel_registry.cu/.cuh` | 自写实现的名称、可用状态、源码和启动入口 |
+| `src/naive.cu/.cuh` | 用户编写的原始 FP32 基线 |
+| `src/coalesced.cu/.cuh`、`src/shared.cu/.cuh`、`src/register.cu/.cuh`、`src/tuned.cu/.cuh` | 已注册的优化接口；计算 kernel 待用户实现 |
 | `README.md` | 契约、依赖、构建和运行命令、结果入口 |
 | `REPORT.md` | 环境、版本演进、性能证据、瓶颈结论与局限 |
 | `results/` | 关键计时记录、资源报告和必要 profiler 文件 |
 
 无需为本项目新增通用插件架构、复杂配置系统或报告生成平台。简单 CSV 和 Markdown 表即可保存结果；大体积 profiler 文件保留关键案例及其索引，不默认全部提交进 git。
+
+当前 CMake 用 `GEMM_KERNEL_NAMES` 维护实现名单，统一编译为 `gemm_kernels` 静态库供主程序和测试程序链接。各版本使用相同的 FP32 launch 接口，源码摘要包括全部注册源码。已有槽位完成实现并开启 `*_available()` 后，无需更改公共调度或 benchmark 脚本。
 
 ## 4 实现路线和里程碑
 
@@ -55,13 +63,13 @@
 
 | 实现名 | 改动范围 | 保留的证据 |
 |---|---|---|
-| `naive` | 每线程计算一个输出元素 | 索引、边界、基线正确性和耗时 |
-| `mapped` | 线程到行列的映射对照 | warp 地址分布与访问行为；若 naive 已有合适映射，不强制制造一个升级版 |
+| `naive` | 每线程计算一个输出元素，当前 `x→row、y→col` | 索引、边界、跨行访问基线正确性和耗时 |
+| `coalesced` | 线程到行列的映射对照，连续 lane 对应连续列 | warp 地址分布与合并访问行为；与原计划 `mapped` 为同一阶段 |
 | `shared` | block 级 A/B 分块复用 | cooperative load、同步、尾部、shared 用量 |
 | `register` | 每线程多个输出与累加器 | 映射、寄存器/shared 预算和实际资源报告 |
 | `tuned` | 根据瓶颈证据选择一次布局或资源优化 | 改动假设、计时、目标指标、副作用与适用边界 |
 
-所有版本复用相同的数据生成、参考比较和 benchmark 代码。中间实验可保留为可回溯提交；最终验收列出的 naive/shared/register/优化实现必须同时能通过 CLI 独立选择，不覆盖掉用于比较的基线。每次优化只改变一个主要变量。
+所有版本复用相同的数据生成、参考比较和 benchmark 代码。中间实验可保留为可回溯提交；最终验收列出的 naive/coalesced/shared/register/优化实现必须同时能通过 CLI 独立选择，不覆盖掉用于比较的基线。每次优化只改变一个主要变量。接口已经注册不等于 kernel 已实现：未实现版本必须明确拒绝运行，不回退到别的实现，也不生成性能占位数据。
 
 ### M2 Profiling 和瓶颈分析
 
@@ -75,6 +83,8 @@
 
 10 天版进入此阶段。实现 `wmma`，先从小矩阵验证，再运行合适的代表性 workload。自写与 cuBLAS 使用完全相同的 FP16 输入、FP32 累加和输出；精度组单独报告。
 
+当前 FP32 注册表不包含 `wmma` 占位项；届时先扩展输入类型、内存管理和数值契约，再接入对应实现，不能把 FP16 路径直接塞进现有 FP32 指针接口。
+
 fast path 必须检查 shape、对齐和布局条件。不能直接处理的输入走明确的 SIMT fallback：读取同一份量化后的 FP16 数据、转 FP32 计算并输出 FP32。打印请求实现、实际实现及 fallback 原因；禁止静默改用原始 FP32 输入。
 
 用实际指令或 profiler 证据确认矩阵计算路径。双缓冲/异步拷贝与小 M 特化按剩余瓶颈二选一；核心实现或 profiling 尚有缺口时优先补缺。
@@ -87,10 +97,11 @@ fast path 必须检查 shape、对齐和布局条件。不能直接处理的输�
 
 ## 5 程序入口约定
 
-以下是待实现的 CLI 设计，当前不是已有可运行程序。
+以下公共 CLI 已建立；`coalesced/shared/register/tuned` 暂只有接口，实际可用状态通过 `--mode list` 查询。
 
 | 模式 | 行为 |
 |---|---|
+| `list` | 无需初始化 CUDA，列出名字、是否已实现和源码位置 |
 | `info` | 打印设备、运行时、库版本与可获取的资源限制 |
 | `check` | 运行所选实现并比较参考结果；失败非零退出 |
 | `bench` | 在计时区间外验证正确性，再做独立 Event 计时；失败不进入性能排名 |
@@ -177,9 +188,11 @@ Nsight Systems 用于进程时间线，Nsight Compute 用于 kernel 硬件诊断
 6. 如果 Codex 执行环境不能访问目标 GPU，继续完成可做的代码、构建配置与静态检查，给出最少的目标机命令；GPU 正确性、性能和 counters 保持“待运行”。仅在需要目标输出才能继续判断时请求该输出。
 7. 本地实现或 API 细节遵循 `DAILY_SOURCE_READING_GUIDE.md` 的证据原则：文档用于语义，固定版本源码用于实现，运行结果用于本次执行。没有读到的闭源库内部实现不补写为事实。
 
-## 10 给 Codex 的首次执行任务
+## 10 给 Codex 的首次执行任务（历史范围）
 
 **本轮范围：完成 M0，建立后续优化共用的工程基础。**
+
+原始 M0 任务如下保留。用户后续明确：naive 和各优化版本的计算 kernel 由用户编写，Codex 不代写；当前已按此约定完成基础设施与多版本接入。以下第 3 项中的“实现”按这一分工执行。
 
 请先检查当前仓库和实际执行环境，然后实施：
 
@@ -196,7 +209,7 @@ M0 暂不实现 shared/register/WMMA 优化。交付时给出当前基线状态�
 ## 11 最终完成条件
 
 - [ ] 目标机器可以按文档构建并运行工程。
-- [ ] FP32 naive/shared/register 及一项优化实现能独立选择，并通过统一正确性检查。
+- [ ] FP32 naive/coalesced/shared/register 及一项优化实现能独立选择，并通过统一正确性检查。
 - [ ] 三个固定性能输入完成同精度 cuBLAS 对照，计时边界、统计和波动清楚。
 - [ ] 实际取得并解释 NSYS 时间线与 NCU 硬件数据；受阻部分单列为尚未完成。
 - [ ] 至少两条可追溯的优化分析，包含一次失败尝试或明确适用边界。

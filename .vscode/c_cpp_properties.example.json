@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Windows CUDA",
+            "compilerPath": "${env:VCToolsInstallDir}/bin/Hostx64/x64/cl.exe",
+            "includePath": [
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/build/generated",
+                "${env:CUDA_PATH}/include"
+            ],
+            "defines": [
+                "__CUDACC__",
+                "GEMM_BUILD_CONFIG=\"Release\""
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/src",
+                    "${workspaceFolder}/tests",
+                    "${workspaceFolder}/build/generated",
+                    "${env:CUDA_PATH}/include"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}

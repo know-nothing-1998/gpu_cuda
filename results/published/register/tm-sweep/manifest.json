@@ -1,0 +1,111 @@
+{
+  "started_local": "2026-10-18T23:29:21.935692+08:00",
+  "work": "D:\\gpu_cuda\\build\\register-tm-sweep-20261018-232909",
+  "root": "D:\\gpu_cuda",
+  "variants": {
+    "1": {
+      "exe": "D:\\gpu_cuda\\build\\register-tm-sweep-20261018-232909\\bin\\tm1\\gemm.exe",
+      "exe_sha256": "260ac1487da790ed1dff10d818adfc730fcff718ef3b67ed58f675e9b5fa30c0",
+      "source_sha256": "aea07a8a5bc36892891c3d43a542d57f486de244412f8646d158c19b00e85c58",
+      "register_source_sha256": "3d2bae7ca2c8ace2cda806ba5af4d7120cac8c92c22c27d650dd4effcb0670ff",
+      "registers_per_thread": 36,
+      "stack_bytes": 0,
+      "shared_bytes": 8192,
+      "local_bytes": 0,
+      "threads_per_block": 1024,
+      "warps_per_block": 32
+    },
+    "2": {
+      "exe": "D:\\gpu_cuda\\build\\register-tm-sweep-20261018-232909\\bin\\tm2\\gemm.exe",
+      "exe_sha256": "01e30d6fbd08453816e64a83034588439ad11b984c8cffe552b874da585f7a27",
+      "source_sha256": "1e088610469d4631ce832cda17ae7fb139aeac4eddd3a9bb81d4e51720fcfa97",
+      "register_source_sha256": "5f49f13eee902f11e4b6b2c93e4fd5d6fc810a99a0eba347144440b624c0fa0c",
+      "registers_per_thread": 39,
+      "stack_bytes": 0,
+      "shared_bytes": 8192,
+      "local_bytes": 0,
+      "threads_per_block": 512,
+      "warps_per_block": 16
+    },
+    "4": {
+      "exe": "D:\\gpu_cuda\\build\\register-tm-sweep-20261018-232909\\bin\\tm4\\gemm.exe",
+      "exe_sha256": "bc1cd639538a0beeac9981b940ff3fc49cde50c554ad9d0c61df05f5b603c7d4",
+      "source_sha256": "150520505731b54dc440d01f290f58955f4fdba68c9a34c0af3f9a6644d648d7",
+      "register_source_sha256": "b313eaaf25a46a506e4a6b0772f94ddf7682eb603f63c88b1744afab9bfdd222",
+      "registers_per_thread": 42,
+      "stack_bytes": 0,
+      "shared_bytes": 8192,
+      "local_bytes": 0,
+      "threads_per_block": 256,
+      "warps_per_block": 8
+    },
+    "8": {
+      "exe": "D:\\gpu_cuda\\build\\register-tm-sweep-20261018-232909\\bin\\tm8\\gemm.exe",
+      "exe_sha256": "726e33ebf02cf3f70eecb97c4da463518e923ca2947d03127613e3cc57a7adb7",
+      "source_sha256": "41f2f161d30e8bf247703c2f1b7d0575a25dd4006c94b4405d9b5a884ddeba7f",
+      "register_source_sha256": "2e78a503fbba44136fc0c92786c97a56efd0bc4cb1e01e7772c6efc712afcf75",
+      "registers_per_thread": 50,
+      "stack_bytes": 0,
+      "shared_bytes": 8192,
+      "local_bytes": 0,
+      "threads_per_block": 128,
+      "warps_per_block": 4
+    },
+    "16": {
+      "exe": "D:\\gpu_cuda\\build\\register-tm-sweep-20261018-232909\\bin\\tm16\\gemm.exe",
+      "exe_sha256": "1a664efe664246e85415b54e9ed8194b98924f365218574ab282e87dac3c3cc1",
+      "source_sha256": "de72c633771d29dd9d687665cc72025e7ebb028ee33e90acd1d3792adc0fda82",
+      "register_source_sha256": "5096407579835cf61411d0a7e8913e568c290fa633a0383cb60abedab82a9735",
+      "registers_per_thread": 56,
+      "stack_bytes": 0,
+      "shared_bytes": 8192,
+      "local_bytes": 0,
+      "threads_per_block": 64,
+      "warps_per_block": 2
+    },
+    "32": {
+      "exe": "D:\\gpu_cuda\\build\\register-tm-sweep-20261018-232909\\bin\\tm32\\gemm.exe",
+      "exe_sha256": "7dc617f91cb22ab53e267369b246c57f884e1a7311c9ec3c1824e205ec07edb0",
+      "source_sha256": "5f1483c391c47d6636b96653022600492a39a3797fb53a7f30d5362dc0f2d6ec",
+      "register_source_sha256": "93cff45664869dd21920f4ca262262fff508229a45345e53c4b0e29439b9a6b8",
+      "registers_per_thread": 127,
+      "stack_bytes": 0,
+      "shared_bytes": 8192,
+      "local_bytes": 0,
+      "threads_per_block": 32,
+      "warps_per_block": 1
+    }
+  },
+  "tm_values": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "timing": "CUDA events, paired pedantic FP32 cuBLAS, 20 warmup, 5 rounds/run, two reverse-order passes",
+  "source_policy": "Only copied register.cu TM macro differs; project source and build/gemm.exe untouched",
+  "pass_orders": [
+    [
+      8,
+      2,
+      4,
+      16,
+      1,
+      32,
+      "shared"
+    ],
+    [
+      "shared",
+      32,
+      1,
+      16,
+      4,
+      2,
+      8
+    ]
+  ],
+  "finished_local": "2026-10-18T23:32:22.414858+08:00",
+  "project_source_unchanged": true
+}
