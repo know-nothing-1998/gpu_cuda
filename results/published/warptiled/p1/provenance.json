@@ -1,0 +1,53 @@
+{
+  "original_run": "autotune-warptiled-20261022-005002-742164",
+  "selection": "Complete confirmation samples for every row in rankings.json; warptiled also includes same-run tuned references from summary.json.",
+  "byte_identical_files_sha256": {
+    "ranking.csv": "cb50ddd57f6fbd0a191aea6172310b5fbcdf8b5498bc02d44401f615c52680c9",
+    "rankings.json": "2ff1095d0a777d81450b1845c6b1185520388379083b8e7cc119befb087c1ab0",
+    "matrix.csv": "66f518fa5ed88678bae1a78ab9a6b4ee90b164d503737b8c6d4bae4b916028e8",
+    "search-space.json": "a9535d65d4e7ef62f96743ae0d358b7c9c72d011055c03ba80a035eb474fda05",
+    "source-sha256.json": "5bd536c875446bde4b667ac2c47d833792dda232e9576229036258c693a5319d",
+    "source-snapshot.zip": "a6c4d9f215935d858c2eeacd22bc0bafbf8a6fd1719826f172f6ea6bca8657fc",
+    "summary.json": "ef557a9e51ab70c8916804dc56dc6a0f4cdd17b42160acb53c00003bc5516851",
+    "variants/tuned_bm64_bn128_bk32_tm4_tn4/P1-confirm-1.csv": "f6cc2df20fc2ae5439a0c42c6f686c81515238fc23c827e16dfaf69bb25c4bf2",
+    "variants/tuned_bm64_bn128_bk32_tm4_tn4/P1-confirm-2.csv": "78d10ec95f909e9fa7da6344c9b0ccbbd92c8900aeaf412f27ff45c8841285db",
+    "variants/tuned_bm64_bn64_bk64_tm4_tn4/P1-confirm-1.csv": "3f583c7c6d6ce61aaa39c22d17ffe638f2e462c4ac9511578830b7eb19e5e7bf",
+    "variants/tuned_bm64_bn64_bk64_tm4_tn4/P1-confirm-2.csv": "7ab814dea6e0eed9dafa6cce44bf712ceee0328cee2281ff56134aaff4ede1ab",
+    "variants/warp_bm128_bn128_bk16_wm64_wn64_tm8_tn4_wniter2/P1-confirm-1.csv": "b7519d05d967fa7ac025029d8b4647d2c32e4a1f7f5056035fead9f88b28c657",
+    "variants/warp_bm128_bn128_bk16_wm64_wn64_tm8_tn4_wniter2/P1-confirm-2.csv": "506af57eca8e8c4239e2d79250a0ac9cddde9ed532abdda2ff515a1c4bed7ac6",
+    "variants/warp_bm128_bn128_bk32_wm64_wn64_tm8_tn4_wniter2/P1-confirm-1.csv": "3480e35b565fe5fb663640f7b8ee2d5312e236eb7b9e808f23b18472d16023f3",
+    "variants/warp_bm128_bn128_bk32_wm64_wn64_tm8_tn4_wniter2/P1-confirm-2.csv": "939726943c6e6db75897136c182bec548ea9f4a691a68ea577e8d5ea392ac2ba",
+    "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/P1-confirm-1.csv": "78e4e2e7137344cdfd699772a60e6d1027fb6340f23b83fa63017e45d8daf224",
+    "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/P1-confirm-2.csv": "e0ef5ee51da72583d272453eacfb7e867852a831dfd1035f5d18bd5ce824c341",
+    "variants/tuned_bm64_bn128_bk32_tm4_tn4/build_info.h": "4af76206785d0a9424d2f9907f31b6d7c82425fc87240cce44da40ac9f5c371b",
+    "variants/tuned_bm64_bn128_bk32_tm4_tn4/tuned_config.h": "d64fccf7c927f7f513eb410c8b5ad53a9fb39203f87c2b787bff25de6c8f880a",
+    "variants/tuned_bm64_bn128_bk32_tm4_tn4/warptiled_config.h": "e8c21dd73215f4e19c35e4693c842adc66ac4f264c6f709832db0aeae9f4b27d",
+    "variants/tuned_bm64_bn64_bk64_tm4_tn4/build_info.h": "109feabf77ce75f0afd1b69de7ece753b9a8660d763d666faf12a9b6025c32e5",
+    "variants/tuned_bm64_bn64_bk64_tm4_tn4/tuned_config.h": "53eb2df1e76081a2fa2e0e1b906203233f73477eab9487aed424f5f466f6ce65",
+    "variants/tuned_bm64_bn64_bk64_tm4_tn4/warptiled_config.h": "e8c21dd73215f4e19c35e4693c842adc66ac4f264c6f709832db0aeae9f4b27d",
+    "variants/warp_bm128_bn128_bk16_wm64_wn64_tm8_tn4_wniter2/build_info.h": "e68744e9d3090a671774a2c33b11b23555f8cb91b677862d68d07f1d199dfee7",
+    "variants/warp_bm128_bn128_bk16_wm64_wn64_tm8_tn4_wniter2/tuned_config.h": "53eb2df1e76081a2fa2e0e1b906203233f73477eab9487aed424f5f466f6ce65",
+    "variants/warp_bm128_bn128_bk16_wm64_wn64_tm8_tn4_wniter2/warptiled_config.h": "01ba88c3527b28c3fd29d2218f810985a766db34374b94e8c069c6ea7378230e",
+    "variants/warp_bm128_bn128_bk32_wm64_wn64_tm8_tn4_wniter2/build_info.h": "46ece56f1ba0b3f81447c745878ed2f6c2e1eb6032eb9279fe28f80be1a71f50",
+    "variants/warp_bm128_bn128_bk32_wm64_wn64_tm8_tn4_wniter2/tuned_config.h": "53eb2df1e76081a2fa2e0e1b906203233f73477eab9487aed424f5f466f6ce65",
+    "variants/warp_bm128_bn128_bk32_wm64_wn64_tm8_tn4_wniter2/warptiled_config.h": "23f82e0ff8fe24c5f26a8f2a51822785814f0946cbd89bdd7671834f765f3da5",
+    "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/build_info.h": "109feabf77ce75f0afd1b69de7ece753b9a8660d763d666faf12a9b6025c32e5",
+    "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/tuned_config.h": "53eb2df1e76081a2fa2e0e1b906203233f73477eab9487aed424f5f466f6ce65",
+    "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/warptiled_config.h": "e8c21dd73215f4e19c35e4693c842adc66ac4f264c6f709832db0aeae9f4b27d"
+  },
+  "normalized_json": {
+    "winners.json": "Removed machine-local exe paths; linked the correct preserved source archive.",
+    "manifest.json": "Selected original metadata and confirmed variant resources; removed machine-local paths and replaced historical snapshot references with portable links."
+  },
+  "original_metadata_sha256": {
+    "manifest.json": "f19d1fd6ba88015a6e8148626e0e51a60e0ba0c8eece6810884348d21501ac11",
+    "winners.json": "646dfe5b200cc4ff737c8af8f5d980d0ff52055dc119a0c3eaea442e7de5d0ba"
+  },
+  "current_tree_differences_at_publication": [],
+  "source_snapshot_sha256": "a6c4d9f215935d858c2eeacd22bc0bafbf8a6fd1719826f172f6ea6bca8657fc",
+  "published_normalized_files_sha256": {
+    "manifest.json": "b3dfae73bbd2b44ec00127bd6a358895815d419e24752c8d769e6cc7052ed453",
+    "winners.json": "ad618ab647a89155a77f678e41fb09361f0fe8f9c67d8235629b93f36c30d93d"
+  },
+  "checksum_scope": "byte_identical_files_sha256 describes retained copies; original_metadata_sha256/original_summary_sha256 identify original pre-normalization metadata; published_normalized_files_sha256 identifies the portable derived JSON actually distributed here. provenance.json is not self-hashed."
+}

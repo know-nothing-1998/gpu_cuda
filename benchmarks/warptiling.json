@@ -1,0 +1,29 @@
+{
+  "parameter_order": ["BM", "BN", "BK", "WM", "WN", "TM", "TN", "WNITER"],
+  "description": "Small candidate set, not an exhaustive search. First candidate is the default. One warp owns each WM-by-WN output tile; the block shape is (BN/(TN*WNITER), BM/(TM*WMITER)), with WMITER=WM*WN/(32*TM*TN*WNITER), and thread count is derived as 32*(BM/WM)*(BN/WN). Historical results used a separate THREADS parameter and remain archived unchanged; these candidates require validation with the current implementation.",
+  "candidates": [
+    [64, 64, 16, 32, 32, 4, 4, 1],
+    [64, 64, 32, 32, 32, 4, 4, 1],
+    [64, 64, 64, 32, 32, 4, 4, 1],
+    [64, 128, 16, 32, 64, 4, 4, 2],
+    [64, 128, 32, 32, 64, 4, 4, 2],
+    [128, 64, 16, 64, 32, 4, 4, 1],
+    [128, 128, 16, 64, 64, 8, 4, 2],
+    [128, 128, 32, 64, 64, 8, 4, 2],
+    [32, 64, 16, 16, 32, 4, 4, 1],
+    [32, 64, 32, 16, 32, 4, 4, 1],
+    [16, 64, 16, 16, 32, 2, 2, 2],
+    [16, 64, 32, 16, 32, 2, 2, 2],
+    [16, 32, 32, 8, 16, 2, 2, 1],
+    [64, 64, 64, 8, 64, 4, 4, 1],
+    [64, 64, 16, 32, 64, 4, 4, 2],
+    [64, 64, 16, 64, 32, 4, 4, 2]
+  ],
+  "tuned_default": [64, 64, 64, 4, 4],
+  "tuned_previous_winners": {
+    "P1": [64, 128, 32, 4, 4],
+    "P2": [32, 64, 32, 4, 4],
+    "P3": [64, 64, 16, 4, 4],
+    "P4": [16, 32, 32, 2, 2]
+  }
+}

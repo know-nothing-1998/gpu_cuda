@@ -1,0 +1,64 @@
+--- scalar-load/register.cu
++++ vector-load/register.cu
+@@ -78,17 +78,54 @@
+         int tid = threadIdx.y * blockDim.x + threadIdx.x;
+         int nThreadPerBlock = blockDim.x * blockDim.y;
+ 
+-        for (int t = tid; t < TILED * TILED; t += nThreadPerBlock) {
++        for (int t = 4*tid; t < TILED * TILED; t += 4*nThreadPerBlock) {
+ 
+             int local_row = t / TILED;
+             int local_col = t % TILED;
+ 
+-            bool a_in_range = (start_row + local_row < m) && (p + local_col < k);
+-            bool b_in_range = (p + local_row < k) && (start_col + local_col < n);
+-            As[local_row][local_col] =
+-                a_in_range ? a[(start_row + local_row) * k + local_col + p] : 0.0f;
+-            Bs[local_row][local_col] =
+-                b_in_range ? b[(p + local_row) * n + start_col + local_col] : 0.0f;
++            // bool a_in_range = (start_row + local_row < m) && (p + local_col < k);
++            // bool b_in_range = (p + local_row < k) && (start_col + local_col < n);
++            // As[local_row][local_col] =
++            //     a_in_range ? a[(start_row + local_row) * k + local_col + p] : 0.0f;
++            // Bs[local_row][local_col] =
++            //     b_in_range ? b[(p + local_row) * n + start_col + local_col] : 0.0f;
++
++            int a_row = start_row + local_row;
++            int a_col = p + local_col;
++
++            int b_row = p + local_row;
++            int b_col = start_col + local_col;
++
++            float4 av = make_float4(0.0f, 0.0f, 0.0f, 0.0f);
++            float4 bv = make_float4(0.0f, 0.0f, 0.0f, 0.0f);
++
++            if(a_row<m){
++                size_t offset = static_cast<size_t>((a_row)*k + a_col);
++                if(a_col+3<k&&offset%4==0){
++                    av = *reinterpret_cast<const float4*>(a + offset);
++                }else{
++                    av.x = a_col < k ? a[offset] : 0.0f;
++                    av.y = a_col + 1 < k ? a[offset + 1] : 0.0f;
++                    av.z = a_col + 2 < k ? a[offset + 2] : 0.0f;
++                    av.w = a_col + 3 < k ? a[offset + 3] : 0.0f;
++                }
++            }
++
++            if (b_row < k) {
++                size_t offset = static_cast<size_t>(b_row) * n + b_col;
++
++                if (b_col + 3 < n && offset % 4 == 0) {
++                    bv = *reinterpret_cast<const float4*>(b + offset);
++                } else {
++                    bv.x = b_col < n ? b[offset] : 0.0f;
++                    bv.y = b_col + 1 < n ? b[offset + 1] : 0.0f;
++                    bv.z = b_col + 2 < n ? b[offset + 2] : 0.0f;
++                    bv.w = b_col + 3 < n ? b[offset + 3] : 0.0f;
++                }
++            }
++
++            *reinterpret_cast<float4*>(&As[local_row][local_col]) = av;
++            *reinterpret_cast<float4*>(&Bs[local_row][local_col]) = bv;
+         }
+ 
+         __syncthreads();

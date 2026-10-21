@@ -1,7 +1,0 @@
-NVIDIA (R) Nsight Compute Command Line Profiler
-Copyright (c) 2018-2026 NVIDIA Corporation
-Version 2026.1.1.0 (build 37634170) (public-release)
-NVIDIA (R) Compute Sanitizer
-Copyright (c) 2020-2026 NVIDIA Corporation
-Version 2026.1.1.0 (build 37663202) (public-release)
-NVIDIA Nsight Systems version 2025.6.3.541-256337736014v0

@@ -1,0 +1,92 @@
+[
+  {
+    "case": "P1",
+    "variant": "strided-load",
+    "median_ms": 3.5280716636,
+    "min_ms": 3.31933732466,
+    "max_ms": 3.85749747536,
+    "gflops": 4869.478520305871,
+    "cublas_median_ms": 2.22400656613,
+    "cublas_gflops": 7724.738517249406,
+    "fraction_of_cublas": 0.6303745439968336,
+    "pass_medians_ms": [
+      3.5552815524,
+      3.41399279508
+    ]
+  },
+  {
+    "case": "P1",
+    "variant": "coalesced-load",
+    "median_ms": 3.20410589738,
+    "min_ms": 3.14782541448,
+    "max_ms": 3.38478539207,
+    "gflops": 5361.829394605214,
+    "cublas_median_ms": 2.26042183963,
+    "cublas_gflops": 7600.2933978076,
+    "fraction_of_cublas": 0.7054766328036627,
+    "pass_medians_ms": [
+      3.17328297008,
+      3.24195931175
+    ]
+  },
+  {
+    "case": "P2",
+    "variant": "strided-load",
+    "median_ms": 0.44030167309199997,
+    "min_ms": 0.415184635903,
+    "max_ms": 0.450892707483,
+    "gflops": 1219.3251691047335,
+    "cublas_median_ms": 0.3008570770715,
+    "cublas_gflops": 1784.4716076677507,
+    "fraction_of_cublas": 0.6832976012985457,
+    "pass_medians_ms": [
+      0.435750204058,
+      0.441750552049
+    ]
+  },
+  {
+    "case": "P2",
+    "variant": "coalesced-load",
+    "median_ms": 0.485600667925,
+    "min_ms": 0.448139065415,
+    "max_ms": 0.495814491386,
+    "gflops": 1105.5810822791507,
+    "cublas_median_ms": 0.3018774915095,
+    "cublas_gflops": 1778.4396886148922,
+    "fraction_of_cublas": 0.6216579001001793,
+    "pass_medians_ms": [
+      0.476710214188,
+      0.487353697819
+    ]
+  },
+  {
+    "case": "P3",
+    "variant": "strided-load",
+    "median_ms": 0.209335536957,
+    "min_ms": 0.197258434296,
+    "max_ms": 0.228867835999,
+    "gflops": 3772.808981602731,
+    "cublas_median_ms": 0.147727999687,
+    "cublas_gflops": 5346.197035588106,
+    "fraction_of_cublas": 0.7056995760702832,
+    "pass_medians_ms": [
+      0.203448314667,
+      0.21336063385
+    ]
+  },
+  {
+    "case": "P3",
+    "variant": "coalesced-load",
+    "median_ms": 0.190672016144,
+    "min_ms": 0.181878528595,
+    "max_ms": 0.207820835114,
+    "gflops": 4142.102286281681,
+    "cublas_median_ms": 0.1439710426335,
+    "cublas_gflops": 5485.707261358882,
+    "fraction_of_cublas": 0.7550716961254014,
+    "pass_medians_ms": [
+      0.191137275696,
+      0.189520282745
+    ]
+  }
+]

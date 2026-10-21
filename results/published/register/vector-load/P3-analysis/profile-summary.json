@@ -1,0 +1,225 @@
+{
+  "scalar-load": {
+    "report_path": "D:\\gpu_cuda\\results\\register-vector-comparison-20261020-151759\\scalar-load\\P3.ncu-rep",
+    "report_sha256": "0eff301be2e47c36d621ff84aa71cc4293797f770e3d4bf5d2469df2b08ef1f9",
+    "kernel_name": "sgemm_kernel_register_rowTM_colTN",
+    "duration_ms": 0.235584,
+    "sm_clock_ghz": 1.8889638798333788,
+    "dram_clock_ghz": 7.992393371366476,
+    "registers_per_thread": 56,
+    "registers_per_thread_allocated": 56,
+    "static_shared_bytes": 32768,
+    "shared_bytes_per_block_including_driver": 33792,
+    "shared_config_bytes_per_sm": 102400,
+    "block_dimensions": [
+      16,
+      16,
+      1
+    ],
+    "grid_dimensions": [
+      13,
+      16,
+      1
+    ],
+    "threads_per_block": 256,
+    "blocks_in_grid": 208,
+    "occupancy_actual_pct": 45.60461439046095,
+    "occupancy_theoretical_pct": 50,
+    "kernel_theoretical_resident_warps_per_sm": 24,
+    "resident_block_limits": {
+      "blocks": 24,
+      "registers": 4,
+      "shared_mem": 3,
+      "warps": 6
+    },
+    "instructions_warp": {
+      "FFMA": 15335424,
+      "LDS": 1916928,
+      "LDG": 479232,
+      "STS": 479232,
+      "STG": 26460,
+      "BAR": 29952,
+      "F2F": 0,
+      "BRA": 239616,
+      "IMAD": 1678976,
+      "IADD3": 1352832,
+      "ISETP": 1103232
+    },
+    "instruction_widths_and_conversions_warp": {
+      "LDS.128": 1916928,
+      "STS": 479232,
+      "LDG.E": 479232,
+      "STG.E": 26460
+    },
+    "total_instructions_hardware_warp": 25577016,
+    "total_instructions_source_warp": 25577016,
+    "local_load_instructions_warp": 0,
+    "local_store_instructions_warp": 0,
+    "global_memory": {
+      "load": {
+        "requests": 426421,
+        "sectors": 1996053,
+        "sectors_per_request": 4.680944418778624
+      },
+      "store": {
+        "requests": 24549,
+        "sectors": 409385,
+        "sectors_per_request": 16.676239358018655
+      }
+    },
+    "shared_source_wavefronts": {
+      "store": {
+        "instructions_executed_warp": 479232,
+        "wavefronts_actual": 479232,
+        "wavefronts_ideal": 479232,
+        "wavefronts_excessive": 0,
+        "static_instructions": 14,
+        "actual_per_ideal": 1.0
+      },
+      "load": {
+        "instructions_executed_warp": 1916928,
+        "wavefronts_actual": 5750784,
+        "wavefronts_ideal": 5750784,
+        "wavefronts_excessive": 0,
+        "static_instructions": 16,
+        "actual_per_ideal": 1.0
+      }
+    },
+    "dram_bytes_read": 3662336,
+    "dram_bytes_write": 1881600,
+    "issue_active_pct": 62.55467951415111,
+    "warp_stalls_per_issue_active_ratio": {
+      "not_selected": 2.5784933502131446,
+      "short_scoreboard": 1.2735669096500701,
+      "dispatch_stall": 1.171991556133919,
+      "selected": 0.9999994919172637,
+      "math_pipe_throttle": 0.5778757951885659,
+      "barrier": 0.5277206814374396,
+      "long_scoreboard": 0.49164809689403555,
+      "mio_throttle": 0.4544441684295835,
+      "wait": 0.3890828027907344,
+      "lg_throttle": 0.1526700294969387,
+      "no_instruction": 0.036623737062650194,
+      "branch_resolving": 0.03223855313044626,
+      "drain": 0.030431498253133387,
+      "imc_miss": 0.017802789170990322,
+      "misc": 4.901044242906696e-05,
+      "membar": 0,
+      "sleeping": 0,
+      "tex_throttle": 0
+    },
+    "stall_units": "Ratios per issue-active cycle, not percentages of elapsed time."
+  },
+  "vector-load": {
+    "report_path": "D:\\gpu_cuda\\results\\register-vector-comparison-20261020-151759\\vector-load\\P3.ncu-rep",
+    "report_sha256": "255cec8578d26f20bb7eb20c3ceb7e30aded74f6a8a3441c963f8f52dc074f3b",
+    "kernel_name": "sgemm_kernel_register_rowTM_colTN",
+    "duration_ms": 0.215136,
+    "sm_clock_ghz": 1.8887308493232189,
+    "dram_clock_ghz": 7.991670385244682,
+    "registers_per_thread": 60,
+    "registers_per_thread_allocated": 64,
+    "static_shared_bytes": 32768,
+    "shared_bytes_per_block_including_driver": 33792,
+    "shared_config_bytes_per_sm": 102400,
+    "block_dimensions": [
+      16,
+      16,
+      1
+    ],
+    "grid_dimensions": [
+      13,
+      16,
+      1
+    ],
+    "threads_per_block": 256,
+    "blocks_in_grid": 208,
+    "occupancy_actual_pct": 45.989956317623744,
+    "occupancy_theoretical_pct": 50,
+    "kernel_theoretical_resident_warps_per_sm": 24,
+    "resident_block_limits": {
+      "blocks": 24,
+      "registers": 4,
+      "shared_mem": 3,
+      "warps": 6
+    },
+    "instructions_warp": {
+      "FFMA": 15335424,
+      "LDS": 1916928,
+      "LDG": 487355,
+      "STS": 119808,
+      "STG": 26460,
+      "BAR": 29952,
+      "F2F": 0,
+      "BRA": 654474,
+      "IMAD": 305890,
+      "IADD3": 600788,
+      "ISETP": 803789
+    },
+    "instruction_widths_and_conversions_warp": {
+      "LDS.128": 1916928,
+      "LDG.E": 436483,
+      "STS.128": 119808,
+      "LDG.E.128": 50872,
+      "STG.E": 26460
+    },
+    "total_instructions_hardware_warp": 22995875,
+    "total_instructions_source_warp": 22995875,
+    "local_load_instructions_warp": 0,
+    "local_store_instructions_warp": 0,
+    "global_memory": {
+      "load": {
+        "requests": 466105,
+        "sectors": 5612237,
+        "sectors_per_request": 12.040714002209803
+      },
+      "store": {
+        "requests": 24549,
+        "sectors": 409385,
+        "sectors_per_request": 16.676239358018655
+      }
+    },
+    "shared_source_wavefronts": {
+      "store": {
+        "instructions_executed_warp": 119808,
+        "wavefronts_actual": 479232,
+        "wavefronts_ideal": 479232,
+        "wavefronts_excessive": 0,
+        "static_instructions": 2,
+        "actual_per_ideal": 1.0
+      },
+      "load": {
+        "instructions_executed_warp": 1916928,
+        "wavefronts_actual": 5750784,
+        "wavefronts_ideal": 5750784,
+        "wavefronts_excessive": 0,
+        "static_instructions": 16,
+        "actual_per_ideal": 1.0
+      }
+    },
+    "dram_bytes_read": 9833856,
+    "dram_bytes_write": 0,
+    "issue_active_pct": 61.5101479063073,
+    "warp_stalls_per_issue_active_ratio": {
+      "not_selected": 2.172364834914331,
+      "mio_throttle": 1.3015228949806312,
+      "short_scoreboard": 1.176350681466259,
+      "selected": 1.0000001738816917,
+      "long_scoreboard": 0.8404755455614156,
+      "barrier": 0.6995555192722426,
+      "dispatch_stall": 0.6879138791801321,
+      "wait": 0.5803783117887397,
+      "lg_throttle": 0.16911755084854918,
+      "math_pipe_throttle": 0.14074484048463087,
+      "branch_resolving": 0.1176161411244677,
+      "no_instruction": 0.04319290778310537,
+      "drain": 0.033295344530705706,
+      "imc_miss": 0.019074039128684057,
+      "misc": 3.0429296074312167e-07,
+      "membar": 0,
+      "sleeping": 0,
+      "tex_throttle": 0
+    },
+    "stall_units": "Ratios per issue-active cycle, not percentages of elapsed time."
+  }
+}

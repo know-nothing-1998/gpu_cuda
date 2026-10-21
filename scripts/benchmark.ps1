@@ -1,6 +1,6 @@
 param(
     [string]$Exe = 'build\gemm.exe',
-    [ValidateSet('cublas', 'naive')][string]$Kernel = 'cublas',
+    [string]$Kernel = 'cublas',
     [string]$OutputDir = '',
     [int]$Iters = 0
 )
@@ -10,6 +10,13 @@ Push-Location $root
 try {
     $Exe = (Resolve-Path -LiteralPath $Exe).Path
     if ($Iters -lt 0) { throw 'Iters must be zero (matrix default) or positive.' }
+    # Ask the executable before creating results. One registry owns availability.
+    $catalog = & $Exe --mode list --kernel $Kernel
+    if ($LASTEXITCODE -ne 0) { throw "Unknown kernel: $Kernel" }
+    $ready = '^kernel=' + [regex]::Escape($Kernel) + ' available=true(?: |$)'
+    if (-not ($catalog | Where-Object { $_ -match $ready })) {
+        throw "$Kernel is not implemented; run '$Exe --mode list' for source locations."
+    }
     if (-not $OutputDir) { $OutputDir = 'results\run-' + (Get-Date -Format 'yyyyMMdd-HHmmss') }
     if (Test-Path -LiteralPath $OutputDir) { throw "Output directory already exists: $OutputDir" }
     New-Item -ItemType Directory -Path $OutputDir | Out-Null
@@ -18,8 +25,11 @@ try {
     & $Exe --mode info | Set-Content -Encoding UTF8 (Join-Path $OutputDir 'info.txt')
     if ($LASTEXITCODE -ne 0) { throw 'Device info failed.' }
     # Evidence includes the executable and source files, even without a git repository.
-    $sources = @('CMakeLists.txt', 'src\gemm.cu', 'src\naive.cu', 'src\naive.cuh',
-        'src\build_info.h.in', 'benchmarks\matrix.csv', 'scripts\benchmark.ps1')
+    $sources = @('CMakeLists.txt', 'benchmarks\matrix.csv', 'benchmarks\tuning.json',
+        'benchmarks\warptiling.json', 'scripts\benchmark.ps1')
+    $sources += Get-ChildItem -LiteralPath src -File -Recurse |
+        Where-Object { $_.Name -match '\.(cu|cuh|h|in)$' } |
+        Sort-Object FullName | Select-Object -ExpandProperty FullName
     $sources += $Exe
     $sources | ForEach-Object { Get-FileHash -LiteralPath $_ -Algorithm SHA256 } |
         Select-Object Path,Hash | Export-Csv -NoTypeInformation -Encoding UTF8 (Join-Path $OutputDir 'sha256.csv')

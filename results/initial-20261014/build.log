@@ -1,5 +1,0 @@
--- Configuring done (3.0s)
--- Generating done (0.5s)
--- Build files have been written to: D:/gpu_cuda/build
-[ 50%] Built target gemm
-[100%] Built target harness_tests

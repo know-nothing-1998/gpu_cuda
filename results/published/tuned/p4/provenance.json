@@ -1,0 +1,44 @@
+{
+  "original_run": "autotune-20261021-011927-125653",
+  "selection": "Complete confirmation samples for every row in rankings.json; warptiled also includes same-run tuned references from summary.json.",
+  "byte_identical_files_sha256": {
+    "ranking.csv": "8081f8d61f3ba9feeb7301ee0ffa6ae092017ff8c42c46825775d19564b9aac6",
+    "rankings.json": "39cdc9c1a523eb4ce5ed0eb42742854a9431a0419e9ef253788dc218893cc724",
+    "matrix.csv": "c9dd36fac36e5bc0aeabe613bb8c11f4bc45d0cb767f16d8820bd6fe414228ae",
+    "search-space.json": "621760b5c1dcd36c88be36e85a0a37aee9460657efb72098e70da82f2e94746a",
+    "source-sha256.json": "9b86ccfe180fd3dd5d82138bd588ff3908b5340427742474e9414060ba00ba91",
+    "source-snapshot.zip": "e2eb51088e454e594e437961469769b6c2ef01e381146ab221bb70506caa8f3c",
+    "variants/bm16_bn32_bk32_tm2_tn2/P4-confirm-1.csv": "601e3040e1db4c36b0a25554f65bc63a1cd7459a924e9acc65c282645104df4f",
+    "variants/bm16_bn32_bk32_tm2_tn2/P4-confirm-2.csv": "0bf39af6112a5bbf72dcbb04acdb426b6f0d36e5aa350baedb62710be69c75ef",
+    "variants/bm32_bn64_bk32_tm4_tn4/P4-confirm-1.csv": "e1aa6a81f9c9a224d0da9a2eab779b95974dc5c04f62c07ad8eb3f8b7c8124a7",
+    "variants/bm32_bn64_bk32_tm4_tn4/P4-confirm-2.csv": "580598adeaf0dcbb4f7f99cd95ea08c85355278289ba76ededabe511e33a2d64",
+    "variants/bm64_bn64_bk64_tm4_tn4/P4-confirm-1.csv": "2204bb3e9a86bd9348351ad004c97443c06da7f03e3f6c69ca957da6a8cb2cb4",
+    "variants/bm64_bn64_bk64_tm4_tn4/P4-confirm-2.csv": "5676716a0f02f3178dbb44ed1b6f7dbd16a980d792cb812e2ed359d9c268dfb1",
+    "variants/bm16_bn32_bk32_tm2_tn2/build_info.h": "2613b363ea0dd9f65d1c9a3507bd7fd5c8aebcda021a0eef6d76e56d71c0411a",
+    "variants/bm16_bn32_bk32_tm2_tn2/tuned_config.h": "c28be34aee2eab8fe9cdca319839f95b7fb3919ad28af1536d20d8ded1e41a29",
+    "variants/bm32_bn64_bk32_tm4_tn4/build_info.h": "ec1d58a1dd10d3b8175d8a385c913c4442bf59f7031df7f78fbe1d3a299101ac",
+    "variants/bm32_bn64_bk32_tm4_tn4/tuned_config.h": "d6c0d62f4d4637c063b12817a168cd8d87178c43a6fd25f947121ba11f48c94c",
+    "variants/bm64_bn64_bk64_tm4_tn4/build_info.h": "944ec50604285ff8366deba865e3ca5c4413bda8d2eafc6703fdff6e7c28d5c5",
+    "variants/bm64_bn64_bk64_tm4_tn4/tuned_config.h": "53eb2df1e76081a2fa2e0e1b906203233f73477eab9487aed424f5f466f6ce65"
+  },
+  "normalized_json": {
+    "winners.json": "Removed machine-local exe paths; linked the correct preserved source archive.",
+    "manifest.json": "Selected original metadata and confirmed variant resources; removed machine-local paths and replaced historical snapshot references with portable links."
+  },
+  "original_metadata_sha256": {
+    "manifest.json": "310e221f209daad3cdd7907c54f4bf140769b422784d5623a7d67dedb6a3d1b1",
+    "winners.json": "23ac5cedf59549d3b377f348d3792a88b212a22a7a2cbbfc4747b8a541709700"
+  },
+  "current_tree_differences_at_publication": [
+    "CMakeLists.txt",
+    "src/gemm.cu",
+    "src/kernel_registry.cu",
+    "src/register.cu"
+  ],
+  "source_snapshot_sha256": "e2eb51088e454e594e437961469769b6c2ef01e381146ab221bb70506caa8f3c",
+  "published_normalized_files_sha256": {
+    "manifest.json": "b8582a2cf2f000086d2043823046d586e19fe0767326acbff0dd6a9b7ddd6ce4",
+    "winners.json": "701d47b9894ee3f8249ccbd0815305172fd19f9b9114d092bfd4ec8cab2cfc3a"
+  },
+  "checksum_scope": "byte_identical_files_sha256 describes retained copies; original_metadata_sha256/original_summary_sha256 identify original pre-normalization metadata; published_normalized_files_sha256 identifies the portable derived JSON actually distributed here. provenance.json is not self-hashed."
+}

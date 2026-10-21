@@ -1,0 +1,53 @@
+{
+  "measurement_date": "2026-10-18",
+  "timezone": "Asia/Shanghai",
+  "source_sha256": "25d0db3ee00e7f864653347a07994404840658c34c6d432eb4491099f7960dd4",
+  "build_inputs": {
+    "CMakeLists.txt": "30c13e39ee4daadff9221b0ef010593a294436627ad6e38ef4902e52ca7613f9",
+    "src/gemm.cu": "2037849025669df645d77ac02630ec3d229948d9ebc5c0b12f5e967283f783bf",
+    "src/kernel_registry.cu": "093eef2f4e1ffba248b1fd59307744ddc476b289e70ad0923858cbf65b00d43b",
+    "src/naive.cu": "d9841f0708cc2f8f71735a9d97769b0023b9745696132f880d1e87cc1f7ba28a",
+    "src/coalesced.cu": "d614392871f02c6f15351cf02387bf5f3bd02b8e3bcbd80f4dc9f2b9f87cebe6",
+    "src/shared.cu": "e654a34b932694b5c303978a8a667870f089d1a29c1290a42fad7ca5f184d8f3",
+    "src/register.cu": "11d38e1c140ced8e2e85d3e6abcb5a0820aaecacc1840580753e9b757c68acd0",
+    "src/tuned.cu": "1cef672fa368361d0e339adcb48108789727bff2e833c4a6a1d66ff8a7f8c21b",
+    "src/kernel_registry.cuh": "00567bcd0579ea6915834ce0a418dac8c714ff84cf43b6ee5fc1c31fb18f9e6a",
+    "src/naive.cuh": "0cefb05469b51ece87f31e6bdcba804495408e39411fb50f0dd02765b26b41cf",
+    "src/coalesced.cuh": "d6a7359837394a291cdf31e9aa340f980f7d167c5038a6d7a2d2526eb85f2530",
+    "src/shared.cuh": "623d0069abe54c66a303caa46fa5783b2272860e236852a5be0b5b3f85828909",
+    "src/register.cuh": "d17d5706d09b7bb3e0e7ec730d44b216fc7e56cd840c8fd7e79a2b50ebfcb232",
+    "src/tuned.cuh": "0df742369bab249bdefe7fca5cb14b8fa4db366dd952d91d103ce2be2f97764c",
+    "src/build_info.h.in": "290d737ec62a52e3c2556aa514b9fe5c050fb0a26917db6a20f7218772096e1c",
+    "benchmarks/matrix.csv": "4511ed1cdd0bae4340dd2fd56949d9bcfe5194dfcf179b1e3abef59ab1999cb8"
+  },
+  "executable_sha256": "55b4512d117fe407fb66bac6d45cdd74d34f6c31b0f604353f5c2f6d7c2783de",
+  "source_snapshot_sha256": "73b2ab042dc8cad6d750ccd7570f8bb67a3789f912df3e36fb852cc1785070b4",
+  "source_commit": null,
+  "source_note": "Uncommitted working-tree source archived before compilation.",
+  "child_environment": {
+    "TEMP": "D:\\gpu_cuda\\build\\profiler-temp",
+    "TMP": "D:\\gpu_cuda\\build\\profiler-temp",
+    "NV_COMPUTE_PROFILER_DISABLE_STOCK_FILE_DEPLOYMENT": "1"
+  },
+  "benchmark": {
+    "cases": "benchmarks/matrix.csv",
+    "iters": {
+      "P1": 44,
+      "P2": 335,
+      "P3": 800
+    },
+    "warmup": 20,
+    "rounds": 5,
+    "seed": 42
+  },
+  "profile": {
+    "m": 2048,
+    "n": 2048,
+    "k": 2048,
+    "warmup": 20,
+    "launch_count": 1,
+    "replay_mode": "kernel",
+    "cache_control": "all",
+    "clock_control": "boost"
+  }
+}

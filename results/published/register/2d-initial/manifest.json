@@ -1,0 +1,104 @@
+{
+  "started_local": "2026-10-19T11:40:51.395366+08:00",
+  "work": "D:\\gpu_cuda\\build\\register-2d-review-20261019-114039",
+  "variants": {
+    "2d-4x4": {
+      "symbol": "_Z33sgemm_kernel_register_rowTM_colTNPKfS0_Pfiii",
+      "registers": 66,
+      "stack_bytes": 0,
+      "shared_bytes": 8192,
+      "local_bytes": 0,
+      "exe": "D:\\gpu_cuda\\build\\register-2d-review-20261019-114039\\bin\\2d-4x4\\gemm.exe",
+      "exe_sha256": "189a814b92a28949bf6a56088746b3c3f37b7a91cb2c996783c928779f978c29",
+      "source_sha256": "2533e9ddd1b980fd028621153b4a0f34e802781fb6ffbc81593fe1cadd4061a4"
+    },
+    "1d-8x1": {
+      "symbol": "_Z21sgemm_kernel_registerPKfS0_Pfiii",
+      "registers": 50,
+      "stack_bytes": 0,
+      "shared_bytes": 8192,
+      "local_bytes": 0,
+      "exe": "D:\\gpu_cuda\\build\\register-2d-review-20261019-114039\\bin\\1d-8x1\\gemm.exe",
+      "exe_sha256": "f507ef36d5ec44644e1a409c40a563c812297d8ec8e300ee5780a42d4c5cd87c",
+      "source_sha256": "41f2f161d30e8bf247703c2f1b7d0575a25dd4006c94b4405d9b5a884ddeba7f"
+    }
+  },
+  "checks": {
+    "2d-4x4": {
+      "suite": {
+        "exit": 2,
+        "valid": false
+      },
+      "a-n-boundary": {
+        "exit": 2,
+        "valid": false
+      },
+      "a-k-tail": {
+        "exit": 0,
+        "valid": true
+      },
+      "tall": {
+        "exit": 2,
+        "valid": false
+      },
+      "P1": {
+        "exit": 0,
+        "valid": true
+      },
+      "P2": {
+        "exit": 0,
+        "valid": true
+      },
+      "P3": {
+        "exit": 2,
+        "valid": false
+      }
+    },
+    "1d-8x1": {
+      "suite": {
+        "exit": 0,
+        "valid": true
+      },
+      "a-n-boundary": {
+        "exit": 0,
+        "valid": true
+      },
+      "a-k-tail": {
+        "exit": 0,
+        "valid": true
+      },
+      "tall": {
+        "exit": 0,
+        "valid": true
+      },
+      "P1": {
+        "exit": 0,
+        "valid": true
+      },
+      "P2": {
+        "exit": 0,
+        "valid": true
+      },
+      "P3": {
+        "exit": 0,
+        "valid": true
+      }
+    }
+  },
+  "env_overrides": {
+    "TEMP": "D:\\gpu_cuda\\build\\register-2d-review-20261019-114039\\temp",
+    "TMP": "D:\\gpu_cuda\\build\\register-2d-review-20261019-114039\\temp",
+    "NV_COMPUTE_PROFILER_DISABLE_STOCK_FILE_DEPLOYMENT": "1"
+  },
+  "source_policy": "Project sources untouched. 2D exact snapshot; 1D register.cu/.cuh restored only in isolated copy from archived TM8 snapshot.",
+  "sanitizer": {
+    "a-k-tail": {
+      "exit": 3
+    },
+    "a-n-boundary": {
+      "exit": 2
+    }
+  },
+  "project_source_unchanged": false,
+  "finished_local": "2026-10-19T11:41:46.682683+08:00"
+}

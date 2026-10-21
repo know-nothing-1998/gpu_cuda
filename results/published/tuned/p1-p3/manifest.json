@@ -1,0 +1,529 @@
+{
+  "status": "complete",
+  "started": "2026-10-21T01:07:47.922125+08:00",
+  "baseline": {
+    "BM": 64,
+    "BN": 64,
+    "BK": 64,
+    "TM": 4,
+    "TN": 4
+  },
+  "search_seed": 42,
+  "selected_candidates": [
+    {
+      "BM": 64,
+      "BN": 64,
+      "BK": 64,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 32,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 64,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 16,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 128,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 128,
+      "BN": 128,
+      "BK": 16,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 64,
+      "BN": 128,
+      "BK": 16,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 128,
+      "BN": 128,
+      "BK": 16,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 128,
+      "BN": 64,
+      "BK": 16,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 64,
+      "BN": 128,
+      "BK": 32,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 128,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 128,
+      "BN": 128,
+      "BK": 16,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 32,
+      "BN": 64,
+      "BK": 32,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 32,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 128,
+      "BN": 64,
+      "BK": 32,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 32,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 64,
+      "BN": 128,
+      "BK": 16,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 64,
+      "BN": 64,
+      "BK": 32,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 128,
+      "BN": 128,
+      "BK": 32,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 32,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 128,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 16,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 128,
+      "BN": 128,
+      "BK": 32,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 64,
+      "BN": 64,
+      "BK": 16,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 64,
+      "BN": 128,
+      "BK": 16,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 16,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 128,
+      "BN": 128,
+      "BK": 32,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 128,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 64,
+      "BN": 128,
+      "BK": 32,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 16,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 64,
+      "BN": 128,
+      "BK": 32,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 16,
+      "BN": 64,
+      "BK": 32,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 64,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 64,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 4
+    },
+    {
+      "BM": 64,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 8
+    },
+    {
+      "BM": 16,
+      "BN": 64,
+      "BK": 16,
+      "TM": 8,
+      "TN": 4
+    },
+    {
+      "BM": 32,
+      "BN": 64,
+      "BK": 16,
+      "TM": 8,
+      "TN": 4
+    }
+  ],
+  "rejected": [],
+  "matrix": [
+    {
+      "id": "P1",
+      "m": 2048,
+      "n": 2048,
+      "k": 2048,
+      "seed": 42,
+      "warmup": 20,
+      "iters": 44,
+      "rounds": 5
+    },
+    {
+      "id": "P2",
+      "m": 16,
+      "n": 4096,
+      "k": 4096,
+      "seed": 42,
+      "warmup": 20,
+      "iters": 335,
+      "rounds": 5
+    },
+    {
+      "id": "P3",
+      "m": 1001,
+      "n": 769,
+      "k": 513,
+      "seed": 42,
+      "warmup": 20,
+      "iters": 800,
+      "rounds": 5
+    }
+  ],
+  "screen_rounds": 3,
+  "top_k": 3,
+  "confirmation_passes": 2,
+  "confirmation_warmup_min": 100,
+  "ranking_rule": "median of confirmation round means; each shape ranked separately",
+  "device": {
+    "device": "0",
+    "cuda_device_count": "1",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "compute_capability": "8.9",
+    "sm_count": "24",
+    "global_memory_bytes": "8585216000",
+    "free_memory_bytes": "7429160960",
+    "runtime_total_memory_bytes": "8585216000",
+    "memory_bus_width_bits": "128",
+    "reported_sm_clock_khz": "1890000",
+    "reported_memory_clock_khz": "8001000",
+    "l2_bytes": "33554432",
+    "persisting_l2_max_bytes": "23068672",
+    "constant_memory_bytes": "65536",
+    "global_l1_cache_supported": "1",
+    "local_l1_cache_supported": "1",
+    "warp_size": "32",
+    "max_threads_per_block": "1024",
+    "max_threads_per_sm": "1536",
+    "max_warps_per_sm": "48",
+    "max_blocks_per_sm": "24",
+    "max_block_dims": "1024x1024x64",
+    "registers_per_block": "65536",
+    "registers_per_sm": "65536",
+    "register_bytes_per_sm": "262144",
+    "shared_bytes_per_block": "49152",
+    "shared_bytes_per_sm": "102400",
+    "shared_bytes_per_block_optin": "101376",
+    "shared_reserved_bytes_per_block": "1024",
+    "max_grid": "2147483647x65535x65535",
+    "async_engine_count": "1",
+    "concurrent_kernels": "1",
+    "stream_priorities_supported": "1",
+    "unified_addressing": "1",
+    "managed_memory": "1",
+    "concurrent_managed_access": "0",
+    "can_map_host_memory": "1",
+    "integrated_gpu": "0",
+    "ecc_enabled": "0",
+    "tcc_driver": "0",
+    "cuda_runtime": "13000",
+    "cuda_driver": "13000",
+    "cublas_version": "130400",
+    "math_mode": "2 (CUBLAS_PEDANTIC_MATH)",
+    "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+    "input_dtype": "fp32",
+    "accum_dtype": "fp32",
+    "output_dtype": "fp32",
+    "alpha": "1",
+    "beta": "0",
+    "generator": "mt19937_u24_v1",
+    "source_sha256": "a160c04b9cbdc914162fbb8e86a2c743dd3acc8da721baeb90880539d924a311",
+    "build_type": "Release",
+    "cuda_architectures": "89",
+    "cuda_compiler": "NVIDIA 13.2.78",
+    "host_compiler": "MSVC 19.44.35217.0",
+    "cublas_available": "true",
+    "naive_available": "true",
+    "coalesced_available": "true",
+    "shared_available": "true",
+    "register_available": "true",
+    "tuned_available": "true"
+  },
+  "device_accepted_candidates": 37,
+  "finalists": {
+    "P1": [
+      "bm64_bn64_bk64_tm4_tn4",
+      "bm128_bn128_bk32_tm4_tn4",
+      "bm64_bn128_bk32_tm4_tn4"
+    ],
+    "P2": [
+      "bm64_bn64_bk64_tm4_tn4",
+      "bm32_bn64_bk32_tm4_tn4",
+      "bm64_bn64_bk16_tm4_tn4",
+      "bm32_bn64_bk16_tm4_tn4"
+    ],
+    "P3": [
+      "bm64_bn64_bk64_tm4_tn4",
+      "bm64_bn64_bk16_tm4_tn4",
+      "bm32_bn64_bk16_tm4_tn4",
+      "bm64_bn128_bk32_tm4_tn4"
+    ]
+  },
+  "confirmation_candidates": [
+    "bm64_bn64_bk64_tm4_tn4",
+    "bm32_bn64_bk32_tm4_tn4",
+    "bm64_bn64_bk16_tm4_tn4",
+    "bm32_bn64_bk16_tm4_tn4",
+    "bm128_bn128_bk32_tm4_tn4",
+    "bm64_bn128_bk32_tm4_tn4"
+  ],
+  "finished": "2026-10-21T01:18:23.848594+08:00",
+  "workspace_files_changed_during_run": [
+    "benchmarks/matrix.csv",
+    "benchmarks/README.md",
+    "benchmarks/tuning.json",
+    "scripts/autotune.py"
+  ],
+  "note": "Every result belongs to the captured snapshot; source edits require a new search.",
+  "variants": {
+    "bm128_bn128_bk32_tm4_tn4": {
+      "params": {
+        "BM": 128,
+        "BN": 128,
+        "BK": 32,
+        "TM": 4,
+        "TN": 4
+      },
+      "threads": 1024,
+      "static_shared_bytes": 32768,
+      "status": "valid",
+      "source_sha256": "627a01bc5d1ba83b164b2c8b9878e05c806b06b7d832ab396ae813339ac7ec15",
+      "ptxas_registers_per_thread": 48,
+      "spill_store_bytes": 0,
+      "spill_load_bytes": 0,
+      "exe_sha256": "872643ba08ef36730550077e954e8d3525151044877c17fa9dcd206ab6c45fb9",
+      "source_snapshot": "source-snapshot.zip",
+      "source_hashes": "source-sha256.json"
+    },
+    "bm32_bn64_bk16_tm4_tn4": {
+      "params": {
+        "BM": 32,
+        "BN": 64,
+        "BK": 16,
+        "TM": 4,
+        "TN": 4
+      },
+      "threads": 128,
+      "static_shared_bytes": 6144,
+      "status": "valid",
+      "source_sha256": "317cdb105f3e22670b2817ecad455033e8333ed4ac5d4a812129dc938b1e1252",
+      "ptxas_registers_per_thread": 48,
+      "spill_store_bytes": 0,
+      "spill_load_bytes": 0,
+      "exe_sha256": "0076096e28afe6569d47ecec02ab72a7a19f07fc8b31ce92773bfca51805b620",
+      "source_snapshot": "source-snapshot.zip",
+      "source_hashes": "source-sha256.json"
+    },
+    "bm32_bn64_bk32_tm4_tn4": {
+      "params": {
+        "BM": 32,
+        "BN": 64,
+        "BK": 32,
+        "TM": 4,
+        "TN": 4
+      },
+      "threads": 128,
+      "static_shared_bytes": 12288,
+      "status": "valid",
+      "source_sha256": "86fb9157f166b6cab05e07099a4f53ff118b179b561c54bf37a2d219ff708c3b",
+      "ptxas_registers_per_thread": 47,
+      "spill_store_bytes": 0,
+      "spill_load_bytes": 0,
+      "exe_sha256": "bf95f63e2e1bb91f1ccde72122c69c438b80c83f5e4004873ebf60169d2d3aea",
+      "source_snapshot": "source-snapshot.zip",
+      "source_hashes": "source-sha256.json"
+    },
+    "bm64_bn128_bk32_tm4_tn4": {
+      "params": {
+        "BM": 64,
+        "BN": 128,
+        "BK": 32,
+        "TM": 4,
+        "TN": 4
+      },
+      "threads": 512,
+      "static_shared_bytes": 24576,
+      "status": "valid",
+      "source_sha256": "04d97826925be0b443a49055cfb834d8b5b54503c78c6e5670833c89bfb0cd1b",
+      "ptxas_registers_per_thread": 47,
+      "spill_store_bytes": 0,
+      "spill_load_bytes": 0,
+      "exe_sha256": "10d6930bd56352bf043f6ec3032b1f7aed31cbc43938d6f9bc5cdef9895f0792",
+      "source_snapshot": "source-snapshot.zip",
+      "source_hashes": "source-sha256.json"
+    },
+    "bm64_bn64_bk16_tm4_tn4": {
+      "params": {
+        "BM": 64,
+        "BN": 64,
+        "BK": 16,
+        "TM": 4,
+        "TN": 4
+      },
+      "threads": 256,
+      "static_shared_bytes": 8192,
+      "status": "valid",
+      "source_sha256": "77012a73b5db8c3a59a4ff4acef1c10266b76e03b47e78065b0475210bdba39f",
+      "ptxas_registers_per_thread": 48,
+      "spill_store_bytes": 0,
+      "spill_load_bytes": 0,
+      "exe_sha256": "e30ec6477d835934719e6045e8a2a86359c39495d9e973cd9a35cf61e479bc2b",
+      "source_snapshot": "source-snapshot.zip",
+      "source_hashes": "source-sha256.json"
+    },
+    "bm64_bn64_bk64_tm4_tn4": {
+      "params": {
+        "BM": 64,
+        "BN": 64,
+        "BK": 64,
+        "TM": 4,
+        "TN": 4
+      },
+      "threads": 256,
+      "static_shared_bytes": 32768,
+      "status": "valid",
+      "source_sha256": "a160c04b9cbdc914162fbb8e86a2c743dd3acc8da721baeb90880539d924a311",
+      "ptxas_registers_per_thread": 48,
+      "spill_store_bytes": 0,
+      "spill_load_bytes": 0,
+      "exe_sha256": "4bc502280c69a9a1a728565c96bd1bbb6592199aeb2446ce8e16ddd86ab137b0",
+      "source_snapshot": "source-snapshot.zip",
+      "source_hashes": "source-sha256.json"
+    }
+  },
+  "publication_scope": "All confirmation CSVs for the published ranking and comparison; screening samples and unconfirmed build artifacts omitted.",
+  "original_run": "autotune-20261021-010747-921122"
+}

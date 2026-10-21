@@ -7,3 +7,10 @@ __pycache__/
 *.sqlite
 *.etl
 *.dmp
+# Full experiments remain local; only the curated publication is versioned.
+/results/*
+!/results/published/
+# Keep workstation-specific compiler/terminal paths out of clones.
+/.vscode/settings.json
+/.vscode/c_cpp_properties.json
+/.vscode/msvc-terminal.cmd

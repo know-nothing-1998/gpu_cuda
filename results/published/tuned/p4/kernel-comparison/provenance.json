@@ -1,0 +1,19 @@
+{
+  "original_run": "autotune-20261021-011927-125653/kernel-comparison",
+  "byte_identical_files_sha256": {
+    "register-pass1.csv": "aefdcef9a59bad9c1bab401bdce0b4a7d44e94dc21f4bb7b8cd42ef3e43f2d2a",
+    "register-pass2.csv": "111393c7636f277288fa3efef1594a18e68d4acea8318e586a75f194c94b8c7b",
+    "shared-pass1.csv": "03901daf7d32e8e64309ebc49ea8b972d0cec8c4d4ef0556116e64707b2a7b52",
+    "shared-pass2.csv": "0db5eb7dc48d018dd8832eeb0d8d4e3cfef41d5bed2bccad97dd5b7c0596fa90",
+    "tuned-baseline-pass1.csv": "eb22766e6ded639aa17db5d6602baeee8bbf771f610cf4a1b3f155fff9361222",
+    "tuned-baseline-pass2.csv": "b88e6d99e44cf2d166ed84c5870519cdf49ae30ed47bd1b5bd47d27274205fee",
+    "tuned-best-pass1.csv": "7d721de78c42be6c9098b9fa2a4cecb9181a0ddac2f440ead55f88e222157ef1",
+    "tuned-best-pass2.csv": "4b14062e37b02666c080215cfccbb3c5448bd7ca95572b9dc7a14d5b89e4d6aa"
+  },
+  "original_summary_sha256": "8b42441454f6603538e21d15c4ba650e7d04c00b44efaf605412b0bf7f78aada",
+  "normalized_json": "summary.json removes exe paths and adds portable CSV and source snapshot references.",
+  "published_normalized_files_sha256": {
+    "summary.json": "c378884efaa129f2a25ef506637d786a12c181d8b8d03b38fd33b13fdba11329"
+  },
+  "checksum_scope": "byte_identical_files_sha256 describes retained copies; original_metadata_sha256/original_summary_sha256 identify original pre-normalization metadata; published_normalized_files_sha256 identifies the portable derived JSON actually distributed here. provenance.json is not self-hashed."
+}

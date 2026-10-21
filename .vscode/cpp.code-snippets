@@ -1,0 +1,12 @@
+{
+    "Surround with braces": {
+        "scope": "c,cpp,cuda-cpp",
+        "prefix": "scope",
+        "body": [
+            "{",
+            "\t${TM_SELECTED_TEXT}$0",
+            "}"
+        ],
+        "description": "Wrap selected statements in a block and indent them one level."
+    }
+}

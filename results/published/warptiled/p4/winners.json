@@ -1,0 +1,68 @@
+{
+  "P4": {
+    "shape": {
+      "m": 16,
+      "n": 256,
+      "k": 128
+    },
+    "variant": "warp_bm16_bn32_bk32_wm8_wn16_tm2_tn2_wniter1",
+    "kernel": "warptiled",
+    "params": {
+      "BM": 16,
+      "BN": 32,
+      "BK": 32,
+      "WM": 8,
+      "WN": 16,
+      "TM": 2,
+      "TN": 2,
+      "WNITER": 1
+    },
+    "median_ms": 0.007366297531125001,
+    "gflops": 142.34776637373466,
+    "min_ms": 0.00713390045166,
+    "max_ms": 0.00822722549438,
+    "pass_medians_ms": [
+      0.00736778259277,
+      0.00724046707153
+    ],
+    "cublas_median_ms": 0.00660044822693,
+    "cublas_gflops": 158.86436253249934,
+    "cublas_over_self": 0.8960333463372829,
+    "source_sha256": "32d1c27d51ce4909a96900082c0263d7fa0f42d887ed94cf38e87ae311dc2e03",
+    "csv_files": [
+      "variants/warp_bm16_bn32_bk32_wm8_wn16_tm2_tn2_wniter1/P4-confirm-1.csv",
+      "variants/warp_bm16_bn32_bk32_wm8_wn16_tm2_tn2_wniter1/P4-confirm-2.csv"
+    ],
+    "default_tuned_over_self": 1.0627417264782157,
+    "prior_tuned_winner_over_self": 0.9984346183620363,
+    "config": "warp_bm16_bn32_bk32_wm8_wn16_tm2_tn2_wniter1",
+    "baseline_over_self": 1.626648141847458,
+    "within_3_percent_of_best": true,
+    "exe_sha256": "636fc29a0e31f81cf834434d6626c30265e7bb812ee1cbb210fca3f455d1a680",
+    "source_snapshot": "source-snapshot.zip",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_CUDA_ARCHITECTURES=89",
+      "-DGEMM_TUNED_BM=64",
+      "-DGEMM_TUNED_BN=64",
+      "-DGEMM_TUNED_BK=64",
+      "-DGEMM_TUNED_TM=4",
+      "-DGEMM_TUNED_TN=4",
+      "-DGEMM_WARP_BM=16",
+      "-DGEMM_WARP_BN=32",
+      "-DGEMM_WARP_BK=32",
+      "-DGEMM_WARP_WM=8",
+      "-DGEMM_WARP_WN=16",
+      "-DGEMM_WARP_TM=2",
+      "-DGEMM_WARP_TN=2",
+      "-DGEMM_WARP_WNITER=1"
+    ],
+    "scope": "best measured in this search and current source/GPU, not a global optimum",
+    "source_hashes": "source-sha256.json"
+  }
+}

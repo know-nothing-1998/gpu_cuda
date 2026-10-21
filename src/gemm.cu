@@ -19,7 +19,9 @@
 #include <vector>
 
 #include "build_info.h"
-#include "naive.cuh"
+#include "kernel_registry.cuh"
+#include "tuned_config.h"
+#include "warptiled.cuh"
 
 namespace {
 constexpr double kAtol = 1e-3, kRtol = 1e-4;
@@ -78,12 +80,13 @@ struct DeviceBuffer {
     DeviceBuffer& operator=(const DeviceBuffer&) = delete;
 };
 struct Context {
+    const WarptiledVariant* warp_variant = nullptr;
     Stream stream;
     Handle blas;
     cudaDeviceProp prop{};
     int runtime = 0, driver = 0, blas_version = 0;
     cublasMath_t math_mode{};
-    Context() {
+    explicit Context(const WarptiledVariant* variant = nullptr) : warp_variant(variant) {
         CUDA_CHECK(cudaGetDeviceProperties(&prop, 0));
         CUDA_CHECK(cudaRuntimeGetVersion(&runtime));
         CUDA_CHECK(cudaDriverGetVersion(&driver));
@@ -102,6 +105,8 @@ struct Options {
     uint32_t seed = 42;
     int warmup = 20, iters = 100, rounds = 5;
     bool has_shape = false, help = false;
+    WarptiledConfig warp_config = default_warptiled_config();
+    const WarptiledVariant* warp_variant = nullptr;
 };
 uint64_t unsigned_value(const std::string& s, uint64_t limit, const std::string& key) {
     if (s.empty() || s.find_first_not_of("0123456789") != std::string::npos)
@@ -130,7 +135,9 @@ Options parse(int argc, char** argv) {
         else if (key == "--seed") o.seed = static_cast<uint32_t>(unsigned_value(value, UINT32_MAX, key));
         else {
             if (key != "--m" && key != "--n" && key != "--k" && key != "--warmup" &&
-                key != "--iters" && key != "--rounds")
+                key != "--iters" && key != "--rounds" && key != "--bm" && key != "--bn" &&
+                key != "--bk" && key != "--wm" && key != "--wn" && key != "--tm" &&
+                key != "--tn" && key != "--wniter")
                 throw std::runtime_error("unknown option: " + key);
             const int v = static_cast<int>(unsigned_value(value, INT32_MAX, key));
             if (v == 0 && key != "--warmup") throw std::runtime_error(key + " must be positive");
@@ -139,17 +146,39 @@ Options parse(int argc, char** argv) {
             else if (key == "--k") o.shape.k = v;
             else if (key == "--warmup") o.warmup = v;
             else if (key == "--iters") o.iters = v;
-            else o.rounds = v;
+            else if (key == "--rounds") o.rounds = v;
+            else if (key == "--bm") o.warp_config.bm = v;
+            else if (key == "--bn") o.warp_config.bn = v;
+            else if (key == "--bk") o.warp_config.bk = v;
+            else if (key == "--wm") o.warp_config.wm = v;
+            else if (key == "--wn") o.warp_config.wn = v;
+            else if (key == "--tm") o.warp_config.tm = v;
+            else if (key == "--tn") o.warp_config.tn = v;
+            else o.warp_config.wniter = v;
         }
     }
     if (o.help) return o;
-    if (o.mode != "info" && o.mode != "check" && o.mode != "bench" && o.mode != "profile")
+    if (o.mode != "info" && o.mode != "list" && o.mode != "check" && o.mode != "bench" && o.mode != "profile")
         throw std::runtime_error("unknown mode: " + o.mode);
     if (o.dtype != "fp32") throw std::runtime_error("unsupported dtype: " + o.dtype + "; M0 supports fp32 only");
-    if (o.kernel != "cublas" && o.kernel != "naive")
+    int warp_parameters = 0;
+    for (const char* key : {"--bm", "--bn", "--bk", "--wm", "--wn", "--tm", "--tn", "--wniter"})
+        warp_parameters += static_cast<int>(seen.count(key));
+    if (warp_parameters && o.kernel != "warptiled")
+        throw std::runtime_error("tile parameter selection requires --kernel warptiled");
+    if (warp_parameters != 0 && warp_parameters != 8)
+        throw std::runtime_error("specify all of --bm --bn --bk --wm --wn --tm --tn --wniter or none");
+    o.warp_variant = find_warptiled_variant(o.warp_config);
+    if (!o.warp_variant)
+        throw std::runtime_error("warptiled configuration is not compiled; use --mode list --kernel warptiled "
+                                 "to see compiled configurations. Add the tuple to benchmarks/warptiling.json "
+                                 "or set GEMM_WARP_* in CMake, then rebuild.");
+    const auto* custom = find_custom_kernel(o.kernel);
+    if (o.kernel != "cublas" && !custom)
         throw std::runtime_error("unknown/unimplemented kernel: " + o.kernel);
-    if (o.kernel == "naive" && !naive_available())
-        throw std::runtime_error("naive is not implemented; complete src/naive.cu and enable naive_available()");
+    if (custom && !custom->available() && o.mode != "info" && o.mode != "list")
+        throw std::runtime_error(o.kernel + " is not implemented; complete " + custom->source +
+                                 " and enable " + o.kernel + "_available()");
     const int dims = (o.shape.m > 0) + (o.shape.n > 0) + (o.shape.k > 0);
     if (dims != 0 && dims != 3) throw std::runtime_error("specify all of --m --n --k or none");
     o.has_shape = dims == 3;
@@ -157,7 +186,8 @@ Options parse(int argc, char** argv) {
         throw std::runtime_error(o.mode + " requires --m --n --k");
     if (o.shape.k > 4096)
         throw std::runtime_error("K > 4096 is outside the current numerical validation contract");
-    if (o.mode == "info" && o.has_shape) throw std::runtime_error("info does not accept a shape");
+    if ((o.mode == "info" || o.mode == "list") && o.has_shape)
+        throw std::runtime_error(o.mode + " does not accept a shape");
     if (!o.csv.empty() && o.mode != "bench") throw std::runtime_error("--csv is supported only in bench mode");
     if (!o.csv.empty() && std::filesystem::exists(o.csv))
         throw std::runtime_error("CSV already exists; choose a new path: " + o.csv);
@@ -224,8 +254,11 @@ void launch(Context& ctx, const std::string& kernel, Shape s, const float* a, co
         BLAS_CHECK(cublasGemmEx(ctx.blas.value, CUBLAS_OP_N, CUBLAS_OP_N,
             s.n, s.m, s.k, &alpha, b, CUDA_R_32F, s.n, a, CUDA_R_32F, s.k,
             &beta, c, CUDA_R_32F, s.n, CUBLAS_COMPUTE_32F_PEDANTIC, CUBLAS_GEMM_DEFAULT));
-    } else if (kernel == "naive") {
-        CUDA_CHECK(launch_naive(a, b, c, s.m, s.n, s.k, ctx.stream.value));
+    } else if (const auto* custom = find_custom_kernel(kernel)) {
+        if (!custom->available()) throw std::runtime_error(kernel + " is not implemented");
+        const auto selected_launch = kernel == "warptiled" && ctx.warp_variant
+            ? ctx.warp_variant->launch : custom->launch;
+        CUDA_CHECK(selected_launch(a, b, c, s.m, s.n, s.k, ctx.stream.value));
     } else throw std::runtime_error("unregistered kernel: " + kernel);
     CUDA_CHECK(cudaGetLastError());
 }
@@ -386,6 +419,15 @@ std::string csv_quote(const std::string& s) {
 std::string number(double v) {
     std::ostringstream out; out << std::setprecision(12) << v; return out.str();
 }
+std::string warp_configuration(const WarptiledConfig& config) {
+    std::ostringstream out;
+    out << "BM=" << config.bm << ";BN=" << config.bn
+        << ";BK=" << config.bk << ";WM=" << config.wm
+        << ";WN=" << config.wn << ";TM=" << config.tm
+        << ";TN=" << config.tn << ";WNITER=" << config.wniter
+        << ";THREADS=" << 32 * (config.bm / config.wm) * (config.bn / config.wn);
+    return out.str();
+}
 void write_csv(const Options& o, const Context& ctx, const std::vector<Validation>& v,
                const std::vector<Timing>& times, bool valid) {
     if (o.csv.empty()) return;
@@ -394,7 +436,8 @@ void write_csv(const Options& o, const Context& ctx, const std::vector<Validatio
     out << "requested_kernel,actual_kernel,m,n,k,input_dtype,accum_dtype,output_dtype,seed,generator,status,"
            "reference_scope,compared,max_abs,relative_frob,failed,nonfinite,cpu_scope,cpu_compared,cpu_max_abs,cpu_relative_frob,cpu_failed,"
            "warmup,iters,rounds,median_ms,min_ms,max_ms,gflops,cublas_over_self,round_mean_ms,source_sha256,build_type,"
-           "cuda_architectures,gpu,cuda_runtime,cuda_driver,cublas_version,math_mode,compute_type\n";
+           "cuda_architectures,gpu,cuda_runtime,cuda_driver,cublas_version,math_mode,compute_type,"
+           "tuned_bm,tuned_bn,tuned_bk,tuned_tm,tuned_tn,warptiled_config\n";
     for (size_t i = 0; i < v.size(); ++i) {
         const auto& a = v[i];
         const std::string kernel = i == 0 ? o.kernel : "cublas";
@@ -416,7 +459,14 @@ void write_csv(const Options& o, const Context& ctx, const std::vector<Validatio
             << ',' << csv_quote(valid ? samples : "NA") << ',' << GEMM_SOURCE_SHA256 << ',' << GEMM_BUILD_CONFIG
             << ',' << csv_quote(GEMM_CUDA_ARCHITECTURES) << ',' << csv_quote(ctx.prop.name)
             << ',' << ctx.runtime << ',' << ctx.driver << ',' << ctx.blas_version << ',' << static_cast<int>(ctx.math_mode)
-            << ",CUBLAS_COMPUTE_32F_PEDANTIC\n";
+            << ",CUBLAS_COMPUTE_32F_PEDANTIC";
+        if (kernel == "tuned")
+            out << ',' << gemm_tuned_config::BM << ',' << gemm_tuned_config::BN
+                << ',' << gemm_tuned_config::BK << ',' << gemm_tuned_config::TM
+                << ',' << gemm_tuned_config::TN;
+        else
+            out << ",,,,,";
+        out << ',' << csv_quote(kernel == "warptiled" ? warp_configuration(o.warp_variant->config) : "") << '\n';
     }
     out.flush();
     if (!out) throw std::runtime_error("failed to write CSV: " + o.csv);
@@ -481,17 +531,48 @@ bool run_case(Context& ctx, const Options& o, Shape s, const std::string& patter
 
 void info(const Context& ctx) {
     const auto& p = ctx.prop;
+    const auto warp = ctx.warp_variant ? ctx.warp_variant->config : default_warptiled_config();
+    int device = 0, device_count = 0, sm_clock_khz = 0, memory_clock_khz = 0;
+    CUDA_CHECK(cudaGetDevice(&device));
+    CUDA_CHECK(cudaGetDeviceCount(&device_count));
+    // CUDA 13 no longer exposes clocks in cudaDeviceProp. These attributes
+    // report device clock properties, not live clocks during a workload.
+    CUDA_CHECK(cudaDeviceGetAttribute(&sm_clock_khz, cudaDevAttrClockRate, device));
+    CUDA_CHECK(cudaDeviceGetAttribute(&memory_clock_khz, cudaDevAttrMemoryClockRate, device));
     size_t free_bytes = 0, total_bytes = 0;
     CUDA_CHECK(cudaMemGetInfo(&free_bytes, &total_bytes));
-    std::cout << "device=0\ngpu=" << p.name << "\ncompute_capability=" << p.major << '.' << p.minor
+    std::cout << "device=" << device << "\ncuda_device_count=" << device_count
+        << "\ngpu=" << p.name << "\ncompute_capability=" << p.major << '.' << p.minor
         << "\nsm_count=" << p.multiProcessorCount << "\nglobal_memory_bytes=" << p.totalGlobalMem
-        << "\nfree_memory_bytes=" << free_bytes << "\nl2_bytes=" << p.l2CacheSize
+        << "\nfree_memory_bytes=" << free_bytes << "\nruntime_total_memory_bytes=" << total_bytes
+        << "\nmemory_bus_width_bits=" << p.memoryBusWidth
+        << "\nreported_sm_clock_khz=" << sm_clock_khz
+        << "\nreported_memory_clock_khz=" << memory_clock_khz
+        << "\nl2_bytes=" << p.l2CacheSize
+        << "\npersisting_l2_max_bytes=" << p.persistingL2CacheMaxSize
+        << "\nconstant_memory_bytes=" << p.totalConstMem
+        << "\nglobal_l1_cache_supported=" << p.globalL1CacheSupported
+        << "\nlocal_l1_cache_supported=" << p.localL1CacheSupported
         << "\nwarp_size=" << p.warpSize << "\nmax_threads_per_block=" << p.maxThreadsPerBlock
         << "\nmax_threads_per_sm=" << p.maxThreadsPerMultiProcessor
+        << "\nmax_warps_per_sm=" << p.maxThreadsPerMultiProcessor / p.warpSize
+        << "\nmax_blocks_per_sm=" << p.maxBlocksPerMultiProcessor
+        << "\nmax_block_dims=" << p.maxThreadsDim[0] << 'x' << p.maxThreadsDim[1] << 'x' << p.maxThreadsDim[2]
         << "\nregisters_per_block=" << p.regsPerBlock << "\nregisters_per_sm=" << p.regsPerMultiprocessor
+        << "\nregister_bytes_per_sm=" << static_cast<size_t>(p.regsPerMultiprocessor) * sizeof(uint32_t)
         << "\nshared_bytes_per_block=" << p.sharedMemPerBlock << "\nshared_bytes_per_sm=" << p.sharedMemPerMultiprocessor
         << "\nshared_bytes_per_block_optin=" << p.sharedMemPerBlockOptin
+        << "\nshared_reserved_bytes_per_block=" << p.reservedSharedMemPerBlock
         << "\nmax_grid=" << p.maxGridSize[0] << 'x' << p.maxGridSize[1] << 'x' << p.maxGridSize[2]
+        << "\nasync_engine_count=" << p.asyncEngineCount
+        << "\nconcurrent_kernels=" << p.concurrentKernels
+        << "\nstream_priorities_supported=" << p.streamPrioritiesSupported
+        << "\nunified_addressing=" << p.unifiedAddressing
+        << "\nmanaged_memory=" << p.managedMemory
+        << "\nconcurrent_managed_access=" << p.concurrentManagedAccess
+        << "\ncan_map_host_memory=" << p.canMapHostMemory
+        << "\nintegrated_gpu=" << p.integrated << "\necc_enabled=" << p.ECCEnabled
+        << "\ntcc_driver=" << p.tccDriver
         << "\ncuda_runtime=" << ctx.runtime << "\ncuda_driver=" << ctx.driver
         << "\ncublas_version=" << ctx.blas_version << "\nmath_mode=" << static_cast<int>(ctx.math_mode)
         << " (CUBLAS_PEDANTIC_MATH)\ncompute_type=CUBLAS_COMPUTE_32F_PEDANTIC"
@@ -499,25 +580,61 @@ void info(const Context& ctx) {
         << "\ngenerator=mt19937_u24_v1\nsource_sha256=" << GEMM_SOURCE_SHA256
         << "\nbuild_type=" << GEMM_BUILD_CONFIG << "\ncuda_architectures=" << GEMM_CUDA_ARCHITECTURES
         << "\ncuda_compiler=" << GEMM_CUDA_COMPILER << "\nhost_compiler=" << GEMM_HOST_COMPILER
-        << "\nnaive_available=" << (naive_available() ? "true" : "false") << '\n';
+        << "\ntuned_bm=" << gemm_tuned_config::BM << "\ntuned_bn=" << gemm_tuned_config::BN
+        << "\ntuned_bk=" << gemm_tuned_config::BK << "\ntuned_tm=" << gemm_tuned_config::TM
+        << "\ntuned_tn=" << gemm_tuned_config::TN
+        << "\nwarptiled_bm=" << warp.bm << "\nwarptiled_bn=" << warp.bn
+        << "\nwarptiled_bk=" << warp.bk << "\nwarptiled_wm=" << warp.wm
+        << "\nwarptiled_wn=" << warp.wn << "\nwarptiled_tm=" << warp.tm
+        << "\nwarptiled_tn=" << warp.tn << "\nwarptiled_wniter=" << warp.wniter
+        << "\nwarptiled_threads=" << 32 * (warp.bm / warp.wm) * (warp.bn / warp.wn)
+        << "\nwarptiled_config=" << warp_configuration(warp)
+        << "\nwarptiled_compiled_configs=" << warptiled_variants().size()
+        << "\ncublas_available=true\n";
+    for (const auto& kernel : custom_kernels())
+        std::cout << kernel.name << "_available=" << (kernel.available() ? "true" : "false") << '\n';
+}
+void list_kernels() {
+    std::cout << "kernel=cublas available=true source=src/gemm.cu description=\"strict FP32 cuBLAS baseline\"\n";
+    for (const auto& kernel : custom_kernels())
+        std::cout << "kernel=" << kernel.name << " available=" << (kernel.available() ? "true" : "false")
+                  << " source=" << kernel.source << " description=\"" << kernel.description << "\"\n";
 }
 int run(int argc, char** argv) {
     const Options o = parse(argc, argv);
     if (o.help) {
-        std::cout << "gemm --mode info|check|bench|profile [--kernel cublas|naive] [--dtype fp32]\n"
+        std::cout << "gemm --mode list|info|check|bench|profile [--kernel NAME] [--dtype fp32]\n"
                      "     [--m M --n N --k K] [--seed 42] [--warmup 20] [--iters 100] [--rounds 5]\n"
+                     "     [--bm BM --bn BN --bk BK --wm WM --wn WN --tm TM --tn TN --wniter WNITER]\n"
                      "     [--csv NEW_FILE] (bench only; does not overwrite)\n"
+                     "Tile options select a compiled warptiled configuration; supply all eight or none.\n"
+                     "Use --mode list --kernel warptiled to see compiled configurations.\n"
                      "check: omit all dimensions for the fixed suite. bench/profile: all dimensions required.\n"
                      "profile defaults: warmup=20, iters=1, rounds=1; no correctness/reference operations.\n"
-                     "naive is user-owned and unavailable until src/naive.cu is implemented. K <= 4096.\n";
+                     "list: show registered kernels without initializing CUDA. K <= 4096.\n"
+                     "Unavailable implementations fail explicitly; no fallback.\n";
+        list_kernels();
+        return 0;
+    }
+    if (o.mode == "list") {
+        list_kernels();
+        std::cout << "selected_warptiled_config " << warp_configuration(o.warp_variant->config) << '\n';
+        for (const auto& variant : warptiled_variants())
+            std::cout << "warptiled_config " << warp_configuration(variant.config) << '\n';
         return 0;
     }
     CUDA_CHECK(cudaSetDevice(0));
-    Context ctx;
+    Context ctx(o.warp_variant);
     std::cout << std::setprecision(10);
     if (o.mode == "info") { info(ctx); return 0; }
     std::cout << "source_sha256=" << GEMM_SOURCE_SHA256 << " build_type=" << GEMM_BUILD_CONFIG
               << " seed=" << o.seed << " requested=" << o.kernel << " actual=" << o.kernel << '\n';
+    if (o.kernel == "tuned")
+        std::cout << "tuned_config BM=" << gemm_tuned_config::BM << " BN=" << gemm_tuned_config::BN
+                  << " BK=" << gemm_tuned_config::BK << " TM=" << gemm_tuned_config::TM
+                  << " TN=" << gemm_tuned_config::TN << '\n';
+    if (o.kernel == "warptiled")
+        std::cout << "warptiled_config " << warp_configuration(o.warp_variant->config) << '\n';
     if (o.mode == "bench" && std::string(GEMM_BUILD_CONFIG) != "Release")
         throw std::runtime_error("bench requires a Release build");
     if (o.mode == "check" && !o.has_shape) {
