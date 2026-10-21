@@ -22,6 +22,8 @@
 
 ## Roofline 与计时口径
 
+本节保留 2026-10-18 的四版本基线。当前六种自写实现加 cuBLAS 的总览见 [2026-10-22 七版本 Roofline](../roofline-20261022/README.md)，其中也包含寄存器分块、tuned 和 warp tiling；新旧采样的日期、构建与频率不同，不直接用差值衡量单项优化收益。
+
 ![FP32 / DRAM Roofline](roofline/roofline.svg)
 
 保留一张图及 [model.json](roofline/model.json)、[profiling-metrics.json](profiling-metrics.json)。图中使用 NCU 采集时执行的 FP32 FLOP 和 DRAM bytes；FFMA 按 2 FLOP。理论上限由对应报告的实际时钟及 NCU 峰值指标计算，未用持续算力/带宽微基准校准。这里只覆盖 scalar FP32 / DRAM，不含 Tensor Core、L1/L2 上限。

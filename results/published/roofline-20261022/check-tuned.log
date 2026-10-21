@@ -1,0 +1,4 @@
+source_sha256=a86303090e3749c38052cc2952a299519e946ada5313dcad3a2c4ba4ac356877 build_type=Release seed=42 requested=tuned actual=tuned
+tuned_config BM=64 BN=64 BK=64 TM=4 TN=4
+check kernel=tuned shape=2048x2048x2048 pattern=random status=valid reference=cublas_full compared=4194304 max_abs=0 relative_frob=0 failed=0 nonfinite=0 cpu_scope=cpu_double_sample cpu_compared=51 cpu_max_abs=5.331881746e-05 cpu_relative_frob=9.52354374e-07 cpu_failed=0
+check kernel=cublas shape=2048x2048x2048 pattern=random status=valid reference=cpu_double_sample compared=51 max_abs=5.331881746e-05 relative_frob=9.52354374e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_sample cpu_compared=51 cpu_max_abs=5.331881746e-05 cpu_relative_frob=9.52354374e-07 cpu_failed=0

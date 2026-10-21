@@ -17,6 +17,8 @@
 
 截至 **2026-10-22** 的关键结果见 [实验索引](results/published/README.md)，包含同轮 cuBLAS 对照、原始计时数据、参数和精选历史源码。性能对应特定机器与当时源码，不保证在其他机器重现相同数值；不同日期的计时不能直接解释成单项优化收益。
 
+最新的 [七版本 Roofline 对比](results/published/roofline-20261022/README.md) 在同一当前构建、P1=`2048³` 下采集 naive、coalesced、shared、register、tuned、warptiled 和 cuBLAS，使用默认参数，不代表 autotune 优胜配置。可直接查看 [图](results/published/roofline-20261022/roofline.svg) 和 [指标](results/published/roofline-20261022/model.json)，或按 [Roofline 说明](ROOFLINE.md) 离线重画。
+
 ## 从 clone 开始
 
 已验证环境：Windows、RTX 4060 Laptop（SM 8.9）、CUDA Toolkit 13.2、Visual Studio 2022/MSVC 19.44。需要 CMake 3.24+、CUDA Toolkit/cuBLAS，以及 Visual Studio C++ x64 工具。Python 3.10+ 用于测试和自动调参，仅 Roofline 绘图额外需要 Matplotlib。Linux 构建路径尚未在本项目验证。
@@ -116,7 +118,7 @@ ncu-ui
 - [GPU 资源速查](GPU_DEVICE.md) / [Roofline](ROOFLINE.md)：本机资源、公式和采样口径。
 - [项目任务书](GEMM_PROJECT_BRIEF.md) / [分支工作流](CONTRIBUTING.md)：阶段目标、计算契约与 Git Flow。
 - `src/`：kernel 与公共 harness；`scripts/`：构建、测量和调参工具；`tests/`：数值及接口检查。
-- `results/published/`：精选历史证据。其余 `results/`、build、NCU 二进制、临时文件默认忽略；运行产生的新结果不会自动进入 Git。
+- `results/published/`：精选实验及当前版本的 Roofline 证据。其余 `results/`、build、NCU 二进制、临时文件默认忽略；运行产生的新结果不会自动进入 Git。
 - `.clang-format` 和 `.editorconfig`：四空格缩进。VS Code 使用 C/C++ 扩展，按需将 [settings.example.json](.vscode/settings.example.json) 复制为 `settings.json`；[IntelliSense 示例](.vscode/c_cpp_properties.example.json) 依赖从 MSVC x64 开发环境启动的 VS Code，或自行填入本机编译器路径。个人 IDE 配置保留本地。
 
 实现学习参考 Simon Boehm 的 SGEMM 优化系列；第三方许可见 [third_party](third_party/siboehm-SGEMM-CUDA-LICENSE.txt)。历史参考实现与当前用户编写的 kernel 在精选报告中分别说明。

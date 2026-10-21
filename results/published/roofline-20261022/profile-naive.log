@@ -1,0 +1,6 @@
+==PROF== Connected to process 28364 (D:\gpu_cuda\build\gemm.exe)
+==PROF== Profiling "sgemm_kernel_naive" - 0 (1/1): 0%....50%....100% - 3 passes
+==PROF== Disconnected from process 28364
+source_sha256=a86303090e3749c38052cc2952a299519e946ada5313dcad3a2c4ba4ac356877 build_type=Release seed=42 requested=naive actual=naive
+profile requested=naive actual=naive warmup=20 target_operations=1 rounds=1 validation=not_run (run check separately)
+==PROF== Report: D:\gpu_cuda\results\all-kernel-roofline-20261022\naive-p1.ncu-rep
