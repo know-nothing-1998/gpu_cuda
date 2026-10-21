@@ -1,6 +1,0 @@
-==PROF== Connected to process 22080 (D:\gpu_cuda\build\gemm.exe)
-==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
-==PROF== Disconnected from process 22080
-source_sha256=0ed11bacc29211db971d6781cdf100e613b289d859ad325ae2463952d902fc26 build_type=Release seed=42 requested=cublas actual=cublas
-profile requested=cublas actual=cublas warmup=20 target_operations=1 rounds=1 validation=not_run (run check separately)
-exit_code=1

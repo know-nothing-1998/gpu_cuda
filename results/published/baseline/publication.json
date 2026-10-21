@@ -1,0 +1,151 @@
+{
+  "publication_date": "2026-10-22",
+  "original_local_directory": "results/kernel-comparison-20261018",
+  "copy_policy": "Listed files are byte-for-byte copies; original local directory is not needed to read this archive. Absolute paths inside historical logs/JSON describe the original run, not current reproduction locations.",
+  "files": [
+    {
+      "path": "benchmark-coalesced/P1.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-coalesced/P1.csv",
+      "bytes": 1386,
+      "sha256": "c4912fea1e52df27f02d67841bb0bbc3a98d319cb51ff4ca0a95b988a87dc363"
+    },
+    {
+      "path": "benchmark-coalesced/P2.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-coalesced/P2.csv",
+      "bytes": 1431,
+      "sha256": "17e77c192cf230d8b5244b1f3b4471080ec3f82bc6b7c0a905dc50b0611a10c5"
+    },
+    {
+      "path": "benchmark-coalesced/P3.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-coalesced/P3.csv",
+      "bytes": 1431,
+      "sha256": "e171731ed75b1059ce897fd5dd89b777254e2fdee02385938b29a8c47f181ca2"
+    },
+    {
+      "path": "benchmark-coalesced/matrix.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-coalesced/matrix.csv",
+      "bytes": 245,
+      "sha256": "4511ed1cdd0bae4340dd2fd56949d9bcfe5194dfcf179b1e3abef59ab1999cb8"
+    },
+    {
+      "path": "benchmark-coalesced/summary.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-coalesced/summary.csv",
+      "bytes": 3974,
+      "sha256": "5c332af220961cf0e24da289301273fe784d63923117b53a41ff95969de137c8"
+    },
+    {
+      "path": "benchmark-naive/P1.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-naive/P1.csv",
+      "bytes": 1378,
+      "sha256": "0c6a5fd01d90e49221621ff84c5b1e6eae67ae76ff640b0fba9c61044f08da75"
+    },
+    {
+      "path": "benchmark-naive/P2.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-naive/P2.csv",
+      "bytes": 1412,
+      "sha256": "6921169d37d4997c8d4c7a1c0cb32c0b803ac31350933f4f167e0921689edacf"
+    },
+    {
+      "path": "benchmark-naive/P3.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-naive/P3.csv",
+      "bytes": 1408,
+      "sha256": "02802dd7224b27dc2b7e820b22bcbcf6d6f4a7171be9807f86ccfaa434ce483c"
+    },
+    {
+      "path": "benchmark-naive/matrix.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-naive/matrix.csv",
+      "bytes": 245,
+      "sha256": "4511ed1cdd0bae4340dd2fd56949d9bcfe5194dfcf179b1e3abef59ab1999cb8"
+    },
+    {
+      "path": "benchmark-naive/summary.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-naive/summary.csv",
+      "bytes": 3924,
+      "sha256": "09f929018ad76d792aaaa9b6c61d12504a6ffc6b280d6853a23a18c4f247ef25"
+    },
+    {
+      "path": "benchmark-shared/P1.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-shared/P1.csv",
+      "bytes": 1380,
+      "sha256": "f15b5f4cc0b4965b33db096875325caa50724b4977f0e8d973f38606eff86eb5"
+    },
+    {
+      "path": "benchmark-shared/P2.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-shared/P2.csv",
+      "bytes": 1414,
+      "sha256": "799d2ef3b76f427f8910d9d3b09b84938dea7b5cb2e47e433b5d037777323fc7"
+    },
+    {
+      "path": "benchmark-shared/P3.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-shared/P3.csv",
+      "bytes": 1420,
+      "sha256": "c2721b62f6e29a1a211e8ff47b8529f1f41973561b6ffbf3527fe5807a2d765d"
+    },
+    {
+      "path": "benchmark-shared/matrix.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-shared/matrix.csv",
+      "bytes": 245,
+      "sha256": "4511ed1cdd0bae4340dd2fd56949d9bcfe5194dfcf179b1e3abef59ab1999cb8"
+    },
+    {
+      "path": "benchmark-shared/summary.csv",
+      "source": "results/kernel-comparison-20261018/benchmark-shared/summary.csv",
+      "bytes": 3940,
+      "sha256": "34b68a4f7fd3b2b30733e3624a1d68edcc5823a67d7666255dfef8764561904a"
+    },
+    {
+      "path": "capture.json",
+      "source": "results/kernel-comparison-20261018/capture.json",
+      "bytes": 2557,
+      "sha256": "cf2edb9eeb6b234f701e4f309b77204aef83c5f17bc20cb2b2622eb6ba5dcef6"
+    },
+    {
+      "path": "comparison.csv",
+      "source": "results/kernel-comparison-20261018/comparison.csv",
+      "bytes": 2107,
+      "sha256": "5e4a4deeed3704b51c748658a3127529cea4e28c947459ea3111d43568c390c3"
+    },
+    {
+      "path": "comparison.json",
+      "source": "results/kernel-comparison-20261018/comparison.json",
+      "bytes": 6527,
+      "sha256": "c402bbfd04c5f0684506376084042767f6dba591a90fb2a435c3c43c016f3da0"
+    },
+    {
+      "path": "info.log",
+      "source": "results/kernel-comparison-20261018/info.log",
+      "bytes": 982,
+      "sha256": "3f6ebdbc66c11d5cc395b40b1b76cd186d6f672501a635ebe93708771c004d00"
+    },
+    {
+      "path": "profiling-metrics.json",
+      "source": "results/kernel-comparison-20261018/profiling-metrics.json",
+      "bytes": 24108,
+      "sha256": "4dc67979ce76953eeb739038e350fec277bcce136d3e96d76bb70422af5233b7"
+    },
+    {
+      "path": "roofline/model.json",
+      "source": "results/kernel-comparison-20261018/roofline/model.json",
+      "bytes": 20335,
+      "sha256": "5757e651993009c6f751ddc99d8d3b03816fb0c651704bf62f836c168db9016a"
+    },
+    {
+      "path": "roofline/roofline.svg",
+      "source": "results/kernel-comparison-20261018/roofline/roofline.svg",
+      "bytes": 156387,
+      "sha256": "72a1f90fbc9ae12d445df6b0b156e2f91a27f99a4bbd07a91a9736d3ec99fde7"
+    },
+    {
+      "path": "source-snapshot.zip",
+      "source": "results/kernel-comparison-20261018/source-snapshot.zip",
+      "bytes": 23304,
+      "sha256": "73b2ab042dc8cad6d750ccd7570f8bb67a3789f912df3e36fb852cc1785070b4"
+    },
+    {
+      "path": "validation.json",
+      "source": "results/kernel-comparison-20261018/validation.json",
+      "bytes": 11204,
+      "sha256": "9086c3f1d376ede38067c2f7a00a96e9018c33d5203aef1977259f9c175f9c7b"
+    }
+  ]
+}

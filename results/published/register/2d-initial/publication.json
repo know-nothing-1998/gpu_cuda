@@ -1,0 +1,159 @@
+{
+  "publication_date": "2026-10-22",
+  "original_local_directory": "results/register-2d-review-20261019-114039",
+  "copy_policy": "Listed files are byte-for-byte copies; original local directory is not needed to read this archive. Absolute paths inside historical logs/JSON describe the original run, not current reproduction locations.",
+  "files": [
+    {
+      "path": "1d-8x1/P1-pass1.csv",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/P1-pass1.csv",
+      "bytes": 1384,
+      "sha256": "74ac0344ccaa046c06da46c960b19f7b66a4b54f7b463b2a0b1b3f4a5138e99e"
+    },
+    {
+      "path": "1d-8x1/P1-pass2.csv",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/P1-pass2.csv",
+      "bytes": 1386,
+      "sha256": "4bbea1495e8c5aa10394b5576c95dbfb783d950b2d0f3621064845965399c2b8"
+    },
+    {
+      "path": "1d-8x1/P2-pass1.csv",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/P2-pass1.csv",
+      "bytes": 1429,
+      "sha256": "f577a7ed8ddd6072c4aa6130c34b8ad326aaea1e30de3ca2874b2c1188d234e0"
+    },
+    {
+      "path": "1d-8x1/P2-pass2.csv",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/P2-pass2.csv",
+      "bytes": 1427,
+      "sha256": "94ff0d23d3781b060931a9b02ebfcdc8d058fb7f86cc2b332bbad7a0312ad444"
+    },
+    {
+      "path": "1d-8x1/P3-pass1.csv",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/P3-pass1.csv",
+      "bytes": 1427,
+      "sha256": "be5eaff5ffcb45beb354b1c3cd06178ae5516afc31723fde605b9c9833977d08"
+    },
+    {
+      "path": "1d-8x1/P3-pass2.csv",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/P3-pass2.csv",
+      "bytes": 1425,
+      "sha256": "48dbaa970d770cf7fd797b82d50b42038707c97a239eab00aa6daa266880f3a9"
+    },
+    {
+      "path": "1d-8x1/build_info.h",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/build_info.h",
+      "bytes": 241,
+      "sha256": "2da5e7820f7f117d9af40e491614f67fdacaaa7dd11fa5089d1d681de34f09c3"
+    },
+    {
+      "path": "1d-8x1/register.cu",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/register.cu",
+      "bytes": 2184,
+      "sha256": "2e78a503fbba44136fc0c92786c97a56efd0bc4cb1e01e7772c6efc712afcf75"
+    },
+    {
+      "path": "1d-8x1/register.cuh",
+      "source": "results/register-2d-review-20261019-114039/1d-8x1/register.cuh",
+      "bytes": 572,
+      "sha256": "335f7ce7024f674ac8e43317df12f477df80e40ef2a5eaeb1b33e7f01160aa21"
+    },
+    {
+      "path": "2d-4x4/P1-pass1.csv",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/P1-pass1.csv",
+      "bytes": 1382,
+      "sha256": "f009e974c196cd3f83a5c65cb2e70a79d117cdb31f237829540b22cc5363a595"
+    },
+    {
+      "path": "2d-4x4/P1-pass2.csv",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/P1-pass2.csv",
+      "bytes": 1384,
+      "sha256": "5d458f63f9f63ff8ac906c146112f0d4a33dff2b6a5445e898f95b1ee3196aca"
+    },
+    {
+      "path": "2d-4x4/P2-pass1.csv",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/P2-pass1.csv",
+      "bytes": 1425,
+      "sha256": "0c43a7ff41b379985f3a43797971fedfda834cbfdb893576747b015988afa997"
+    },
+    {
+      "path": "2d-4x4/P2-pass2.csv",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/P2-pass2.csv",
+      "bytes": 1429,
+      "sha256": "bc015c8546ff64896f4f9e15ba9813515c382dc2c73d11f05395525b255237c2"
+    },
+    {
+      "path": "2d-4x4/build_info.h",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/build_info.h",
+      "bytes": 241,
+      "sha256": "163fde149b7cc642ccbc18e4298cb114f9f1cab68072df4e0bfdd96888eff107"
+    },
+    {
+      "path": "2d-4x4/check-P3.log",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/check-P3.log",
+      "bytes": 735,
+      "sha256": "d76b6f31cf7ecec6013b1ca71cb85fa1e002e3e47bb444dce10a257145744c9d"
+    },
+    {
+      "path": "2d-4x4/memcheck-a-k-tail.log",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/memcheck-a-k-tail.log",
+      "bytes": 165803,
+      "sha256": "5dbfe5fadea51ec22c95e65f02e22b01874ddfe26d97eb1b708fd544450f9c23"
+    },
+    {
+      "path": "2d-4x4/register.cu",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/register.cu",
+      "bytes": 2920,
+      "sha256": "db67bcb7bdaaaa2a214aab82e6f52e903170294419812718a405d10f3296432c"
+    },
+    {
+      "path": "2d-4x4/register.cuh",
+      "source": "results/register-2d-review-20261019-114039/2d-4x4/register.cuh",
+      "bytes": 605,
+      "sha256": "a963bb2fec9bbf42884bf83d2248e547b532a18af73e50feaeac79acdb9513e7"
+    },
+    {
+      "path": "manifest.json",
+      "source": "results/register-2d-review-20261019-114039/manifest.json",
+      "bytes": 2756,
+      "sha256": "94f652828efe223e90c3438a873acb37251b069331fe43bf49f1400aeebe10a7"
+    },
+    {
+      "path": "matrix.csv",
+      "source": "results/register-2d-review-20261019-114039/matrix.csv",
+      "bytes": 245,
+      "sha256": "4511ed1cdd0bae4340dd2fd56949d9bcfe5194dfcf179b1e3abef59ab1999cb8"
+    },
+    {
+      "path": "profile-metrics.json",
+      "source": "results/register-2d-review-20261019-114039/profile-metrics.json",
+      "bytes": 16703,
+      "sha256": "f473c1f0f82aaf8d8eb28f5f00ff3b3d1ed43fabfd468298e82b6b8c8d0e4681"
+    },
+    {
+      "path": "profile-source-evidence.json",
+      "source": "results/register-2d-review-20261019-114039/profile-source-evidence.json",
+      "bytes": 1184,
+      "sha256": "b00ca959b4dd62ae7e5de397d119209ebeb920212595db1a8373570bbb57d3e0"
+    },
+    {
+      "path": "source-snapshot.zip",
+      "source": "results/register-2d-review-20261019-114039/source-snapshot.zip",
+      "bytes": 17284,
+      "sha256": "3359382750ca20dce7c1ff15c53c3efcd6f2a0d68fef18e76028a46b87c00cbf"
+    },
+    {
+      "path": "summary.json",
+      "source": "results/register-2d-review-20261019-114039/summary.json",
+      "bytes": 1985,
+      "sha256": "580939c6e491f5e94deb3b8d23b586bcefb7820b3a13ae6f0035a3542c699901"
+    }
+  ],
+  "derived_files": [
+    {
+      "path": "validation-summary.json",
+      "bytes": 2643,
+      "sha256": "db5e247706459eae9dbe7cfc7d6252281dc0af44f1820f7ebffb669c4f61f775",
+      "derivation": "Target check counts, terminal summaries and register resource lines from the original logs named within this JSON."
+    }
+  ]
+}

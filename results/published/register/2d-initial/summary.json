@@ -1,0 +1,83 @@
+[
+  {
+    "case": "P1",
+    "variant": "2d-4x4",
+    "status": "valid",
+    "median_ms": 5.4236386039,
+    "min_ms": 5.17885658958,
+    "max_ms": 5.78987641768,
+    "gflops": 3167.591065460445,
+    "cublas_gflops": 6916.659148356764,
+    "fraction_of_cublas": 0.45796547112098046,
+    "pass_medians_ms": [
+      5.48333011974,
+      5.26582267068
+    ]
+  },
+  {
+    "case": "P1",
+    "variant": "1d-8x1",
+    "status": "valid",
+    "median_ms": 5.422429171475001,
+    "min_ms": 5.18539636785,
+    "max_ms": 5.78222552213,
+    "gflops": 3168.2975730463545,
+    "cublas_gflops": 6732.031031348825,
+    "fraction_of_cublas": 0.47063026868008306,
+    "pass_medians_ms": [
+      5.4339724454,
+      5.29881980202
+    ]
+  },
+  {
+    "case": "P2",
+    "variant": "2d-4x4",
+    "status": "valid",
+    "median_ms": 0.430127180868,
+    "min_ms": 0.399109342205,
+    "max_ms": 0.458611377318,
+    "gflops": 1248.1678347241166,
+    "cublas_gflops": 1612.6104150903664,
+    "fraction_of_cublas": 0.7740045723654665,
+    "pass_medians_ms": [
+      0.433876424761,
+      0.426377936975
+    ]
+  },
+  {
+    "case": "P2",
+    "variant": "1d-8x1",
+    "status": "valid",
+    "median_ms": 0.434153064329,
+    "min_ms": 0.367001593291,
+    "max_ms": 0.484296975207,
+    "gflops": 1236.5936258673062,
+    "cublas_gflops": 1630.371726126007,
+    "fraction_of_cublas": 0.7584734242206389,
+    "pass_medians_ms": [
+      0.436318741983,
+      0.431987386675
+    ]
+  },
+  {
+    "case": "P3",
+    "variant": "2d-4x4",
+    "status": "invalid",
+    "gflops": null
+  },
+  {
+    "case": "P3",
+    "variant": "1d-8x1",
+    "status": "valid",
+    "median_ms": 0.296491279602,
+    "min_ms": 0.281314563751,
+    "max_ms": 0.314243831635,
+    "gflops": 2663.764664715193,
+    "cublas_gflops": 4868.593106769223,
+    "fraction_of_cublas": 0.5471323247390569,
+    "pass_medians_ms": [
+      0.294961433411,
+      0.298021125793
+    ]
+  }
+]

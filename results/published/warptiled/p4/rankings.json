@@ -1,0 +1,144 @@
+{
+  "P4": [
+    {
+      "variant": "warp_bm16_bn32_bk32_wm8_wn16_tm2_tn2_wniter1",
+      "kernel": "warptiled",
+      "params": {
+        "BM": 16,
+        "BN": 32,
+        "BK": 32,
+        "WM": 8,
+        "WN": 16,
+        "TM": 2,
+        "TN": 2,
+        "WNITER": 1
+      },
+      "median_ms": 0.007366297531125001,
+      "gflops": 142.34776637373466,
+      "min_ms": 0.00713390045166,
+      "max_ms": 0.00822722549438,
+      "pass_medians_ms": [
+        0.00736778259277,
+        0.00724046707153
+      ],
+      "cublas_median_ms": 0.00660044822693,
+      "cublas_gflops": 158.86436253249934,
+      "cublas_over_self": 0.8960333463372829,
+      "source_sha256": "32d1c27d51ce4909a96900082c0263d7fa0f42d887ed94cf38e87ae311dc2e03",
+      "csv_files": [
+        "variants/warp_bm16_bn32_bk32_wm8_wn16_tm2_tn2_wniter1/P4-confirm-1.csv",
+        "variants/warp_bm16_bn32_bk32_wm8_wn16_tm2_tn2_wniter1/P4-confirm-2.csv"
+      ],
+      "default_tuned_over_self": 1.0627417264782157,
+      "prior_tuned_winner_over_self": 0.9984346183620363,
+      "config": "warp_bm16_bn32_bk32_wm8_wn16_tm2_tn2_wniter1",
+      "baseline_over_self": 1.626648141847458,
+      "within_3_percent_of_best": true
+    },
+    {
+      "variant": "warp_bm32_bn64_bk32_wm16_wn32_tm4_tn4_wniter1",
+      "kernel": "warptiled",
+      "params": {
+        "BM": 32,
+        "BN": 64,
+        "BK": 32,
+        "WM": 16,
+        "WN": 32,
+        "TM": 4,
+        "TN": 4,
+        "WNITER": 1
+      },
+      "median_ms": 0.009164134216304999,
+      "gflops": 114.42172007196861,
+      "min_ms": 0.00889241256714,
+      "max_ms": 0.00970926055908,
+      "pass_medians_ms": [
+        0.00892795181274,
+        0.00951869430542
+      ],
+      "cublas_median_ms": 0.006464448165895,
+      "cublas_gflops": 162.20657557934416,
+      "cublas_over_self": 0.7054074081972014,
+      "source_sha256": "d8c613d2b734782f4e0f591fb0058c5fb041728bd369a43338ddbf3f85ce01b3",
+      "csv_files": [
+        "variants/warp_bm32_bn64_bk32_wm16_wn32_tm4_tn4_wniter1/P4-confirm-1.csv",
+        "variants/warp_bm32_bn64_bk32_wm16_wn32_tm4_tn4_wniter1/P4-confirm-2.csv"
+      ],
+      "default_tuned_over_self": 0.8542511023083269,
+      "prior_tuned_winner_over_self": 0.8025598807953143,
+      "config": "warp_bm32_bn64_bk32_wm16_wn32_tm4_tn4_wniter1",
+      "baseline_over_self": 1.3075293212075327,
+      "within_3_percent_of_best": false
+    },
+    {
+      "variant": "warp_bm64_bn64_bk32_wm32_wn32_tm4_tn4_wniter1",
+      "kernel": "warptiled",
+      "params": {
+        "BM": 64,
+        "BN": 64,
+        "BK": 32,
+        "WM": 32,
+        "WN": 32,
+        "TM": 4,
+        "TN": 4,
+        "WNITER": 1
+      },
+      "median_ms": 0.009806014251705,
+      "gflops": 106.93192698732626,
+      "min_ms": 0.00934236831665,
+      "max_ms": 0.010387865448,
+      "pass_medians_ms": [
+        0.00978418884277,
+        0.0100514816284
+      ],
+      "cublas_median_ms": 0.0064634368896449995,
+      "cublas_gflops": 162.2319545936794,
+      "cublas_over_self": 0.659129869051657,
+      "source_sha256": "e30d9ba76a57f3176dadc5d507060e3fbe622249e78b24c6f7b80e3d65929939",
+      "csv_files": [
+        "variants/warp_bm64_bn64_bk32_wm32_wn32_tm4_tn4_wniter1/P4-confirm-1.csv",
+        "variants/warp_bm64_bn64_bk32_wm32_wn32_tm4_tn4_wniter1/P4-confirm-2.csv"
+      ],
+      "default_tuned_over_self": 0.7983337118461603,
+      "prior_tuned_winner_over_self": 0.7500260835284025,
+      "config": "warp_bm64_bn64_bk32_wm32_wn32_tm4_tn4_wniter1",
+      "baseline_over_self": 1.2219413396443504,
+      "within_3_percent_of_best": false
+    },
+    {
+      "variant": "warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1",
+      "kernel": "warptiled",
+      "params": {
+        "BM": 64,
+        "BN": 64,
+        "BK": 16,
+        "WM": 32,
+        "WN": 32,
+        "TM": 4,
+        "TN": 4,
+        "WNITER": 1
+      },
+      "median_ms": 0.0119823741913,
+      "gflops": 87.50986935137911,
+      "min_ms": 0.011653427124,
+      "max_ms": 0.0125060897827,
+      "pass_medians_ms": [
+        0.0119758460999,
+        0.0119889022827
+      ],
+      "cublas_median_ms": 0.00663239517212,
+      "cublas_gflops": 158.0991440931934,
+      "cublas_over_self": 0.5535126066197765,
+      "source_sha256": "a95424924bfe2f45be652fe0bca177312f6b383ff82023e1128ce3bac8df43d5",
+      "csv_files": [
+        "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/P4-confirm-1.csv",
+        "variants/warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1/P4-confirm-2.csv"
+      ],
+      "default_tuned_over_self": 0.6533322721355165,
+      "prior_tuned_winner_over_self": 0.6137987636515349,
+      "config": "warp_bm64_bn64_bk16_wm32_wn32_tm4_tn4_wniter1",
+      "baseline_over_self": 1.0,
+      "within_3_percent_of_best": false
+    }
+  ]
+}

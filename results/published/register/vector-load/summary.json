@@ -1,0 +1,92 @@
+[
+  {
+    "case": "P1",
+    "variant": "scalar-load",
+    "median_ms": 3.540317015215,
+    "min_ms": 3.27939987183,
+    "max_ms": 3.91754462502,
+    "gflops": 4852.6358261610885,
+    "cublas_median_ms": 2.41297279705,
+    "cublas_gflops": 7119.793975714683,
+    "fraction_of_cublas": 0.6815696974818688,
+    "pass_medians_ms": [
+      3.73334121704,
+      3.36358399825
+    ]
+  },
+  {
+    "case": "P1",
+    "variant": "vector-load",
+    "median_ms": 2.86275421489,
+    "min_ms": 2.78145530007,
+    "max_ms": 2.88707490401,
+    "gflops": 6001.168069072297,
+    "cublas_median_ms": 2.332761851225,
+    "cublas_gflops": 7364.604824525212,
+    "fraction_of_cublas": 0.8148662707722658,
+    "pass_medians_ms": [
+      2.87536881187,
+      2.85284077037
+    ]
+  },
+  {
+    "case": "P2",
+    "variant": "scalar-load",
+    "median_ms": 0.48479186100750005,
+    "min_ms": 0.472528622755,
+    "max_ms": 0.498648253484,
+    "gflops": 1107.4255885490088,
+    "cublas_median_ms": 0.306047228913,
+    "cublas_gflops": 1754.209354898672,
+    "fraction_of_cublas": 0.631296136607923,
+    "pass_medians_ms": [
+      0.48555880874,
+      0.480019777213
+    ]
+  },
+  {
+    "case": "P2",
+    "variant": "vector-load",
+    "median_ms": 0.4197985748745,
+    "min_ms": 0.409444097263,
+    "max_ms": 0.439506052501,
+    "gflops": 1278.877404861365,
+    "cublas_median_ms": 0.30745676524599996,
+    "cublas_gflops": 1746.1671775881819,
+    "fraction_of_cublas": 0.7323911600650742,
+    "pass_medians_ms": [
+      0.428994887622,
+      0.416550957979
+    ]
+  },
+  {
+    "case": "P3",
+    "variant": "scalar-load",
+    "median_ms": 0.19347310066200002,
+    "min_ms": 0.186742954254,
+    "max_ms": 0.217996559143,
+    "gflops": 4082.13333687023,
+    "cublas_median_ms": 0.14530354023,
+    "cublas_gflops": 5435.400904546839,
+    "fraction_of_cublas": 0.7510270923080266,
+    "pass_medians_ms": [
+      0.194809246063,
+      0.192136955261
+    ]
+  },
+  {
+    "case": "P3",
+    "variant": "vector-load",
+    "median_ms": 0.182479200363,
+    "min_ms": 0.17276927948,
+    "max_ms": 0.198622722626,
+    "gflops": 4328.071322259798,
+    "cublas_median_ms": 0.146754460335,
+    "cublas_gflops": 5381.6626233856405,
+    "fraction_of_cublas": 0.8042256873280137,
+    "pass_medians_ms": [
+      0.181251525879,
+      0.183706874847
+    ]
+  }
+]

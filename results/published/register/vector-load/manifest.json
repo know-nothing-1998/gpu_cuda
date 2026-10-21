@@ -1,0 +1,88 @@
+{
+  "started_local": "2026-10-20T15:18:02.575283+08:00",
+  "work": "D:\\gpu_cuda\\build\\register-vector-comparison-20261020-151759",
+  "scope": "TILED=64 TM=TN=4; scalar-load is the archived 20261019 coalesced-load kernel, rebuilt with the current harness; vector-load is exact current register.cu. Compute and launch code verified identical. Project src files are never written.",
+  "env_overrides": {
+    "TEMP": "D:\\gpu_cuda\\build\\register-vector-comparison-20261020-151759\\temp",
+    "TMP": "D:\\gpu_cuda\\build\\register-vector-comparison-20261020-151759\\temp",
+    "NV_COMPUTE_PROFILER_DISABLE_STOCK_FILE_DEPLOYMENT": "1"
+  },
+  "variants": {
+    "scalar-load": {
+      "exe": "D:\\gpu_cuda\\build\\register-vector-comparison-20261020-151759\\scalar-load\\cmake-build\\gemm.exe",
+      "exe_sha256": "b78786f67b1843c9b90a3874e447d0cec7724ebb93f70d66453b768a00f5570c",
+      "source_sha256": "8eabdff42249952c8279fdf7752c80e1897fdf75d759005296aedce9e54edd7a",
+      "register_file_sha256": "61c4d238eba0e465a3024c414352f6c2cfd282085a9eb6c8568f0405f44ba9b6",
+      "source_dir": "D:\\gpu_cuda\\build\\register-vector-comparison-20261020-151759\\scalar-load\\source",
+      "registers": 56,
+      "stack_bytes": 0,
+      "shared_bytes": 32768,
+      "local_bytes": 0,
+      "ncu_reports_sha256": {
+        "P1": "0966da30a625d737d52f7aedb677c600c66722a7f142c0100e607f2e6e4809a6",
+        "P2": "c2601d7c5782cba077821e54c8027acd953f778f6a7128d4bd6b507bfabe7809",
+        "P3": "0eff301be2e47c36d621ff84aa71cc4293797f770e3d4bf5d2469df2b08ef1f9"
+      }
+    },
+    "vector-load": {
+      "exe": "D:\\gpu_cuda\\build\\register-vector-comparison-20261020-151759\\vector-load\\cmake-build\\gemm.exe",
+      "exe_sha256": "2c74d0e7fa6e4d7294610c8681495cd2d1e76b17d4221ab155a99db5c6679e44",
+      "source_sha256": "a0cdd9d9033c96b0c42f9cf59a1d246a2bff7bfd174737a0ee9a55274559e7ec",
+      "register_file_sha256": "845ee189a6595982dae0b32816a632df5f73d088809025a733f8dcd8e1eb0aff",
+      "source_dir": "D:\\gpu_cuda\\build\\register-vector-comparison-20261020-151759\\vector-load\\source",
+      "registers": 60,
+      "stack_bytes": 0,
+      "shared_bytes": 32768,
+      "local_bytes": 0,
+      "ncu_reports_sha256": {
+        "P1": "b43b7b2787ccc18ee59bbe0a162a95f26e945b67156827da478ddd460e3f99a6",
+        "P2": "a5abce4f351bd5fd6e3243730929bdcd6ab46510969b515898ca5de7cdff6647",
+        "P3": "255cec8578d26f20bb7eb20c3ceb7e30aded74f6a8a3441c963f8f52dc074f3b"
+      }
+    }
+  },
+  "checks": {
+    "scalar-load": {
+      "suite": {
+        "exit": 0
+      },
+      "wide-tail": {
+        "exit": 0
+      },
+      "tall-tail": {
+        "exit": 0
+      },
+      "P1": {
+        "exit": 0
+      },
+      "P2": {
+        "exit": 0
+      },
+      "P3": {
+        "exit": 0
+      }
+    },
+    "vector-load": {
+      "suite": {
+        "exit": 0
+      },
+      "wide-tail": {
+        "exit": 0
+      },
+      "tall-tail": {
+        "exit": 0
+      },
+      "P1": {
+        "exit": 0
+      },
+      "P2": {
+        "exit": 0
+      },
+      "P3": {
+        "exit": 0
+      }
+    }
+  },
+  "project_sources_unchanged": true,
+  "finished_local": "2026-10-20T15:19:32.605761+08:00"
+}

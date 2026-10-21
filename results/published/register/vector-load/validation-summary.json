@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "description": "Structured excerpts from original successful check logs and compiler resource reports; original files remain in the local experiment directory. Counts are derived only from check kernel=register lines. Known failed 2D cases are included in the summary; two original failure logs are retained. This is historical evidence, not a fresh validation run.",
+  "records": [
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/scalar-load/check-suite.log",
+      "original_sha256": "ba03416dfbfbde8fc9458b0793674c60e96dc4a57c98c246a8a8c1a37291558b",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/scalar-load/check-tall-tail.log",
+      "original_sha256": "ba7ea610eaee46ea51e718320a266535f6dac5de8366a7ba9aadc3086fb99215",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=97x65x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=2.384185791e-06 relative_frob=1.32816109e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.418225111e-06 cpu_relative_frob=1.043934255e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/scalar-load/check-wide-tail.log",
+      "original_sha256": "f58e5fa4ae234dbec3a6bc2e09e05beb45f0a11e44106a00291a89070deecd02",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=65x97x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=1.907348633e-06 relative_frob=1.333627348e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.236810661e-06 cpu_relative_frob=1.057817166e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/scalar-load/memcheck-tail.log",
+      "original_sha256": "17b9912c15d6479ccda4175d989d2b2bcafab21c5733cc25ecf1e1304fb28fb3",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [
+        "========= ERROR SUMMARY: 0 errors"
+      ],
+      "target_check_line": "check kernel=register shape=65x97x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=1.907348633e-06 relative_frob=1.333627348e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.236810661e-06 cpu_relative_frob=1.057817166e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/scalar-load/resources.log",
+      "original_sha256": "acd68524e0dc9a8c4e9c2911ac68f10d9526fb7118a1782aba414280657ec925",
+      "register_resources": [
+        {
+          "function": "Function _Z33sgemm_kernel_register_rowTM_colTNPKfS0_Pfiii:",
+          "usage": "REG:56 STACK:0 SHARED:32768 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/vector-load/check-suite.log",
+      "original_sha256": "da6f0545321db1dbf5b615a25f091773b8d461df385bfbe1f0f2653653dfbb02",
+      "target_check_counts": {
+        "valid": 32
+      },
+      "summary_lines": [
+        "suite_cases=32 status=valid"
+      ]
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/vector-load/check-tall-tail.log",
+      "original_sha256": "08b12c91e310a63631874007b268461e4e019d110cda6719fe7090f7fa2817c6",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=97x65x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=2.384185791e-06 relative_frob=1.32816109e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.418225111e-06 cpu_relative_frob=1.043934255e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/vector-load/check-wide-tail.log",
+      "original_sha256": "2dd372946094763d02d01c10707d7a28d36c724a69f57727193aea2fd19adb88",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [],
+      "target_check_line": "check kernel=register shape=65x97x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=1.907348633e-06 relative_frob=1.333627348e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.236810661e-06 cpu_relative_frob=1.057817166e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/vector-load/memcheck-tail.log",
+      "original_sha256": "1b1006548de9732d1c11a2b881f11f1c0a80589cda7c04265e6aa2fc64a67330",
+      "target_check_counts": {
+        "valid": 1
+      },
+      "summary_lines": [
+        "========= ERROR SUMMARY: 0 errors"
+      ],
+      "target_check_line": "check kernel=register shape=65x97x33 pattern=random status=valid reference=cublas_full compared=6305 max_abs=1.907348633e-06 relative_frob=1.333627348e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=6305 cpu_max_abs=1.236810661e-06 cpu_relative_frob=1.057817166e-07 cpu_failed=0"
+    },
+    {
+      "original_source": "results/register-vector-comparison-20261020-151759/vector-load/resources.log",
+      "original_sha256": "5bf58086814c3cdd1a2b55b22234be27a6ce9d31116c09f744ae8020f9e5f46f",
+      "register_resources": [
+        {
+          "function": "Function _Z33sgemm_kernel_register_rowTM_colTNPKfS0_Pfiii:",
+          "usage": "REG:60 STACK:0 SHARED:32768 LOCAL:0 CONSTANT[0]:388 TEXTURE:0 SURFACE:0 SAMPLER:0"
+        }
+      ]
+    }
+  ]
+}

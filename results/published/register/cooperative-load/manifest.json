@@ -1,0 +1,80 @@
+{
+  "started_local": "2026-10-19T19:18:35.760303+08:00",
+  "work": "D:\\gpu_cuda\\build\\register-memory-comparison-20261019-191833",
+  "scope": "TILED=64 TM=TN=4; strided-load restores user commented A/B loads; coalesced-load is exact captured register.cu with 0.0f. No project sources edited.",
+  "env_overrides": {
+    "TEMP": "D:\\gpu_cuda\\build\\register-memory-comparison-20261019-191833\\temp",
+    "TMP": "D:\\gpu_cuda\\build\\register-memory-comparison-20261019-191833\\temp",
+    "NV_COMPUTE_PROFILER_DISABLE_STOCK_FILE_DEPLOYMENT": "1"
+  },
+  "variants": {
+    "strided-load": {
+      "exe": "D:\\gpu_cuda\\build\\register-memory-comparison-20261019-191833\\strided-load\\cmake-build\\gemm.exe",
+      "exe_sha256": "a1e3c332cd54601188cf8990416d01b7131ce41f50666e9e8f30bb4b9e2357f0",
+      "source_sha256": "8eabb222173d16dedee5704febe5b220dfebd5f778f188dd92ef2481218084ae",
+      "register_file_sha256": "cc17c94785283564fa853e80fe60d74d56722573d927182a2144827121e85b3c",
+      "source_dir": "D:\\gpu_cuda\\build\\register-memory-comparison-20261019-191833\\strided-load\\source",
+      "registers": 63,
+      "stack_bytes": 0,
+      "shared_bytes": 32768,
+      "local_bytes": 0,
+      "ncu_report_sha256": "3c41da84db18d7a1c8d71cf7ced8e3cd9e920bc3f3950a6fcb3958ca5b48d981"
+    },
+    "coalesced-load": {
+      "exe": "D:\\gpu_cuda\\build\\register-memory-comparison-20261019-191833\\coalesced-load\\cmake-build\\gemm.exe",
+      "exe_sha256": "8829196839b8f5a4ea1795730c27318f4cf203e2107aa575910e4fe98487b26d",
+      "source_sha256": "8eabdff42249952c8279fdf7752c80e1897fdf75d759005296aedce9e54edd7a",
+      "register_file_sha256": "61c4d238eba0e465a3024c414352f6c2cfd282085a9eb6c8568f0405f44ba9b6",
+      "source_dir": "D:\\gpu_cuda\\build\\register-memory-comparison-20261019-191833\\coalesced-load\\source",
+      "registers": 56,
+      "stack_bytes": 0,
+      "shared_bytes": 32768,
+      "local_bytes": 0,
+      "ncu_report_sha256": "80259442591b274aa99367a223783aa055c3f1d55afde11af11069100ca64d00"
+    }
+  },
+  "checks": {
+    "strided-load": {
+      "suite": {
+        "exit": 0
+      },
+      "wide-tail": {
+        "exit": 0
+      },
+      "tall-tail": {
+        "exit": 0
+      },
+      "P1": {
+        "exit": 0
+      },
+      "P2": {
+        "exit": 0
+      },
+      "P3": {
+        "exit": 0
+      }
+    },
+    "coalesced-load": {
+      "suite": {
+        "exit": 0
+      },
+      "wide-tail": {
+        "exit": 0
+      },
+      "tall-tail": {
+        "exit": 0
+      },
+      "P1": {
+        "exit": 0
+      },
+      "P2": {
+        "exit": 0
+      },
+      "P3": {
+        "exit": 0
+      }
+    }
+  },
+  "project_sources_unchanged": true,
+  "finished_local": "2026-10-19T19:19:53.576571+08:00"
+}

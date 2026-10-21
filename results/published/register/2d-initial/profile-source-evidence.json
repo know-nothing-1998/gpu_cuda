@@ -1,0 +1,50 @@
+{
+  "1d-8x1": {
+    "memory_l1_wavefronts_shared": {
+      "STS": 16777216,
+      "LDS": 33554432,
+      "LDS.128": 134217728
+    },
+    "memory_l1_wavefronts_shared_ideal": {
+      "STS": 16777216,
+      "LDS": 33554432,
+      "LDS.128": 134217728
+    },
+    "function_base": "0x0000000700e73900"
+  },
+  "2d-4x4": {
+    "memory_l1_wavefronts_shared": {
+      "STS.128": 0,
+      "STS": 67108864,
+      "LDS.128": 134217728
+    },
+    "memory_l1_wavefronts_shared_ideal": {
+      "STS.128": 0,
+      "STS": 16777216,
+      "LDS.128": 134217728
+    },
+    "function_base": "0x0000000700e73900",
+    "A_register_reuse_example": [
+      {
+        "address": "0x0000000700e74c90",
+        "sass": "LDS.128 R8, [R2+-0x100]"
+      },
+      {
+        "address": "0x0000000700e74d00",
+        "sass": "FFMA R41, R8, R28, R41"
+      },
+      {
+        "address": "0x0000000700e74d10",
+        "sass": "FFMA R40, R8, R29, R40"
+      },
+      {
+        "address": "0x0000000700e74d20",
+        "sass": "FFMA R39, R8, R30, R39"
+      },
+      {
+        "address": "0x0000000700e74d30",
+        "sass": "FFMA R8, R8, R31, R35"
+      }
+    ]
+  }
+}

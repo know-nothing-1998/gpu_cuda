@@ -1,0 +1,143 @@
+{
+  "P1": {
+    "shape": {
+      "m": 2048,
+      "n": 2048,
+      "k": 2048
+    },
+    "config": "bm64_bn128_bk32_tm4_tn4",
+    "params": {
+      "BM": 64,
+      "BN": 128,
+      "BK": 32,
+      "TM": 4,
+      "TN": 4
+    },
+    "median_ms": 3.059012326325,
+    "gflops": 5616.149054436583,
+    "min_ms": 2.9231709567,
+    "max_ms": 3.28331652555,
+    "pass_medians_ms": [
+      3.06364510276,
+      3.05437954989
+    ],
+    "cublas_median_ms": 2.47763668407,
+    "cublas_over_self": 0.8099466166736745,
+    "source_sha256": "04d97826925be0b443a49055cfb834d8b5b54503c78c6e5670833c89bfb0cd1b",
+    "csv_files": [
+      "variants/bm64_bn128_bk32_tm4_tn4/P1-confirm-1.csv",
+      "variants/bm64_bn128_bk32_tm4_tn4/P1-confirm-2.csv"
+    ],
+    "baseline_over_self": 1.0570675232370583,
+    "within_3_percent_of_best": true,
+    "configure_argv": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-DGEMM_TUNED_BM=64",
+      "-DGEMM_TUNED_BN=128",
+      "-DGEMM_TUNED_BK=32",
+      "-DGEMM_TUNED_TM=4",
+      "-DGEMM_TUNED_TN=4"
+    ],
+    "scope": "best measured in this search and current source/GPU, not a global optimum",
+    "source_snapshot": "source-snapshot.zip",
+    "source_hashes": "source-sha256.json"
+  },
+  "P2": {
+    "shape": {
+      "m": 16,
+      "n": 4096,
+      "k": 4096
+    },
+    "config": "bm32_bn64_bk32_tm4_tn4",
+    "params": {
+      "BM": 32,
+      "BN": 64,
+      "BK": 32,
+      "TM": 4,
+      "TN": 4
+    },
+    "median_ms": 0.4034162606765,
+    "gflops": 1330.8112843535514,
+    "min_ms": 0.381594370372,
+    "max_ms": 0.429545069453,
+    "pass_medians_ms": [
+      0.39436836812,
+      0.420646325866
+    ],
+    "cublas_median_ms": 0.3157205951745,
+    "cublas_over_self": 0.7826174251009598,
+    "source_sha256": "86fb9157f166b6cab05e07099a4f53ff118b179b561c54bf37a2d219ff708c3b",
+    "csv_files": [
+      "variants/bm32_bn64_bk32_tm4_tn4/P2-confirm-1.csv",
+      "variants/bm32_bn64_bk32_tm4_tn4/P2-confirm-2.csv"
+    ],
+    "baseline_over_self": 1.1780036562757301,
+    "within_3_percent_of_best": true,
+    "configure_argv": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-DGEMM_TUNED_BM=32",
+      "-DGEMM_TUNED_BN=64",
+      "-DGEMM_TUNED_BK=32",
+      "-DGEMM_TUNED_TM=4",
+      "-DGEMM_TUNED_TN=4"
+    ],
+    "scope": "best measured in this search and current source/GPU, not a global optimum",
+    "source_snapshot": "source-snapshot.zip",
+    "source_hashes": "source-sha256.json"
+  },
+  "P3": {
+    "shape": {
+      "m": 1001,
+      "n": 769,
+      "k": 513
+    },
+    "config": "bm64_bn64_bk16_tm4_tn4",
+    "params": {
+      "BM": 64,
+      "BN": 64,
+      "BK": 16,
+      "TM": 4,
+      "TN": 4
+    },
+    "median_ms": 0.1925932979585,
+    "gflops": 4100.781295983532,
+    "min_ms": 0.17714384079,
+    "max_ms": 0.204121608734,
+    "pass_medians_ms": [
+      0.191170272827,
+      0.196325111389
+    ],
+    "cublas_median_ms": 0.151912961006,
+    "cublas_over_self": 0.7887759471190643,
+    "source_sha256": "77012a73b5db8c3a59a4ff4acef1c10266b76e03b47e78065b0475210bdba39f",
+    "csv_files": [
+      "variants/bm64_bn64_bk16_tm4_tn4/P3-confirm-1.csv",
+      "variants/bm64_bn64_bk16_tm4_tn4/P3-confirm-2.csv"
+    ],
+    "baseline_over_self": 1.060559436105161,
+    "within_3_percent_of_best": true,
+    "configure_argv": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-DGEMM_TUNED_BM=64",
+      "-DGEMM_TUNED_BN=64",
+      "-DGEMM_TUNED_BK=16",
+      "-DGEMM_TUNED_TM=4",
+      "-DGEMM_TUNED_TN=4"
+    ],
+    "scope": "best measured in this search and current source/GPU, not a global optimum",
+    "source_snapshot": "source-snapshot.zip",
+    "source_hashes": "source-sha256.json"
+  }
+}

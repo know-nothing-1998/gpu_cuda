@@ -1,9 +1,0 @@
-source_sha256=4eefa2d0a9083b9a8963ff6b210c784f08693b9ebda8f36740db5887bb7dae73 build_type=Release seed=42 requested=cublas actual=cublas
-check kernel=cublas shape=1001x769x513 pattern=random status=valid reference=cpu_double_sample compared=50 max_abs=4.09150249e-06 relative_frob=2.196639967e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_sample cpu_compared=50 cpu_max_abs=4.09150249e-06 cpu_relative_frob=2.196639967e-07 cpu_failed=0
-round=1 kernel=cublas mean_ms=0.1113190365 batch_ms=11.13190365
-round=2 kernel=cublas mean_ms=0.113602562 batch_ms=11.3602562
-round=3 kernel=cublas mean_ms=0.1273651218 batch_ms=12.73651218
-round=4 kernel=cublas mean_ms=0.1251327991 batch_ms=12.51327991
-round=5 kernel=cublas mean_ms=0.1299647999 batch_ms=12.99647999
-bench kernel=cublas status=valid median_ms=0.1251327991 min_ms=0.1113190365 max_ms=0.1299647999 gflops=6311.558595 cublas_over_self=1
-timing_note: batch outside 50-200 ms; adjust --iters equally for both kernels and record it

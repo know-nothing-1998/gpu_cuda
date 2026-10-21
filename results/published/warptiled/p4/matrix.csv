@@ -1,0 +1,2 @@
+id,m,n,k,dtype,seed,warmup,iters,rounds
+P4,16,256,128,fp32,42,20,10000,5

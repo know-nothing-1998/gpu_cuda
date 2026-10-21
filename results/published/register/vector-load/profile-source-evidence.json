@@ -1,0 +1,860 @@
+{
+  "scalar-load": {
+    "report_path": "D:\\gpu_cuda\\results\\register-vector-comparison-20261020-151759\\scalar-load\\P1.ncu-rep",
+    "report_sha256": "0966da30a625d737d52f7aedb677c600c66722a7f142c0100e607f2e6e4809a6",
+    "kernel_name": "sgemm_kernel_register_rowTM_colTN",
+    "source_metrics": [
+      "memory_l1_wavefronts_shared",
+      "memory_l1_wavefronts_shared_ideal",
+      "inst_executed"
+    ],
+    "interpretation": "Counts are grouped by source-correlated SASS addresses. Compare actual to ideal; multiple ideal wavefronts for wide LDS are not conflicts. Hardware bank-conflict counters can additionally include arbitration effects. inst_executed and opcode instruction counts include predicated-off executions; do not divide wavefront totals by those counts to infer conflict degree.",
+    "by_opcode": {
+      "STS": {
+        "instructions_executed_warp": 8388608,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "static_instructions": 14,
+        "actual_per_ideal": 1.0
+      },
+      "LDS.128": {
+        "instructions_executed_warp": 33554432,
+        "wavefronts_actual": 100663296,
+        "wavefronts_ideal": 100663296,
+        "wavefronts_excessive": 0,
+        "static_instructions": 16,
+        "actual_per_ideal": 1.0
+      }
+    },
+    "by_kind": {
+      "store": {
+        "instructions_executed_warp": 8388608,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "static_instructions": 14,
+        "actual_per_ideal": 1.0
+      },
+      "load": {
+        "instructions_executed_warp": 33554432,
+        "wavefronts_actual": 100663296,
+        "wavefronts_ideal": 100663296,
+        "wavefronts_excessive": 0,
+        "static_instructions": 16,
+        "actual_per_ideal": 1.0
+      }
+    },
+    "examples": {
+      "STS": [
+        {
+          "address": "0x0000000700e74a50",
+          "sass": "STS [R11], R0",
+          "opcode": "STS",
+          "kind": "store",
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 1048576,
+          "wavefronts_ideal": 1048576,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+          "source_line": 88
+        },
+        {
+          "address": "0x0000000700e74a60",
+          "sass": "STS [R11+0x4000], R19",
+          "opcode": "STS",
+          "kind": "store",
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 1048576,
+          "wavefronts_ideal": 1048576,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+          "source_line": 90
+        },
+        {
+          "address": "0x0000000700e74a70",
+          "sass": "STS [R21], R26",
+          "opcode": "STS",
+          "kind": "store",
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 1048576,
+          "wavefronts_ideal": 1048576,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+          "source_line": 88
+        },
+        {
+          "address": "0x0000000700e74a80",
+          "sass": "STS [R21+0x4000], R25",
+          "opcode": "STS",
+          "kind": "store",
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 1048576,
+          "wavefronts_ideal": 1048576,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+          "source_line": 90
+        }
+      ],
+      "LDS.128": [
+        {
+          "address": "0x0000000700e74b30",
+          "sass": "LDS.128 R20, [R5+-0x100]",
+          "opcode": "LDS.128",
+          "kind": "load",
+          "instructions_executed_warp": 2097152,
+          "wavefronts_actual": 8388608,
+          "wavefronts_ideal": 8388608,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+          "source_line": 103
+        },
+        {
+          "address": "0x0000000700e74b50",
+          "sass": "LDS.128 R24, [R0+-0x200]",
+          "opcode": "LDS.128",
+          "kind": "load",
+          "instructions_executed_warp": 2097152,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+          "source_line": 100
+        },
+        {
+          "address": "0x0000000700e74b70",
+          "sass": "LDS.128 R16, [R0+-0x100]",
+          "opcode": "LDS.128",
+          "kind": "load",
+          "instructions_executed_warp": 2097152,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+          "source_line": 100
+        },
+        {
+          "address": "0x0000000700e74b90",
+          "sass": "LDS.128 R12, [R0]",
+          "opcode": "LDS.128",
+          "kind": "load",
+          "instructions_executed_warp": 2097152,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+          "source_line": 100
+        }
+      ]
+    },
+    "all_shared_instructions": [
+      {
+        "address": "0x0000000700e73fa0",
+        "sass": "STS [R11.X4], R5",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 0,
+        "wavefronts_actual": 0,
+        "wavefronts_ideal": 0,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 88
+      },
+      {
+        "address": "0x0000000700e73fb0",
+        "sass": "STS [R11.X4+0x4000], R0",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 0,
+        "wavefronts_actual": 0,
+        "wavefronts_ideal": 0,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 90
+      },
+      {
+        "address": "0x0000000700e74170",
+        "sass": "STS [R11.X4], R5",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 0,
+        "wavefronts_actual": 0,
+        "wavefronts_ideal": 0,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 88
+      },
+      {
+        "address": "0x0000000700e74180",
+        "sass": "STS [R11.X4+0x4000], R0",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 0,
+        "wavefronts_actual": 0,
+        "wavefronts_ideal": 0,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 90
+      },
+      {
+        "address": "0x0000000700e74330",
+        "sass": "STS [R11.X4], R5",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 0,
+        "wavefronts_actual": 0,
+        "wavefronts_ideal": 0,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 88
+      },
+      {
+        "address": "0x0000000700e74340",
+        "sass": "STS [R11.X4+0x4000], R0",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 0,
+        "wavefronts_actual": 0,
+        "wavefronts_ideal": 0,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 90
+      },
+      {
+        "address": "0x0000000700e74a50",
+        "sass": "STS [R11], R0",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 1048576,
+        "wavefronts_ideal": 1048576,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 88
+      },
+      {
+        "address": "0x0000000700e74a60",
+        "sass": "STS [R11+0x4000], R19",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 1048576,
+        "wavefronts_ideal": 1048576,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 90
+      },
+      {
+        "address": "0x0000000700e74a70",
+        "sass": "STS [R21], R26",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 1048576,
+        "wavefronts_ideal": 1048576,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 88
+      },
+      {
+        "address": "0x0000000700e74a80",
+        "sass": "STS [R21+0x4000], R25",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 1048576,
+        "wavefronts_ideal": 1048576,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 90
+      },
+      {
+        "address": "0x0000000700e74a90",
+        "sass": "STS [R22], R24",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 1048576,
+        "wavefronts_ideal": 1048576,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 88
+      },
+      {
+        "address": "0x0000000700e74aa0",
+        "sass": "STS [R22+0x4000], R31",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 1048576,
+        "wavefronts_ideal": 1048576,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 90
+      },
+      {
+        "address": "0x0000000700e74ab0",
+        "sass": "STS [R16+0x4000], R33",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 1048576,
+        "wavefronts_ideal": 1048576,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 90
+      },
+      {
+        "address": "0x0000000700e74ac0",
+        "sass": "STS [R16], R35",
+        "opcode": "STS",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 1048576,
+        "wavefronts_ideal": 1048576,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 88
+      },
+      {
+        "address": "0x0000000700e74b30",
+        "sass": "LDS.128 R20, [R5+-0x100]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 103
+      },
+      {
+        "address": "0x0000000700e74b50",
+        "sass": "LDS.128 R24, [R0+-0x200]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 100
+      },
+      {
+        "address": "0x0000000700e74b70",
+        "sass": "LDS.128 R16, [R0+-0x100]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 100
+      },
+      {
+        "address": "0x0000000700e74b90",
+        "sass": "LDS.128 R12, [R0]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 100
+      },
+      {
+        "address": "0x0000000700e74c30",
+        "sass": "LDS.128 R8, [R0+0x100]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 100
+      },
+      {
+        "address": "0x0000000700e74c70",
+        "sass": "LDS.128 R28, [R5]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 103
+      },
+      {
+        "address": "0x0000000700e74cd0",
+        "sass": "LDS.128 R20, [R5+0x200]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 103
+      },
+      {
+        "address": "0x0000000700e74d10",
+        "sass": "LDS.128 R32, [R5+0x100]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 103
+      },
+      {
+        "address": "0x0000000700e74de0",
+        "sass": "LDS.128 R28, [R0+-0x1f0]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 100
+      },
+      {
+        "address": "0x0000000700e74f20",
+        "sass": "LDS.128 R24, [R5+0x300]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 103
+      },
+      {
+        "address": "0x0000000700e74fd0",
+        "sass": "LDS.128 R16, [R0+-0xf0]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 100
+      },
+      {
+        "address": "0x0000000700e75010",
+        "sass": "LDS.128 R12, [R0+0x10]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 100
+      },
+      {
+        "address": "0x0000000700e75020",
+        "sass": "LDS.128 R20, [R5+0x400]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 103
+      },
+      {
+        "address": "0x0000000700e75070",
+        "sass": "LDS.128 R8, [R0+0x110]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 100
+      },
+      {
+        "address": "0x0000000700e75210",
+        "sass": "LDS.128 R24, [R5+0x500]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 103
+      },
+      {
+        "address": "0x0000000700e75250",
+        "sass": "LDS.128 R32, [R5+0x600]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/scalar-load/source/src/register.cu",
+        "source_line": 103
+      }
+    ],
+    "executed_float_conversions": [],
+    "total_instructions_source_warp": 445095936
+  },
+  "vector-load": {
+    "report_path": "D:\\gpu_cuda\\results\\register-vector-comparison-20261020-151759\\vector-load\\P1.ncu-rep",
+    "report_sha256": "b43b7b2787ccc18ee59bbe0a162a95f26e945b67156827da478ddd460e3f99a6",
+    "kernel_name": "sgemm_kernel_register_rowTM_colTN",
+    "source_metrics": [
+      "memory_l1_wavefronts_shared",
+      "memory_l1_wavefronts_shared_ideal",
+      "inst_executed"
+    ],
+    "interpretation": "Counts are grouped by source-correlated SASS addresses. Compare actual to ideal; multiple ideal wavefronts for wide LDS are not conflicts. Hardware bank-conflict counters can additionally include arbitration effects. inst_executed and opcode instruction counts include predicated-off executions; do not divide wavefront totals by those counts to infer conflict degree.",
+    "by_opcode": {
+      "STS.128": {
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "static_instructions": 2,
+        "actual_per_ideal": 1.0
+      },
+      "LDS.128": {
+        "instructions_executed_warp": 33554432,
+        "wavefronts_actual": 100663296,
+        "wavefronts_ideal": 100663296,
+        "wavefronts_excessive": 0,
+        "static_instructions": 16,
+        "actual_per_ideal": 1.0
+      }
+    },
+    "by_kind": {
+      "store": {
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "static_instructions": 2,
+        "actual_per_ideal": 1.0
+      },
+      "load": {
+        "instructions_executed_warp": 33554432,
+        "wavefronts_actual": 100663296,
+        "wavefronts_ideal": 100663296,
+        "wavefronts_excessive": 0,
+        "static_instructions": 16,
+        "actual_per_ideal": 1.0
+      }
+    },
+    "examples": {
+      "STS.128": [
+        {
+          "address": "0x0000000700e74010",
+          "sass": "STS.128 [R16.X4], R4",
+          "opcode": "STS.128",
+          "kind": "store",
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+          "source_line": 127
+        },
+        {
+          "address": "0x0000000700e74030",
+          "sass": "STS.128 [R16.X4+0x4000], R8",
+          "opcode": "STS.128",
+          "kind": "store",
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+          "source_line": 128
+        }
+      ],
+      "LDS.128": [
+        {
+          "address": "0x0000000700e740b0",
+          "sass": "LDS.128 R4, [R44.X4]",
+          "opcode": "LDS.128",
+          "kind": "load",
+          "instructions_executed_warp": 2097152,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+          "source_line": 137
+        },
+        {
+          "address": "0x0000000700e740d0",
+          "sass": "LDS.128 R24, [R3.X16+UR6]",
+          "opcode": "LDS.128",
+          "kind": "load",
+          "instructions_executed_warp": 2097152,
+          "wavefronts_actual": 8388608,
+          "wavefronts_ideal": 8388608,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+          "source_line": 140
+        },
+        {
+          "address": "0x0000000700e740f0",
+          "sass": "LDS.128 R8, [R44.X4+0x100]",
+          "opcode": "LDS.128",
+          "kind": "load",
+          "instructions_executed_warp": 2097152,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+          "source_line": 137
+        },
+        {
+          "address": "0x0000000700e74100",
+          "sass": "LDS.128 R28, [R3.X16+UR6+0x100]",
+          "opcode": "LDS.128",
+          "kind": "load",
+          "instructions_executed_warp": 2097152,
+          "wavefronts_actual": 8388608,
+          "wavefronts_ideal": 8388608,
+          "wavefronts_excessive": 0,
+          "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+          "source_line": 140
+        }
+      ]
+    },
+    "all_shared_instructions": [
+      {
+        "address": "0x0000000700e74010",
+        "sass": "STS.128 [R16.X4], R4",
+        "opcode": "STS.128",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 127
+      },
+      {
+        "address": "0x0000000700e74030",
+        "sass": "STS.128 [R16.X4+0x4000], R8",
+        "opcode": "STS.128",
+        "kind": "store",
+        "instructions_executed_warp": 1048576,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 128
+      },
+      {
+        "address": "0x0000000700e740b0",
+        "sass": "LDS.128 R4, [R44.X4]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 137
+      },
+      {
+        "address": "0x0000000700e740d0",
+        "sass": "LDS.128 R24, [R3.X16+UR6]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 140
+      },
+      {
+        "address": "0x0000000700e740f0",
+        "sass": "LDS.128 R8, [R44.X4+0x100]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 137
+      },
+      {
+        "address": "0x0000000700e74100",
+        "sass": "LDS.128 R28, [R3.X16+UR6+0x100]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 140
+      },
+      {
+        "address": "0x0000000700e74110",
+        "sass": "LDS.128 R12, [R44.X4+0x200]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 137
+      },
+      {
+        "address": "0x0000000700e74120",
+        "sass": "LDS.128 R16, [R44.X4+0x300]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 137
+      },
+      {
+        "address": "0x0000000700e741f0",
+        "sass": "LDS.128 R20, [R3.X16+UR6+0x200]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 140
+      },
+      {
+        "address": "0x0000000700e74290",
+        "sass": "LDS.128 R24, [R3.X16+UR6+0x300]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 140
+      },
+      {
+        "address": "0x0000000700e74350",
+        "sass": "LDS.128 R28, [R3.X16+UR6+0x400]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 140
+      },
+      {
+        "address": "0x0000000700e74450",
+        "sass": "LDS.128 R32, [R44.X4+0x10]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 137
+      },
+      {
+        "address": "0x0000000700e74490",
+        "sass": "LDS.128 R36, [R44.X4+0x110]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 137
+      },
+      {
+        "address": "0x0000000700e744d0",
+        "sass": "LDS.128 R4, [R44.X4+0x210]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 137
+      },
+      {
+        "address": "0x0000000700e74530",
+        "sass": "LDS.128 R8, [R44.X4+0x310]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 4194304,
+        "wavefronts_ideal": 4194304,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 137
+      },
+      {
+        "address": "0x0000000700e745a0",
+        "sass": "LDS.128 R16, [R3.X16+UR6+0x500]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 140
+      },
+      {
+        "address": "0x0000000700e745d0",
+        "sass": "LDS.128 R12, [R3.X16+UR6+0x600]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 140
+      },
+      {
+        "address": "0x0000000700e746b0",
+        "sass": "LDS.128 R20, [R3.X16+UR6+0x700]",
+        "opcode": "LDS.128",
+        "kind": "load",
+        "instructions_executed_warp": 2097152,
+        "wavefronts_actual": 8388608,
+        "wavefronts_ideal": 8388608,
+        "wavefronts_excessive": 0,
+        "source_file": "D:/gpu_cuda/build/register-vector-comparison-20261020-151759/vector-load/source/src/register.cu",
+        "source_line": 140
+      }
+    ],
+    "executed_float_conversions": [],
+    "total_instructions_source_warp": 372121600
+  }
+}

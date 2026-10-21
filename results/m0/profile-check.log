@@ -1,2 +1,0 @@
-source_sha256=0ed11bacc29211db971d6781cdf100e613b289d859ad325ae2463952d902fc26 build_type=Release seed=42 requested=cublas actual=cublas
-check kernel=cublas shape=2048x2048x2048 pattern=random status=valid reference=cpu_double_sample compared=51 max_abs=5.331881746e-05 relative_frob=9.52354374e-07 failed=0 nonfinite=0 cpu_scope=cpu_double_sample cpu_compared=51 cpu_max_abs=5.331881746e-05 cpu_relative_frob=9.52354374e-07 cpu_failed=0

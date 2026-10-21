@@ -1,0 +1,2 @@
+# Preserve byte-identical historical evidence and its published SHA256 values.
+/results/published/** -text -whitespace
