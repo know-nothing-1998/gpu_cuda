@@ -1,0 +1,57 @@
+Fresh clean-build evidence, 2026-10-22
+Source fingerprint: 88a8b45c9bc32b3087b4ba86de29c0d5c1b52977073edf742c7e73293f0995b5
+EXE SHA256: 305268669a6807ccf663f27cf8f06cc9d3b2d7b6e215d4776de7c327a45ce9b3
+The fresh binary has the same 928 instruction encodings as the earlier audit.
+Offsets and raw encodings can be checked in sass-main-loop.txt.
+
+Current doublebuffer SASS: software-pipeline dependency audit
+
+Build: Release, sm_89; template <64,64,16,32,32,4,4,1>.
+Kernel-relative offsets below are from this binary, not old NCU reports.
+32-case correctness suite: PASS. Registers=105; shared=16384 bytes; stack=local=0.
+
+Evidence applies to the aligned/full-vector main-loop path (next tile), not prologue:
+A0: LDG.128 0x17f0 -> R28..R31 -> STS 0x31a0..0x31d0
+A1: LDG.128 0x1a20 -> R24..R27 -> STS 0x31e0..0x3210
+B0: LDG.128 0x1c60 -> R36..R39 -> STS.128 0x3220
+B1: LDG.128 0x1e80 -> R32..R35 -> STS.128 0x3230
+
+Compute loop 0x1ed0..0x30a0 contains 256 static FFMA and runs twice per BK=16 tile.
+No R24..R39 operands occur in this compute loop.
+Main-loop vector LDGs set write scoreboard 5 and read scoreboard 0.
+BSYNC waits on scoreboard 0: source/address-register read dependency, not the loaded-result write dependency.
+The first wait on scoreboard 5 is encoded on STS at 0x31a0, after the compute loop.
+BSYNC operand B0 is a control-flow reconvergence token, separate from scoreboard IDs.
+
+Conclusion: actual machine code has a delayed load-result wait across independent computation.
+This is strong static evidence of software-pipeline overlap capability; it does not measure actual overlapping cycles, full latency coverage, or performance benefit.
+No cp.async/LDGSTS is used.
+
+Control fields: control=(hi64>>41)&0x1ffff; wait=(control>>11)&0x3f;
+read=(control>>8)&7; write=(control>>5)&7; 7 means no scoreboard assignment.
+Encoding references (third-party reverse-engineering implementation):
+https://github.com/cloudcores/CuAssembler/blob/master/CuAsm/CuSMVersion.py
+https://github.com/cloudcores/CuAssembler/blob/master/CuAsm/CuControlCode.py
+
+Selected exact instructions (wait values are hexadecimal):
+0x17f0  LDG.E.128 R28, [R16.64] ;                               wait=0x00 read=0 write=5
+0x1800  BSYNC B0 ;                                              wait=0x01 read=None write=None
+0x1a20  LDG.E.128 R24, [R16.64] ;                               wait=0x00 read=0 write=5
+0x1a30  BSYNC B0 ;                                              wait=0x01 read=None write=None
+0x1c60  LDG.E.128 R36, [R16.64] ;                               wait=0x00 read=0 write=5
+0x1c70  BSYNC B0 ;                                              wait=0x01 read=None write=None
+0x1e80  LDG.E.128 R32, [R16.64] ;                               wait=0x00 read=0 write=5
+0x1e90  BSYNC B0 ;                                              wait=0x01 read=None write=None
+0x1ed0  LDS.128 R16, [R13+-0x40] ;                              wait=0x00 read=None write=None
+0x1ee0  IADD3 R2, R2, 0x8, RZ ;                                 wait=0x00 read=None write=None
+0x1ef0  LDS.128 R40, [R0] ;                                     wait=0x00 read=None write=0
+0x1f00  ISETP.NE.AND P0, PT, R2, 0x10, PT ;                     wait=0x00 read=None write=None
+0x1f30  FFMA R73, R16.reuse, R40, R73 ;                         wait=0x01 read=None write=None
+0x3080  FFMA R74, R51, R23, R74 ;                               wait=0x00 read=None write=None
+0x3090  @!P0 CALL.REL.NOINC 0x30b0 ;                            wait=0x00 read=None write=None
+0x30a0  BRA 0x1ed0 ;                                            wait=0x00 read=None write=None
+0x31a0  @!P1 STS [R17.X4], R28 ;                                wait=0x20 read=0 write=None
+0x31e0  @!P2 STS [R2.X4], R24 ;                                 wait=0x00 read=0 write=None
+0x3220  @!P1 STS.128 [R13], R36 ;                               wait=0x00 read=0 write=None
+0x3230  @!P2 STS.128 [R0], R32 ;                                wait=0x00 read=0 write=None
+0x3240  BAR.SYNC.DEFER_BLOCKING 0x0 ;                           wait=0x00 read=None write=None

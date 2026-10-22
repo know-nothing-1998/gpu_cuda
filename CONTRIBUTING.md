@@ -10,7 +10,7 @@
 | `release/<milestone>` | 从 develop 创建，整理验证后合入 main，再回合 develop |
 | `hotfix/<topic>` | 必要时从 main 修复，再合入 main/develop |
 
-本次阶段为 `warptiling-baseline`。提交源码、复现命令和精选证据；未完成的新性能实验留在本地。
+当前阶段为 `doublebuffer-20261022`。提交源码、复现命令和精选证据；未完成的新性能实验留在本地。
 
 ## 下次开始
 
