@@ -6,6 +6,7 @@
 #include "register.cuh"
 #include "tuned.cuh"
 #include "warptiled.cuh"
+#include "doublebuffer.cuh"
 
 const std::vector<KernelEntry>& custom_kernels() {
     static const std::vector<KernelEntry> kernels{
@@ -21,6 +22,8 @@ const std::vector<KernelEntry>& custom_kernels() {
          "src/tuned.cu", tuned_available, launch_tuned},
         {"warptiled", "Warp tiling: user implementation",
          "src/warptiled.cu", warptiled_available, launch_warptiled},
+        {"doublebuffer", "Double-buffered warp tiling: user implementation",
+         "src/doublebuffer.cu", doublebuffer_available, launch_doublebuffer},
     };
     return kernels;
 }

@@ -1,6 +1,6 @@
 # CUDA GEMM Lab
 
-从 naive 到 warp tiling 的手写 CUDA SGEMM 学习项目。各实现共用 CPU double 正确性检查、严格 FP32 cuBLAS 对照、CUDA Event 计时和固定 benchmark 矩阵。
+从 naive 到 warp tiling、double buffer 的手写 CUDA SGEMM 学习项目。七种自写实现共用 CPU double 正确性检查、严格 FP32 cuBLAS 对照、CUDA Event 计时和固定 benchmark 矩阵。
 
 计算契约：`C[M,N] = A[M,K] * B[K,N]`，连续 row-major，FP32 输入/累加/输出，`alpha=1,beta=0`。当前验证范围为正整数尺寸、`K <= 4096`。
 
@@ -14,10 +14,13 @@
 | register | 每线程多个输出、寄存器复用、float4 加载 | [register.cu](src/register.cu) |
 | tuned | BM/BN/BK/TM/TN 五参数模板与自动搜索 | [tuned.cu](src/tuned.cu) |
 | warptiled | 显式 warp 分工、转置 As、八参数搜索和选择已编译配置 | [warptiled.cu](src/warptiled.cu) |
+| doublebuffer | 下一 tile 的寄存器预取、shared 双缓冲与软件流水线 | [doublebuffer.cu](src/doublebuffer.cu) |
 
 截至 **2026-10-22** 的关键结果见 [实验索引](results/published/README.md)，包含同轮 cuBLAS 对照、原始计时数据、参数和精选历史源码。性能对应特定机器与当时源码，不保证在其他机器重现相同数值；不同日期的计时不能直接解释成单项优化收益。
 
-最新的 [七版本 Roofline 对比](results/published/roofline-20261022/README.md) 在同一当前构建、P1=`2048³` 下采集 naive、coalesced、shared、register、tuned、warptiled 和 cuBLAS，使用默认参数，不代表 autotune 优胜配置。可直接查看 [图](results/published/roofline-20261022/roofline.svg) 和 [指标](results/published/roofline-20261022/model.json)，或按 [Roofline 说明](ROOFLINE.md) 离线重画。
+最新的 [double buffer 实验](results/published/doublebuffer-20261022/README.md) 对当前正式实现进行 P1～P4 benchmark，与同轮 warptiled 和严格 FP32 cuBLAS 对比，并记录流水原理、SASS 证据和验证结果。
+
+此前的 [七版本 Roofline 对比](results/published/roofline-20261022/README.md) 是引入 doublebuffer 前的快照：在同一构建、P1=`2048³` 下采集 naive、coalesced、shared、register、tuned、warptiled 和 cuBLAS，使用默认参数，不代表 autotune 优胜配置，也不包含 doublebuffer。可直接查看 [图](results/published/roofline-20261022/roofline.svg) 和 [指标](results/published/roofline-20261022/model.json)，或按 [Roofline 说明](ROOFLINE.md) 离线重画。
 
 ## 从 clone 开始
 
@@ -32,8 +35,8 @@ cmake -S . -B build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CUDA
 cmake --build build
 build\gemm.exe --mode list
 build\gemm.exe --mode info
-build\gemm.exe --mode check --kernel warptiled
-build\gemm.exe --mode bench --kernel warptiled --m 2048 --n 2048 --k 2048 --warmup 100 --iters 100 --rounds 5
+build\gemm.exe --mode check --kernel doublebuffer
+build\gemm.exe --mode bench --kernel doublebuffer --m 2048 --n 2048 --k 2048 --warmup 100 --iters 100 --rounds 5
 ```
 
 其他 GPU 请调整 `CMAKE_CUDA_ARCHITECTURES`。从普通 PowerShell 构建，也可执行 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\build.ps1`，脚本通过 `vswhere` 查找 MSVC；CUDA 运行时 DLL 需在 PATH 中。建议使用不含中文的项目/临时目录，避免本机曾遇到的 CUDA 工具路径问题。
@@ -100,13 +103,37 @@ python scripts\autotune.py --kernel tuned --cases P1 P2 P3 P4
 
 脚本在独立目录编译、检查、筛选和复测，不替换普通 `build/gemm.exe`。结果写入新的 `results/autotune-*`，先读 README、ranking.csv 和 winners.json。候选范围有限，优胜不代表全局最优，也不会按 MNK 自动派发。`compare_warptiled.py` 是统一入口使用的 warp 搜索后端，通常无需单独调用。Python 独立构建关闭完整 warp 候选表，避免重复编译。
 
+## Double buffer：寄存器预取与 shared 双缓冲
+
+`src/doublebuffer.cu` 已实现普通 global load（SASS 的 `LDG`）配合寄存器预取的流水线。先将 tile 0 写入 shared；随后提前把下一 tile 读到 `nextA/nextB`，用当前 shared tile 完成计算，再把预取值发布到另一份 shared tile，经过 block 同步后交换读写阶段。A 在 shared 中保持转置布局，B 保持 row-major。
+
+这里没有使用 `cp.async`，也没有专门负责搬运的 warp；同一组线程发起加载并执行独立计算。双缓冲保证计算与发布使用不同的 shared 区域，真正能隐藏多少访存延迟仍取决于指令调度、资源占用和矩阵形状。
+
+设 `S = ceil(K/BK)`，原 warptiled 每 tile 两次 block 同步，共 `2S` 次；当前实现为预热后一次，加后续阶段切换的 `S-1` 次，共 `S` 次。最后一批不再发布下一 tile，也不需要该次同步。因此性能差异同时包含预取、双缓冲和同步减少，不能全部归因于加载与计算重叠。
+
+默认 `BM/BN/BK/WM/WN/TM/TN/WNITER = 64/64/16/32/32/4/4/1`，128 线程、block 为 `16×8`，两份 shared tile 共 16 KiB。线程数由参数计算。修改参数使用独立的 `GEMM_DB_*` CMake 配置，例如 `cmake -S . -B build -DGEMM_DB_BK=32`；doublebuffer 尚未接入 exe 的 `--bm/--bn/...` 运行时配置选择或自动调优入口。
+
+检查与计时：
+
+```bat
+cmake --build build --target gemm
+build\gemm.exe --mode check --kernel doublebuffer
+build\gemm.exe --mode check --kernel doublebuffer --m 129 --n 193 --k 67
+build\gemm.exe --mode bench --kernel doublebuffer --m 2048 --n 2048 --k 2048 --warmup 100 --iters 100 --rounds 5
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\benchmark.ps1 -Kernel doublebuffer
+```
+
+`doublebuffer_correctness` 和 `doublebuffer_boundary` 是对应的 CTest 入口；CLI 测试覆盖正确性、计时 CSV 与 profile 接口。`scripts/benchmark.ps1 -Kernel doublebuffer` 使用项目固定矩阵，逐个与 cuBLAS 配对。
+
+[double buffer 实验报告](results/published/doublebuffer-20261022/README.md) 对应当前用户编写的正式源码，包含同轮多形状计时、原始数据及复现步骤。此前助手参考预实验保留在开发机，不作为当前实现的成绩。
+
 ## Profiling
 
 安装 Nsight Compute 并启用 GPU performance counters 权限后：
 
 ```bat
-build\gemm.exe --mode check --kernel warptiled --m 2048 --n 2048 --k 2048
-ncu --set full --launch-skip 20 --launch-count 1 --export results\warptiled-p1-new build\gemm.exe --mode profile --kernel warptiled --m 2048 --n 2048 --k 2048 --warmup 20 --iters 1
+build\gemm.exe --mode check --kernel doublebuffer --m 2048 --n 2048 --k 2048
+ncu --set full --launch-skip 20 --launch-count 1 --export results\doublebuffer-p1-new build\gemm.exe --mode profile --kernel doublebuffer --m 2048 --n 2048 --k 2048 --warmup 20 --iters 1
 ncu-ui
 ```
 
@@ -114,11 +141,11 @@ ncu-ui
 
 ## 仓库与证据
 
-- [实验汇总](REPORT.md) / [精选结果](results/published/README.md)：从 naive 到 warp tiling 的关键记录。
+- [实验汇总](REPORT.md) / [精选结果](results/published/README.md)：从 naive 到 double buffer 的关键记录。
 - [GPU 资源速查](GPU_DEVICE.md) / [Roofline](ROOFLINE.md)：本机资源、公式和采样口径。
 - [项目任务书](GEMM_PROJECT_BRIEF.md) / [分支工作流](CONTRIBUTING.md)：阶段目标、计算契约与 Git Flow。
 - `src/`：kernel 与公共 harness；`scripts/`：构建、测量和调参工具；`tests/`：数值及接口检查。
-- `results/published/`：精选实验及当前版本的 Roofline 证据。其余 `results/`、build、NCU 二进制、临时文件默认忽略；运行产生的新结果不会自动进入 Git。
+- `results/published/`：精选实验及各采样版本的 Roofline 证据。其余 `results/`、build、NCU 二进制、临时文件默认忽略；运行产生的新结果不会自动进入 Git。
 - `.clang-format` 和 `.editorconfig`：四空格缩进。VS Code 使用 C/C++ 扩展，按需将 [settings.example.json](.vscode/settings.example.json) 复制为 `settings.json`；[IntelliSense 示例](.vscode/c_cpp_properties.example.json) 依赖从 MSVC x64 开发环境启动的 VS Code，或自行填入本机编译器路径。个人 IDE 配置保留本地。
 
 实现学习参考 Simon Boehm 的 SGEMM 优化系列；第三方许可见 [third_party](third_party/siboehm-SGEMM-CUDA-LICENSE.txt)。历史参考实现与当前用户编写的 kernel 在精选报告中分别说明。

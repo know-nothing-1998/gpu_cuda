@@ -1,0 +1,26 @@
+kernel=cublas available=true source=src/gemm.cu description="strict FP32 cuBLAS baseline"
+kernel=naive available=true source=src/naive.cu description="Uncoalesced baseline: thread x -> row, y -> column"
+kernel=coalesced available=true source=src/coalesced.cu description="Coalesced global-memory access: thread x -> column"
+kernel=shared available=true source=src/shared.cu description="Block tiling with shared-memory reuse"
+kernel=register available=true source=src/register.cu description="Register tiling: multiple output values per thread"
+kernel=tuned available=true source=src/tuned.cu description="Further tile, vectorized-load, and scheduling experiments"
+kernel=warptiled available=true source=src/warptiled.cu description="Warp tiling: user implementation"
+kernel=doublebuffer available=true source=src/doublebuffer.cu description="Double-buffered warp tiling: user implementation"
+doublebuffer_config BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384
+selected_warptiled_config BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128
+warptiled_config BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128
+warptiled_config BM=64;BN=64;BK=32;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128
+warptiled_config BM=64;BN=64;BK=64;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128
+warptiled_config BM=64;BN=128;BK=16;WM=32;WN=64;TM=4;TN=4;WNITER=2;THREADS=128
+warptiled_config BM=64;BN=128;BK=32;WM=32;WN=64;TM=4;TN=4;WNITER=2;THREADS=128
+warptiled_config BM=128;BN=64;BK=16;WM=64;WN=32;TM=4;TN=4;WNITER=1;THREADS=128
+warptiled_config BM=128;BN=128;BK=16;WM=64;WN=64;TM=8;TN=4;WNITER=2;THREADS=128
+warptiled_config BM=128;BN=128;BK=32;WM=64;WN=64;TM=8;TN=4;WNITER=2;THREADS=128
+warptiled_config BM=32;BN=64;BK=16;WM=16;WN=32;TM=4;TN=4;WNITER=1;THREADS=128
+warptiled_config BM=32;BN=64;BK=32;WM=16;WN=32;TM=4;TN=4;WNITER=1;THREADS=128
+warptiled_config BM=16;BN=64;BK=16;WM=16;WN=32;TM=2;TN=2;WNITER=2;THREADS=64
+warptiled_config BM=16;BN=64;BK=32;WM=16;WN=32;TM=2;TN=2;WNITER=2;THREADS=64
+warptiled_config BM=16;BN=32;BK=32;WM=8;WN=16;TM=2;TN=2;WNITER=1;THREADS=128
+warptiled_config BM=64;BN=64;BK=64;WM=8;WN=64;TM=4;TN=4;WNITER=1;THREADS=256
+warptiled_config BM=64;BN=64;BK=16;WM=32;WN=64;TM=4;TN=4;WNITER=2;THREADS=64
+warptiled_config BM=64;BN=64;BK=16;WM=64;WN=32;TM=4;TN=4;WNITER=2;THREADS=64

@@ -1,0 +1,4 @@
+source_sha256=88a8b45c9bc32b3087b4ba86de29c0d5c1b52977073edf742c7e73293f0995b5 build_type=Release seed=42 requested=doublebuffer actual=doublebuffer
+doublebuffer_config BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384
+check kernel=doublebuffer shape=64x64x16 pattern=random status=valid reference=cublas_full compared=4096 max_abs=7.152557373e-07 relative_frob=7.751358062e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=4096 cpu_max_abs=7.08304853e-07 cpu_relative_frob=7.346308862e-08 cpu_failed=0
+check kernel=cublas shape=64x64x16 pattern=random status=valid reference=cpu_double_full compared=4096 max_abs=7.08304853e-07 relative_frob=7.919706746e-08 failed=0 nonfinite=0 cpu_scope=cpu_double_full cpu_compared=4096 cpu_max_abs=7.08304853e-07 cpu_relative_frob=7.919706746e-08 cpu_failed=0
