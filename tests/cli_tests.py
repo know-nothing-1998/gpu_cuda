@@ -62,7 +62,7 @@ def listed_kernels(output):
 
 
 kernels = listed_kernels(invoke(["--mode", "list"], True, "kernel=cublas"))
-assert {"cublas", "naive", "coalesced", "shared", "register", "tuned", "warptiled"} <= kernels.keys()
+assert {"cublas", "naive", "coalesced", "shared", "register", "tuned", "warptiled", "doublebuffer"} <= kernels.keys()
 assert kernels["cublas"]["available"] == "true"
 for name, entry in kernels.items():
     assert entry["available"] in {"true", "false"}, entry
@@ -85,6 +85,9 @@ def assert_valid_csv(rows, requested, actual, compared):
             assert row[field] == expected, "CSV tuned configuration disagrees with executable info"
         expected_warp = info_fields["warptiled_config"] if row["actual_kernel"] == "warptiled" else ""
         assert row["warptiled_config"] == expected_warp, "CSV warp configuration mismatch"
+        expected_doublebuffer = (info_fields["doublebuffer_config"]
+                                 if row["actual_kernel"] == "doublebuffer" else "")
+        assert row["doublebuffer_config"] == expected_doublebuffer, "CSV doublebuffer configuration mismatch"
         assert len(row["round_mean_ms"].split(";")) == 2
         assert math.isfinite(float(row["median_ms"])) and float(row["median_ms"]) > 0
     assert float(rows[-1]["cublas_over_self"]) == 1

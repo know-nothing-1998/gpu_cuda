@@ -1,0 +1,37 @@
+Test project D:/gpu_cuda/build/doublebuffer-current-20261022/cmake-build
+      Start  1: numerical_harness
+ 1/16 Test  #1: numerical_harness ................   Passed    0.06 sec
+      Start  2: naive_correctness
+ 2/16 Test  #2: naive_correctness ................   Passed    0.29 sec
+      Start  3: naive_wide_boundary
+ 3/16 Test  #3: naive_wide_boundary ..............   Passed    0.23 sec
+      Start  4: naive_tall_boundary
+ 4/16 Test  #4: naive_tall_boundary ..............   Passed    0.23 sec
+      Start  5: cublas_correctness
+ 5/16 Test  #5: cublas_correctness ...............   Passed    0.24 sec
+      Start  6: cublas_unseen_boundary
+ 6/16 Test  #6: cublas_unseen_boundary ...........   Passed    0.24 sec
+      Start  7: warptiled_correctness
+ 7/16 Test  #7: warptiled_correctness ............   Passed    0.24 sec
+      Start  8: warptiled_boundary
+ 8/16 Test  #8: warptiled_boundary ...............   Passed    0.23 sec
+      Start  9: doublebuffer_correctness
+ 9/16 Test  #9: doublebuffer_correctness .........   Passed    0.23 sec
+      Start 10: doublebuffer_boundary
+10/16 Test #10: doublebuffer_boundary ............   Passed    0.23 sec
+      Start 11: cli_contract
+11/16 Test #11: cli_contract .....................   Passed    7.13 sec
+      Start 12: runtime_warp_cli_contract
+12/16 Test #12: runtime_warp_cli_contract ........   Passed    7.96 sec
+      Start 13: autotune_contract
+13/16 Test #13: autotune_contract ................   Passed    1.34 sec
+      Start 14: autotune_cli_contract
+14/16 Test #14: autotune_cli_contract ............   Passed    0.41 sec
+      Start 15: bench_tuned_contract
+15/16 Test #15: bench_tuned_contract .............   Passed    0.42 sec
+      Start 16: roofline_contract
+16/16 Test #16: roofline_contract ................   Passed    0.30 sec
+
+100% tests passed, 0 tests failed out of 16
+
+Total Test time (real) =  19.84 sec

@@ -95,6 +95,28 @@ function(gemm_validate_warp_config label BM BN BK WM WN TM TN WNITER)
     endif()
 endfunction()
 
+# Independent two-stage configuration; the original warp kernel stays unchanged.
+set(GEMM_DB_BM 64 CACHE STRING "Double-buffered block rows")
+set(GEMM_DB_BN 64 CACHE STRING "Double-buffered block columns")
+set(GEMM_DB_BK 16 CACHE STRING "Double-buffered reduction tile")
+set(GEMM_DB_WM 32 CACHE STRING "Double-buffered warp rows")
+set(GEMM_DB_WN 32 CACHE STRING "Double-buffered warp columns")
+set(GEMM_DB_TM 4 CACHE STRING "Double-buffered thread subtile rows")
+set(GEMM_DB_TN 4 CACHE STRING "Double-buffered thread subtile columns")
+set(GEMM_DB_WNITER 1 CACHE STRING "Double-buffered warp subtiles along N")
+set(GEMM_DB_PARAMETERS GEMM_DB_BM GEMM_DB_BN GEMM_DB_BK GEMM_DB_WM
+    GEMM_DB_WN GEMM_DB_TM GEMM_DB_TN GEMM_DB_WNITER)
+set(db_default_values "")
+foreach(param IN LISTS GEMM_DB_PARAMETERS)
+    list(APPEND db_default_values "${${param}}")
+endforeach()
+gemm_validate_warp_config("Default doublebuffer configuration" ${db_default_values})
+math(EXPR gemm_db_shared_bytes "2 * 4 * ${GEMM_DB_BK} * (${GEMM_DB_BM} + ${GEMM_DB_BN})")
+if(gemm_db_shared_bytes GREATER 49152)
+    message(FATAL_ERROR
+        "Doublebuffer configuration needs ${gemm_db_shared_bytes} static shared bytes for two stages; maximum is 49152")
+endif()
+
 set(warp_default_values "")
 foreach(param IN LISTS GEMM_WARP_PARAMETERS)
     list(APPEND warp_default_values "${${param}}")
@@ -155,7 +177,7 @@ endif()
 find_package(CUDAToolkit 11.0 REQUIRED)
 
 # Add each user-written implementation here; all targets share the same objects.
-set(GEMM_KERNEL_NAMES naive coalesced shared register tuned warptiled)
+set(GEMM_KERNEL_NAMES naive coalesced shared register tuned warptiled doublebuffer)
 set(GEMM_KERNEL_SOURCES src/kernel_registry.cu)
 set(GEMM_KERNEL_HEADERS src/kernel_registry.cuh)
 foreach(kernel IN LISTS GEMM_KERNEL_NAMES)
@@ -166,7 +188,7 @@ endforeach()
 # Reconfigure on source edits so each executable identifies its exact inputs.
 set(snapshot_files CMakeLists.txt src/gemm.cu
     ${GEMM_KERNEL_SOURCES} ${GEMM_KERNEL_HEADERS}
-    src/build_info.h.in src/tuned_config.h.in src/warptiled_config.h.in
+    src/build_info.h.in src/tuned_config.h.in src/warptiled_config.h.in src/doublebuffer_config.h.in
     src/warptiled_variants.inc.in benchmarks/matrix.csv benchmarks/warptiling.json)
 set(snapshot "")
 foreach(path IN LISTS snapshot_files)
@@ -174,7 +196,7 @@ foreach(path IN LISTS snapshot_files)
     file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/${path}" digest)
     string(APPEND snapshot "${path}:${digest}\n")
 endforeach()
-foreach(param IN LISTS GEMM_TUNED_PARAMETERS GEMM_WARP_PARAMETERS)
+foreach(param IN LISTS GEMM_TUNED_PARAMETERS GEMM_WARP_PARAMETERS GEMM_DB_PARAMETERS)
     string(APPEND snapshot "${param}:${${param}}\n")
 endforeach()
 string(APPEND snapshot "GEMM_WARP_RUNTIME_CONFIGS:${GEMM_WARP_RUNTIME_CONFIGS}\n")
@@ -182,6 +204,7 @@ string(SHA256 GEMM_SOURCE_SHA256 "${snapshot}")
 configure_file(src/build_info.h.in generated/build_info.h @ONLY)
 configure_file(src/tuned_config.h.in generated/tuned_config.h @ONLY)
 configure_file(src/warptiled_config.h.in generated/warptiled_config.h @ONLY)
+configure_file(src/doublebuffer_config.h.in generated/doublebuffer_config.h @ONLY)
 configure_file(src/warptiled_variants.inc.in generated/warptiled_variants.inc @ONLY)
 
 add_library(gemm_kernels STATIC ${GEMM_KERNEL_SOURCES} ${GEMM_KERNEL_HEADERS})
@@ -230,6 +253,10 @@ if(BUILD_TESTING)
     # are skipped here and their rejection paths are verified by cli_contract.
     set_tests_properties(warptiled_correctness warptiled_boundary PROPERTIES
         SKIP_REGULAR_EXPRESSION "warptiled is not implemented")
+    add_test(NAME doublebuffer_correctness COMMAND gemm --mode check --kernel doublebuffer)
+    add_test(NAME doublebuffer_boundary COMMAND gemm --mode check --kernel doublebuffer --m 129 --n 193 --k 67)
+    set_tests_properties(doublebuffer_correctness doublebuffer_boundary PROPERTIES
+        SKIP_REGULAR_EXPRESSION "doublebuffer is not implemented")
     find_package(Python3 COMPONENTS Interpreter QUIET)
     if(Python3_Interpreter_FOUND)
         add_test(NAME cli_contract COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/cli_tests.py" $<TARGET_FILE:gemm>)
