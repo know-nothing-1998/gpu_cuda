@@ -61,9 +61,20 @@ def listed_kernels(output):
     return {entry["kernel"]: entry for entry in entries}
 
 
-kernels = listed_kernels(invoke(["--mode", "list"], True, "kernel=cublas"))
-assert {"cublas", "naive", "coalesced", "shared", "register", "tuned", "warptiled", "doublebuffer"} <= kernels.keys()
+kernel_listing = invoke(["--mode", "list"], True, "kernel=cublas")
+kernels = listed_kernels(kernel_listing)
+assert {"cublas", "naive", "coalesced", "shared", "register", "tuned", "warptiled",
+        "doublebuffer", "doublebuffer_opt", "asyncpipeline"} <= kernels.keys()
 assert kernels["cublas"]["available"] == "true"
+doublebuffer_config = dict(field.split("=", 1)
+                          for field in info_fields["doublebuffer_config"].split(";"))
+doublebuffer_opt_config = dict(field.split("=", 1)
+                              for field in info_fields["doublebuffer_opt_config"].split(";"))
+assert all(doublebuffer_opt_config[key] == value for key, value in doublebuffer_config.items())
+assert doublebuffer_opt_config["SWIZZLE_A"] in {"0", "1"}
+assert doublebuffer_opt_config["VECTOR_STORE_C"] in {"0", "1"}
+for name in ("doublebuffer", "doublebuffer_opt", "asyncpipeline"):
+    assert name + "_config " + info_fields[name + "_config"] in kernel_listing
 for name, entry in kernels.items():
     assert entry["available"] in {"true", "false"}, entry
     assert entry["source"], entry
@@ -85,9 +96,12 @@ def assert_valid_csv(rows, requested, actual, compared):
             assert row[field] == expected, "CSV tuned configuration disagrees with executable info"
         expected_warp = info_fields["warptiled_config"] if row["actual_kernel"] == "warptiled" else ""
         assert row["warptiled_config"] == expected_warp, "CSV warp configuration mismatch"
-        expected_doublebuffer = (info_fields["doublebuffer_config"]
-                                 if row["actual_kernel"] == "doublebuffer" else "")
+        expected_doublebuffer = (info_fields[row["actual_kernel"] + "_config"]
+                                 if row["actual_kernel"] in {"doublebuffer", "doublebuffer_opt"} else "")
         assert row["doublebuffer_config"] == expected_doublebuffer, "CSV doublebuffer configuration mismatch"
+        expected_async = (info_fields["asyncpipeline_config"]
+                          if row["actual_kernel"] == "asyncpipeline" else "")
+        assert row["asyncpipeline_config"] == expected_async, "CSV asyncpipeline configuration mismatch"
         assert len(row["round_mean_ms"].split(";")) == 2
         assert math.isfinite(float(row["median_ms"])) and float(row["median_ms"]) > 0
     assert float(rows[-1]["cublas_over_self"]) == 1
