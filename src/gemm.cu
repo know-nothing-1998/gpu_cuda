@@ -23,6 +23,7 @@
 #include "tuned_config.h"
 #include "warptiled.cuh"
 #include "doublebuffer.cuh"
+#include "asyncpipeline.cuh"
 
 namespace {
 constexpr double kAtol = 1e-3, kRtol = 1e-4;
@@ -438,7 +439,7 @@ void write_csv(const Options& o, const Context& ctx, const std::vector<Validatio
            "reference_scope,compared,max_abs,relative_frob,failed,nonfinite,cpu_scope,cpu_compared,cpu_max_abs,cpu_relative_frob,cpu_failed,"
            "warmup,iters,rounds,median_ms,min_ms,max_ms,gflops,cublas_over_self,round_mean_ms,source_sha256,build_type,"
            "cuda_architectures,gpu,cuda_runtime,cuda_driver,cublas_version,math_mode,compute_type,"
-           "tuned_bm,tuned_bn,tuned_bk,tuned_tm,tuned_tn,warptiled_config,doublebuffer_config\n";
+           "tuned_bm,tuned_bn,tuned_bk,tuned_tm,tuned_tn,warptiled_config,doublebuffer_config,asyncpipeline_config\n";
     for (size_t i = 0; i < v.size(); ++i) {
         const auto& a = v[i];
         const std::string kernel = i == 0 ? o.kernel : "cublas";
@@ -468,7 +469,9 @@ void write_csv(const Options& o, const Context& ctx, const std::vector<Validatio
         else
             out << ",,,,,";
         out << ',' << csv_quote(kernel == "warptiled" ? warp_configuration(o.warp_variant->config) : "")
-            << ',' << csv_quote(kernel == "doublebuffer" ? doublebuffer_configuration() : "") << '\n';
+            << ',' << csv_quote(kernel == "doublebuffer" ? doublebuffer_configuration()
+                               : kernel == "doublebuffer_opt" ? doublebuffer_opt_configuration() : "")
+            << ',' << csv_quote(kernel == "asyncpipeline" ? asyncpipeline_configuration() : "") << '\n';
     }
     out.flush();
     if (!out) throw std::runtime_error("failed to write CSV: " + o.csv);
@@ -593,6 +596,8 @@ void info(const Context& ctx) {
         << "\nwarptiled_config=" << warp_configuration(warp)
         << "\nwarptiled_compiled_configs=" << warptiled_variants().size()
         << "\ndoublebuffer_config=" << doublebuffer_configuration()
+        << "\ndoublebuffer_opt_config=" << doublebuffer_opt_configuration()
+        << "\nasyncpipeline_config=" << asyncpipeline_configuration()
         << "\ncublas_available=true\n";
     for (const auto& kernel : custom_kernels())
         std::cout << kernel.name << "_available=" << (kernel.available() ? "true" : "false") << '\n';
@@ -622,6 +627,8 @@ int run(int argc, char** argv) {
     if (o.mode == "list") {
         list_kernels();
         std::cout << "doublebuffer_config " << doublebuffer_configuration() << '\n';
+        std::cout << "doublebuffer_opt_config " << doublebuffer_opt_configuration() << '\n';
+        std::cout << "asyncpipeline_config " << asyncpipeline_configuration() << '\n';
         std::cout << "selected_warptiled_config " << warp_configuration(o.warp_variant->config) << '\n';
         for (const auto& variant : warptiled_variants())
             std::cout << "warptiled_config " << warp_configuration(variant.config) << '\n';
@@ -641,6 +648,10 @@ int run(int argc, char** argv) {
         std::cout << "warptiled_config " << warp_configuration(o.warp_variant->config) << '\n';
     if (o.kernel == "doublebuffer")
         std::cout << "doublebuffer_config " << doublebuffer_configuration() << '\n';
+    if (o.kernel == "doublebuffer_opt")
+        std::cout << "doublebuffer_opt_config " << doublebuffer_opt_configuration() << '\n';
+    if (o.kernel == "asyncpipeline")
+        std::cout << "asyncpipeline_config " << asyncpipeline_configuration() << '\n';
     if (o.mode == "bench" && std::string(GEMM_BUILD_CONFIG) != "Release")
         throw std::runtime_error("bench requires a Release build");
     if (o.mode == "check" && !o.has_shape) {

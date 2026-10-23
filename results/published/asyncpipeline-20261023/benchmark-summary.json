@@ -1,0 +1,227 @@
+{
+  "shape": [
+    2048,
+    2048,
+    2048
+  ],
+  "parameters": {
+    "BM": 64,
+    "BN": 64,
+    "BK": 16,
+    "WM": 32,
+    "WN": 32,
+    "TM": 4,
+    "TN": 4,
+    "WNITER": 1
+  },
+  "timing": "CUDA Event median_ms from normal benchmark, never NCU duration",
+  "warmup": 50,
+  "iters": 50,
+  "rounds": 5,
+  "seed": 42,
+  "comparison_scope": "Compare variants inside each window/trial; windows are not a cumulative speedup curve.",
+  "windows": {
+    "a4-mapping": {
+      "original_comparison": "results/asyncpipeline-a4-20261023/comparison.json",
+      "trials": [
+        {
+          "trial": 1,
+          "order": [
+            "scalar-async",
+            "a4-scalar-async",
+            "doublebuffer"
+          ],
+          "measurements": {
+            "scalar-async": {
+              "csv": "benchmarks/a4-mapping-scalar-async-1.csv",
+              "actual_kernel": "asyncpipeline",
+              "median_ms": 3.65481658936,
+              "gflops": 4700.61048591,
+              "paired_cublas_ms": 2.29296127319,
+              "paired_cublas_gflops": 7492.43756746,
+              "source_build_fingerprint": "42ed7d414f82e79b6534c6d47043c8914fcb8a8d2b1ef8675b76016cb2ab91f5",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            },
+            "a4-scalar-async": {
+              "csv": "benchmarks/a4-mapping-a4-scalar-async-1.csv",
+              "actual_kernel": "asyncpipeline",
+              "median_ms": 3.36168945312,
+              "gflops": 5110.48668342,
+              "paired_cublas_ms": 2.26768890381,
+              "paired_cublas_gflops": 7575.93740268,
+              "source_build_fingerprint": "ee89027c8c7989fee2b8e60317649114b9dc3314d4673e14b265347c827ab0b9",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            },
+            "doublebuffer": {
+              "csv": "benchmarks/a4-mapping-doublebuffer-1.csv",
+              "actual_kernel": "doublebuffer",
+              "median_ms": 2.51621368408,
+              "gflops": 6827.66701917,
+              "paired_cublas_ms": 2.2923878479,
+              "paired_cublas_gflops": 7494.31174997,
+              "source_build_fingerprint": "ee89027c8c7989fee2b8e60317649114b9dc3314d4673e14b265347c827ab0b9",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            }
+          },
+          "custom_throughput_gain_pct": 8.719637561046811,
+          "after_time_over_doublebuffer_pct": 33.60111163806545
+        },
+        {
+          "trial": 2,
+          "order": [
+            "doublebuffer",
+            "a4-scalar-async",
+            "scalar-async"
+          ],
+          "measurements": {
+            "scalar-async": {
+              "csv": "benchmarks/a4-mapping-scalar-async-2.csv",
+              "actual_kernel": "asyncpipeline",
+              "median_ms": 3.7262322998,
+              "gflops": 4610.52017205,
+              "paired_cublas_ms": 2.30661758423,
+              "paired_cublas_gflops": 7448.07865052,
+              "source_build_fingerprint": "42ed7d414f82e79b6534c6d47043c8914fcb8a8d2b1ef8675b76016cb2ab91f5",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            },
+            "a4-scalar-async": {
+              "csv": "benchmarks/a4-mapping-a4-scalar-async-2.csv",
+              "actual_kernel": "asyncpipeline",
+              "median_ms": 3.49108215332,
+              "gflops": 4921.07273032,
+              "paired_cublas_ms": 2.31432189941,
+              "paired_cublas_gflops": 7423.28419757,
+              "source_build_fingerprint": "ee89027c8c7989fee2b8e60317649114b9dc3314d4673e14b265347c827ab0b9",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            },
+            "doublebuffer": {
+              "csv": "benchmarks/a4-mapping-doublebuffer-2.csv",
+              "actual_kernel": "doublebuffer",
+              "median_ms": 2.55027206421,
+              "gflops": 6736.48487356,
+              "paired_cublas_ms": 2.34891265869,
+              "paired_cublas_gflops": 7313.96679244,
+              "source_build_fingerprint": "ee89027c8c7989fee2b8e60317649114b9dc3314d4673e14b265347c827ab0b9",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            }
+          },
+          "custom_throughput_gain_pct": 6.735737979021028,
+          "after_time_over_doublebuffer_pct": 36.890577374592205
+        }
+      ]
+    },
+    "float4-hybrid": {
+      "original_comparison": "results/asyncpipeline-float4-a-20261023/comparison.json",
+      "trials": [
+        {
+          "trial": 1,
+          "order": [
+            "a4-scalar-async",
+            "float4-hybrid",
+            "doublebuffer"
+          ],
+          "measurements": {
+            "a4-scalar-async": {
+              "csv": "benchmarks/float4-hybrid-a4-scalar-async-1.csv",
+              "actual_kernel": "asyncpipeline",
+              "median_ms": 3.3869152832,
+              "gflops": 5072.42365028,
+              "paired_cublas_ms": 2.28341766357,
+              "paired_cublas_gflops": 7523.75242517,
+              "source_build_fingerprint": "ee89027c8c7989fee2b8e60317649114b9dc3314d4673e14b265347c827ab0b9",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            },
+            "float4-hybrid": {
+              "csv": "benchmarks/float4-hybrid-float4-hybrid-1.csv",
+              "actual_kernel": "asyncpipeline",
+              "median_ms": 2.55809539795,
+              "gflops": 6715.88291733,
+              "paired_cublas_ms": 2.29744262695,
+              "paired_cublas_gflops": 7477.8229421,
+              "source_build_fingerprint": "fc67a738011924342699686422ff136209c81d424fe575ce984ad6e213d3826b",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384;A_FLOAT4_PREFETCH=1;B_ASYNC=1",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            },
+            "doublebuffer": {
+              "csv": "benchmarks/float4-hybrid-doublebuffer-1.csv",
+              "actual_kernel": "doublebuffer",
+              "median_ms": 2.50445831299,
+              "gflops": 6859.71457177,
+              "paired_cublas_ms": 2.30321990967,
+              "paired_cublas_gflops": 7459.0659415,
+              "source_build_fingerprint": "fc67a738011924342699686422ff136209c81d424fe575ce984ad6e213d3826b",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            }
+          },
+          "custom_throughput_gain_pct": 32.399881799333905,
+          "after_time_over_doublebuffer_pct": 2.141664114822661
+        },
+        {
+          "trial": 2,
+          "order": [
+            "doublebuffer",
+            "float4-hybrid",
+            "a4-scalar-async"
+          ],
+          "measurements": {
+            "a4-scalar-async": {
+              "csv": "benchmarks/float4-hybrid-a4-scalar-async-2.csv",
+              "actual_kernel": "asyncpipeline",
+              "median_ms": 3.51635467529,
+              "gflops": 4885.70430756,
+              "paired_cublas_ms": 2.36017669678,
+              "paired_cublas_gflops": 7279.06059214,
+              "source_build_fingerprint": "ee89027c8c7989fee2b8e60317649114b9dc3314d4673e14b265347c827ab0b9",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            },
+            "float4-hybrid": {
+              "csv": "benchmarks/float4-hybrid-float4-hybrid-2.csv",
+              "actual_kernel": "asyncpipeline",
+              "median_ms": 2.63555023193,
+              "gflops": 6518.51327887,
+              "paired_cublas_ms": 2.32232772827,
+              "paired_cublas_gflops": 7397.69369106,
+              "source_build_fingerprint": "fc67a738011924342699686422ff136209c81d424fe575ce984ad6e213d3826b",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384;A_FLOAT4_PREFETCH=1;B_ASYNC=1",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            },
+            "doublebuffer": {
+              "csv": "benchmarks/float4-hybrid-doublebuffer-2.csv",
+              "actual_kernel": "doublebuffer",
+              "median_ms": 2.57531890869,
+              "gflops": 6670.96767162,
+              "paired_cublas_ms": 2.34872314453,
+              "paired_cublas_gflops": 7314.55694299,
+              "source_build_fingerprint": "fc67a738011924342699686422ff136209c81d424fe575ce984ad6e213d3826b",
+              "configuration": "BM=64;BN=64;BK=16;WM=32;WN=32;TM=4;TN=4;WNITER=1;THREADS=128;STAGES=2;SHARED_BYTES=16384",
+              "compute_type": "CUBLAS_COMPUTE_32F_PEDANTIC",
+              "all_rows_valid": true
+            }
+          },
+          "custom_throughput_gain_pct": 33.42013491865763,
+          "after_time_over_doublebuffer_pct": 2.3387908595226437
+        }
+      ]
+    }
+  }
+}

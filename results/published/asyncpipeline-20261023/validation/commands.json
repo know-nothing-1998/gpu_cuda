@@ -1,0 +1,178 @@
+[
+  {
+    "name": "clean-build",
+    "args": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\source\\scripts\\build.ps1",
+      "-BuildDir",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "ctest",
+    "args": [
+      "ctest",
+      "--test-dir",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build",
+      "--output-on-failure",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "device-info",
+    "args": [
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build\\gemm.exe",
+      "--mode",
+      "info"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "kernel-list",
+    "args": [
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build\\gemm.exe",
+      "--mode",
+      "list"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "doublebuffer_opt-memcheck",
+    "args": [
+      "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.2\\compute-sanitizer\\compute-sanitizer.exe",
+      "--tool",
+      "memcheck",
+      "--error-exitcode",
+      "1",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build\\gemm.exe",
+      "--mode",
+      "check",
+      "--kernel",
+      "doublebuffer_opt",
+      "--m",
+      "129",
+      "--n",
+      "193",
+      "--k",
+      "67"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "doublebuffer_opt-racecheck",
+    "args": [
+      "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.2\\compute-sanitizer\\compute-sanitizer.exe",
+      "--tool",
+      "racecheck",
+      "--error-exitcode",
+      "1",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build\\gemm.exe",
+      "--mode",
+      "check",
+      "--kernel",
+      "doublebuffer_opt",
+      "--m",
+      "129",
+      "--n",
+      "193",
+      "--k",
+      "67"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "doublebuffer_opt-synccheck",
+    "args": [
+      "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.2\\compute-sanitizer\\compute-sanitizer.exe",
+      "--tool",
+      "synccheck",
+      "--error-exitcode",
+      "1",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build\\gemm.exe",
+      "--mode",
+      "check",
+      "--kernel",
+      "doublebuffer_opt",
+      "--m",
+      "129",
+      "--n",
+      "193",
+      "--k",
+      "67"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "asyncpipeline-memcheck",
+    "args": [
+      "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.2\\compute-sanitizer\\compute-sanitizer.exe",
+      "--tool",
+      "memcheck",
+      "--error-exitcode",
+      "1",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build\\gemm.exe",
+      "--mode",
+      "check",
+      "--kernel",
+      "asyncpipeline",
+      "--m",
+      "129",
+      "--n",
+      "193",
+      "--k",
+      "67"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "asyncpipeline-racecheck",
+    "args": [
+      "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.2\\compute-sanitizer\\compute-sanitizer.exe",
+      "--tool",
+      "racecheck",
+      "--error-exitcode",
+      "1",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build\\gemm.exe",
+      "--mode",
+      "check",
+      "--kernel",
+      "asyncpipeline",
+      "--m",
+      "129",
+      "--n",
+      "193",
+      "--k",
+      "67"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "asyncpipeline-synccheck",
+    "args": [
+      "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.2\\compute-sanitizer\\compute-sanitizer.exe",
+      "--tool",
+      "synccheck",
+      "--error-exitcode",
+      "1",
+      "D:\\gpu_cuda\\build\\release-asyncpipeline-20261023\\cmake-build\\gemm.exe",
+      "--mode",
+      "check",
+      "--kernel",
+      "asyncpipeline",
+      "--m",
+      "129",
+      "--n",
+      "193",
+      "--k",
+      "67"
+    ],
+    "exit_code": 0
+  }
+]

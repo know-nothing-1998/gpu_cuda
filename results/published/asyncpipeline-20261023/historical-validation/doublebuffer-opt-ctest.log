@@ -1,0 +1,41 @@
+Test project D:/gpu_cuda/build
+      Start  1: numerical_harness
+ 1/18 Test  #1: numerical_harness ................   Passed    0.04 sec
+      Start  2: naive_correctness
+ 2/18 Test  #2: naive_correctness ................   Passed    0.33 sec
+      Start  3: naive_wide_boundary
+ 3/18 Test  #3: naive_wide_boundary ..............   Passed    0.22 sec
+      Start  4: naive_tall_boundary
+ 4/18 Test  #4: naive_tall_boundary ..............   Passed    0.23 sec
+      Start  5: cublas_correctness
+ 5/18 Test  #5: cublas_correctness ...............   Passed    0.27 sec
+      Start  6: cublas_unseen_boundary
+ 6/18 Test  #6: cublas_unseen_boundary ...........   Passed    0.22 sec
+      Start  7: warptiled_correctness
+ 7/18 Test  #7: warptiled_correctness ............   Passed    0.23 sec
+      Start  8: warptiled_boundary
+ 8/18 Test  #8: warptiled_boundary ...............   Passed    0.22 sec
+      Start  9: doublebuffer_correctness
+ 9/18 Test  #9: doublebuffer_correctness .........   Passed    0.24 sec
+      Start 10: doublebuffer_boundary
+10/18 Test #10: doublebuffer_boundary ............   Passed    0.23 sec
+      Start 11: doublebuffer_opt_correctness
+11/18 Test #11: doublebuffer_opt_correctness .....   Passed    0.25 sec
+      Start 12: doublebuffer_opt_boundary
+12/18 Test #12: doublebuffer_opt_boundary ........   Passed    0.22 sec
+      Start 13: cli_contract
+13/18 Test #13: cli_contract .....................   Passed    7.53 sec
+      Start 14: runtime_warp_cli_contract
+14/18 Test #14: runtime_warp_cli_contract ........   Passed    7.57 sec
+      Start 15: autotune_contract
+15/18 Test #15: autotune_contract ................   Passed    0.70 sec
+      Start 16: autotune_cli_contract
+16/18 Test #16: autotune_cli_contract ............   Passed    0.37 sec
+      Start 17: bench_tuned_contract
+17/18 Test #17: bench_tuned_contract .............   Passed    0.32 sec
+      Start 18: roofline_contract
+18/18 Test #18: roofline_contract ................   Passed    0.23 sec
+
+100% tests passed, 0 tests failed out of 18
+
+Total Test time (real) =  19.50 sec

@@ -117,6 +117,29 @@ if(gemm_db_shared_bytes GREATER 49152)
         "Doublebuffer configuration needs ${gemm_db_shared_bytes} static shared bytes for two stages; maximum is 49152")
 endif()
 
+# Independent two-stage hardware asynchronous pipeline configuration.
+set(GEMM_ASYNC_BM 64 CACHE STRING "Async pipeline block rows")
+set(GEMM_ASYNC_BN 64 CACHE STRING "Async pipeline block columns")
+set(GEMM_ASYNC_BK 16 CACHE STRING "Async pipeline reduction tile")
+set(GEMM_ASYNC_WM 32 CACHE STRING "Async pipeline warp rows")
+set(GEMM_ASYNC_WN 32 CACHE STRING "Async pipeline warp columns")
+set(GEMM_ASYNC_TM 4 CACHE STRING "Async pipeline thread subtile rows")
+set(GEMM_ASYNC_TN 4 CACHE STRING "Async pipeline thread subtile columns")
+set(GEMM_ASYNC_WNITER 1 CACHE STRING "Async pipeline warp subtiles along N")
+set(GEMM_ASYNC_PARAMETERS GEMM_ASYNC_BM GEMM_ASYNC_BN GEMM_ASYNC_BK GEMM_ASYNC_WM
+    GEMM_ASYNC_WN GEMM_ASYNC_TM GEMM_ASYNC_TN GEMM_ASYNC_WNITER)
+set(async_default_values "")
+foreach(param IN LISTS GEMM_ASYNC_PARAMETERS)
+    list(APPEND async_default_values "${${param}}")
+endforeach()
+gemm_validate_warp_config("Default asyncpipeline configuration" ${async_default_values})
+math(EXPR gemm_async_shared_bytes
+    "2 * 4 * ${GEMM_ASYNC_BK} * (${GEMM_ASYNC_BM} + ${GEMM_ASYNC_BN})")
+if(gemm_async_shared_bytes GREATER 49152)
+    message(FATAL_ERROR
+        "Asyncpipeline configuration needs ${gemm_async_shared_bytes} static shared bytes for two stages; maximum is 49152")
+endif()
+
 set(warp_default_values "")
 foreach(param IN LISTS GEMM_WARP_PARAMETERS)
     list(APPEND warp_default_values "${${param}}")
@@ -177,7 +200,7 @@ endif()
 find_package(CUDAToolkit 11.0 REQUIRED)
 
 # Add each user-written implementation here; all targets share the same objects.
-set(GEMM_KERNEL_NAMES naive coalesced shared register tuned warptiled doublebuffer)
+set(GEMM_KERNEL_NAMES naive coalesced shared register tuned warptiled doublebuffer asyncpipeline)
 set(GEMM_KERNEL_SOURCES src/kernel_registry.cu)
 set(GEMM_KERNEL_HEADERS src/kernel_registry.cuh)
 foreach(kernel IN LISTS GEMM_KERNEL_NAMES)
@@ -189,6 +212,7 @@ endforeach()
 set(snapshot_files CMakeLists.txt src/gemm.cu
     ${GEMM_KERNEL_SOURCES} ${GEMM_KERNEL_HEADERS}
     src/build_info.h.in src/tuned_config.h.in src/warptiled_config.h.in src/doublebuffer_config.h.in
+    src/asyncpipeline_config.h.in
     src/warptiled_variants.inc.in benchmarks/matrix.csv benchmarks/warptiling.json)
 set(snapshot "")
 foreach(path IN LISTS snapshot_files)
@@ -196,7 +220,7 @@ foreach(path IN LISTS snapshot_files)
     file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/${path}" digest)
     string(APPEND snapshot "${path}:${digest}\n")
 endforeach()
-foreach(param IN LISTS GEMM_TUNED_PARAMETERS GEMM_WARP_PARAMETERS GEMM_DB_PARAMETERS)
+foreach(param IN LISTS GEMM_TUNED_PARAMETERS GEMM_WARP_PARAMETERS GEMM_DB_PARAMETERS GEMM_ASYNC_PARAMETERS)
     string(APPEND snapshot "${param}:${${param}}\n")
 endforeach()
 string(APPEND snapshot "GEMM_WARP_RUNTIME_CONFIGS:${GEMM_WARP_RUNTIME_CONFIGS}\n")
@@ -205,6 +229,7 @@ configure_file(src/build_info.h.in generated/build_info.h @ONLY)
 configure_file(src/tuned_config.h.in generated/tuned_config.h @ONLY)
 configure_file(src/warptiled_config.h.in generated/warptiled_config.h @ONLY)
 configure_file(src/doublebuffer_config.h.in generated/doublebuffer_config.h @ONLY)
+configure_file(src/asyncpipeline_config.h.in generated/asyncpipeline_config.h @ONLY)
 configure_file(src/warptiled_variants.inc.in generated/warptiled_variants.inc @ONLY)
 
 add_library(gemm_kernels STATIC ${GEMM_KERNEL_SOURCES} ${GEMM_KERNEL_HEADERS})
@@ -216,6 +241,9 @@ target_include_directories(gemm_kernels
 target_compile_options(gemm_kernels PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-lineinfo;--ptxas-options=-v>)
 if(MSVC)
     target_compile_options(gemm_kernels PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/W4,-utf-8>)
+    # CUDA's <cuda/pipeline> requires the conforming MSVC preprocessor.
+    set_property(SOURCE src/asyncpipeline.cu APPEND PROPERTY COMPILE_OPTIONS
+        "-Xcompiler=/Zc:preprocessor")
 endif()
 target_link_libraries(gemm_kernels PUBLIC CUDA::cudart)
 
@@ -257,6 +285,12 @@ if(BUILD_TESTING)
     add_test(NAME doublebuffer_boundary COMMAND gemm --mode check --kernel doublebuffer --m 129 --n 193 --k 67)
     set_tests_properties(doublebuffer_correctness doublebuffer_boundary PROPERTIES
         SKIP_REGULAR_EXPRESSION "doublebuffer is not implemented")
+    add_test(NAME doublebuffer_opt_correctness COMMAND gemm --mode check --kernel doublebuffer_opt)
+    add_test(NAME doublebuffer_opt_boundary COMMAND gemm --mode check --kernel doublebuffer_opt --m 129 --n 193 --k 67)
+    add_test(NAME asyncpipeline_correctness COMMAND gemm --mode check --kernel asyncpipeline)
+    add_test(NAME asyncpipeline_boundary COMMAND gemm --mode check --kernel asyncpipeline --m 129 --n 193 --k 67)
+    set_tests_properties(asyncpipeline_correctness asyncpipeline_boundary PROPERTIES
+        SKIP_REGULAR_EXPRESSION "asyncpipeline is not implemented")
     find_package(Python3 COMPONENTS Interpreter QUIET)
     if(Python3_Interpreter_FOUND)
         add_test(NAME cli_contract COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/cli_tests.py" $<TARGET_FILE:gemm>)

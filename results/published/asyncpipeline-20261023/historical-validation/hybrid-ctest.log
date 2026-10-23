@@ -1,0 +1,11 @@
+Test project D:/gpu_cuda/build
+    Start 13: asyncpipeline_correctness
+1/3 Test #13: asyncpipeline_correctness ........   Passed    0.30 sec
+    Start 14: asyncpipeline_boundary
+2/3 Test #14: asyncpipeline_boundary ...........   Passed    0.23 sec
+    Start 15: cli_contract
+3/3 Test #15: cli_contract .....................   Passed    8.18 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   8.73 sec

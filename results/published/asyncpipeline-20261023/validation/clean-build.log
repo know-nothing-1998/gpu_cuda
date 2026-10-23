@@ -1,0 +1,185 @@
+-- The CXX compiler identification is MSVC 19.44.35217.0
+-- The CUDA compiler identification is NVIDIA 13.2.78 with host compiler MSVC 19.44.35217.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/Visual Studio/Visual Studio 2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.2/bin/nvcc.exe - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.2/include;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.2/include/cccl (found suitable version "13.2.78", minimum required is "11.0")
+-- Configuring done (15.7s)
+-- Generating done (0.5s)
+-- Build files have been written to: D:/gpu_cuda/build/release-asyncpipeline-20261023/cmake-build
+[  7%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/kernel_registry.cu.obj
+ptxas info    : 0 bytes gmem
+kernel_registry.cu
+tmpxft_00000f2c_00000000-7_kernel_registry.cudafe1.cpp
+[ 14%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/naive.cu.obj
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z18sgemm_kernel_naivePKfS0_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z18sgemm_kernel_naivePKfS0_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 0 barriers, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+naive.cu
+tmpxft_00006a6c_00000000-7_naive.cudafe1.cpp
+[ 21%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/coalesced.cu.obj
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z22sgemm_kernel_coalescedPKfS0_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z22sgemm_kernel_coalescedPKfS0_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 0 barriers, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+coalesced.cu
+tmpxft_00001274_00000000-7_coalesced.cudafe1.cpp
+[ 28%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/shared.cu.obj
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z19sgemm_kernel_sharedPKfS0_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z19sgemm_kernel_sharedPKfS0_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 37 registers, used 1 barriers, 8192 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+shared.cu
+tmpxft_000051e8_00000000-7_shared.cudafe1.cpp
+[ 35%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/register.cu.obj
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z33sgemm_kernel_register_rowTM_colTNPKfS0_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z33sgemm_kernel_register_rowTM_colTNPKfS0_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 51 registers, used 1 barriers, 32768 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+register.cu
+tmpxft_000093a4_00000000-7_register.cudafe1.cpp
+[ 42%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/tuned.cu.obj
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z11sgemm_tunedILi64ELi64ELi64ELi4ELi4EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z11sgemm_tunedILi64ELi64ELi64ELi4ELi4EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, used 1 barriers, 32768 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+tuned.cu
+tmpxft_000080bc_00000000-7_tuned.cudafe1.cpp
+[ 50%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/warptiled.cu.obj
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi64ELi64ELi16ELi64ELi32ELi4ELi4ELi2EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi64ELi64ELi16ELi64ELi32ELi4ELi4ELi2EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 93 registers, used 1 barriers, 8192 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi64ELi64ELi16ELi32ELi64ELi4ELi4ELi2EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi64ELi64ELi16ELi32ELi64ELi4ELi4ELi2EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 93 registers, used 1 barriers, 8192 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi64ELi64ELi64ELi8ELi64ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi64ELi64ELi64ELi8ELi64ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 32768 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi16ELi32ELi32ELi8ELi16ELi2ELi2ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi16ELi32ELi32ELi8ELi16ELi2ELi2ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 39 registers, used 1 barriers, 6144 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi16ELi64ELi32ELi16ELi32ELi2ELi2ELi2EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi16ELi64ELi32ELi16ELi32ELi2ELi2ELi2EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 10240 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi16ELi64ELi16ELi16ELi32ELi2ELi2ELi2EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi16ELi64ELi16ELi16ELi32ELi2ELi2ELi2EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, used 1 barriers, 5120 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi32ELi64ELi32ELi16ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi32ELi64ELi32ELi16ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, used 1 barriers, 12288 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi32ELi64ELi16ELi16ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi32ELi64ELi16ELi16ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 39 registers, used 1 barriers, 6144 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi128ELi128ELi32ELi64ELi64ELi8ELi4ELi2EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi128ELi128ELi32ELi64ELi64ELi8ELi4ELi2EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 167 registers, used 1 barriers, 32768 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi128ELi128ELi16ELi64ELi64ELi8ELi4ELi2EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi128ELi128ELi16ELi64ELi64ELi8ELi4ELi2EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 167 registers, used 1 barriers, 16384 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi128ELi64ELi16ELi64ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi128ELi64ELi16ELi64ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 100 registers, used 1 barriers, 12288 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi64ELi128ELi32ELi32ELi64ELi4ELi4ELi2EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi64ELi128ELi32ELi32ELi64ELi4ELi4ELi2EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 129 registers, used 1 barriers, 24576 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi64ELi128ELi16ELi32ELi64ELi4ELi4ELi2EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi64ELi128ELi16ELi32ELi64ELi4ELi4ELi2EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 129 registers, used 1 barriers, 12288 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi64ELi64ELi64ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi64ELi64ELi64ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 66 registers, used 1 barriers, 32768 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi64ELi64ELi32ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi64ELi64ELi32ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 66 registers, used 1 barriers, 16384 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z15sgemm_warptiledILi64ELi64ELi16ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z15sgemm_warptiledILi64ELi64ELi16ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 66 registers, used 1 barriers, 8192 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+warptiled.cu
+tmpxft_000078b8_00000000-7_warptiled.cudafe1.cpp
+[ 57%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/doublebuffer.cu.obj
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z22sgemm_doublebuffer_optILi64ELi64ELi16ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z22sgemm_doublebuffer_optILi64ELi64ELi16ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 119 registers, used 1 barriers, 16384 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+ptxas info    : Compiling entry function '_Z18sgemm_doublebufferILi64ELi64ELi16ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z18sgemm_doublebufferILi64ELi64ELi16ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 105 registers, used 1 barriers, 16384 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+doublebuffer.cu
+tmpxft_00003c90_00000000-7_doublebuffer.cudafe1.cpp
+[ 64%] Building CUDA object CMakeFiles/gemm_kernels.dir/src/asyncpipeline.cu.obj
+ptxas info    : 1 bytes gmem, 8 bytes cmem[4]
+ptxas info    : Compiling entry function '_Z19sgemm_asyncpipelineILi64ELi64ELi16ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii' for 'sm_89'
+ptxas info    : Function properties for _Z19sgemm_asyncpipelineILi64ELi64ELi16ELi32ELi32ELi4ELi4ELi1EEvPKfS1_Pfiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 79 registers, used 1 barriers, 16384 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 0.000 ms
+asyncpipeline.cu
+tmpxft_00006c10_00000000-7_asyncpipeline.cudafe1.cpp
+[ 71%] Linking CUDA static library gemm_kernels.lib
+[ 71%] Built target gemm_kernels
+[ 78%] Building CUDA object CMakeFiles/gemm.dir/src/gemm.cu.obj
+ptxas info    : 0 bytes gmem
+gemm.cu
+tmpxft_00007990_00000000-7_gemm.cudafe1.cpp
+[ 85%] Linking CUDA executable gemm.exe
+[ 85%] Built target gemm
+[ 92%] Building CUDA object CMakeFiles/harness_tests.dir/tests/harness_tests.cu.obj
+harness_tests.cu
+tmpxft_00006be0_00000000-7_harness_tests.cudafe1.cpp
+[100%] Linking CUDA executable harness_tests.exe
+[100%] Built target harness_tests

@@ -1,0 +1,31 @@
+{
+  "historical_capture_only": true,
+  "hybrid": {
+    "ctest": "3/3 passed: asyncpipeline_correctness, asyncpipeline_boundary, cli_contract",
+    "sanitizer_shape": [
+      129,
+      193,
+      67
+    ],
+    "memcheck_errors": 0,
+    "racecheck_hazards": 0,
+    "source_build_fingerprint": "fc67a738011924342699686422ff136209c81d424fe575ce984ad6e213d3826b"
+  },
+  "a4": {
+    "ctest": "3/3 passed: asyncpipeline_correctness, asyncpipeline_boundary, cli_contract",
+    "sanitizers": "memcheck: 0 errors; racecheck: 0 hazards; shape129x193x67"
+  },
+  "doublebuffer_opt": {
+    "ctest": "18/18 passed in its earlier project state",
+    "sanitizer_shape": [
+      129,
+      193,
+      67
+    ],
+    "memcheck_errors": 0,
+    "racecheck_hazards": 0,
+    "synccheck_errors": 0,
+    "source_build_fingerprint": "84caef29e425ddda6d960e151e83969d42912f0ce0f4130b7ae4fc39f8c6cc93"
+  },
+  "new_capture_or_gpu_work_during_curation": false
+}

@@ -1,0 +1,45 @@
+Test project D:/gpu_cuda/build/release-asyncpipeline-20261023/cmake-build
+      Start  1: numerical_harness
+ 1/20 Test  #1: numerical_harness ................   Passed    0.04 sec
+      Start  2: naive_correctness
+ 2/20 Test  #2: naive_correctness ................   Passed    0.29 sec
+      Start  3: naive_wide_boundary
+ 3/20 Test  #3: naive_wide_boundary ..............   Passed    0.23 sec
+      Start  4: naive_tall_boundary
+ 4/20 Test  #4: naive_tall_boundary ..............   Passed    0.23 sec
+      Start  5: cublas_correctness
+ 5/20 Test  #5: cublas_correctness ...............   Passed    0.24 sec
+      Start  6: cublas_unseen_boundary
+ 6/20 Test  #6: cublas_unseen_boundary ...........   Passed    0.22 sec
+      Start  7: warptiled_correctness
+ 7/20 Test  #7: warptiled_correctness ............   Passed    0.23 sec
+      Start  8: warptiled_boundary
+ 8/20 Test  #8: warptiled_boundary ...............   Passed    0.23 sec
+      Start  9: doublebuffer_correctness
+ 9/20 Test  #9: doublebuffer_correctness .........   Passed    0.24 sec
+      Start 10: doublebuffer_boundary
+10/20 Test #10: doublebuffer_boundary ............   Passed    0.23 sec
+      Start 11: doublebuffer_opt_correctness
+11/20 Test #11: doublebuffer_opt_correctness .....   Passed    0.24 sec
+      Start 12: doublebuffer_opt_boundary
+12/20 Test #12: doublebuffer_opt_boundary ........   Passed    0.22 sec
+      Start 13: asyncpipeline_correctness
+13/20 Test #13: asyncpipeline_correctness ........   Passed    0.23 sec
+      Start 14: asyncpipeline_boundary
+14/20 Test #14: asyncpipeline_boundary ...........   Passed    0.22 sec
+      Start 15: cli_contract
+15/20 Test #15: cli_contract .....................   Passed    8.20 sec
+      Start 16: runtime_warp_cli_contract
+16/20 Test #16: runtime_warp_cli_contract ........   Passed    7.62 sec
+      Start 17: autotune_contract
+17/20 Test #17: autotune_contract ................   Passed    1.18 sec
+      Start 18: autotune_cli_contract
+18/20 Test #18: autotune_cli_contract ............   Passed    0.39 sec
+      Start 19: bench_tuned_contract
+19/20 Test #19: bench_tuned_contract .............   Passed    0.37 sec
+      Start 20: roofline_contract
+20/20 Test #20: roofline_contract ................   Passed    0.25 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Total Test time (real) =  21.16 sec
