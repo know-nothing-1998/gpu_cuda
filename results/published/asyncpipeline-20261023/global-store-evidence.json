@@ -1,0 +1,17 @@
+{
+  "scope": "Baseline P1 C scalar stores, source-correlated counts from original report",
+  "original_report_sha256": "c5f01ac5bcf6c5788e5705b0013fef93e91fc72b4cbf4c568b74e876aa7c6a21",
+  "source_stg_instructions": 32,
+  "executed_warps_sum": 131072,
+  "sectors_actual_sum": 2097152,
+  "sectors_ideal_sum": 524288,
+  "example": {
+    "pc": "0x700e76cf0",
+    "sass": "@!P5  STG.E [R2.64], R73",
+    "executed_warps": 4096,
+    "sectors_actual": 65536,
+    "sectors_ideal": 16384,
+    "line": 224
+  },
+  "note": "More sector requests do not mean proportionally more DRAM output bytes. C payload remains 2048*2048*4 bytes."
+}

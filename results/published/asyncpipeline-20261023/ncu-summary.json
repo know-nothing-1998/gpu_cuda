@@ -1,0 +1,870 @@
+{
+  "shape": [
+    2048,
+    2048,
+    2048
+  ],
+  "parameters": {
+    "BM": 64,
+    "BN": 64,
+    "BK": 16,
+    "WM": 32,
+    "WN": 32,
+    "TM": 4,
+    "TN": 4,
+    "WNITER": 1
+  },
+  "scope": "Structural and resource evidence from separate NCU captures; duration/clocks are provenance, not benchmark comparisons.",
+  "instruction_units": "Dynamic issued warp instructions include predicated-off instructions. @!PT LDS has zero shared wavefronts.",
+  "memory_units": "L1TEX requests/sectors and shared actual/ideal wavefronts are not DRAM bytes.",
+  "captures": {
+    "doublebuffer-low-clock": {
+      "original_summary": "results/doublebuffer-opt-analysis-20261023/profile-summary.json",
+      "original_key": "baseline",
+      "report_path_local_only": "results/doublebuffer.ncu-rep",
+      "report_sha256": "c5f01ac5bcf6c5788e5705b0013fef93e91fc72b4cbf4c568b74e876aa7c6a21",
+      "kernel_name": "sgemm_doublebuffer",
+      "duration_ms_context_only": 7.908576,
+      "sm_clock_ghz_context_only": 0.7481743025967422,
+      "dram_clock_ghz_context_only": 3.166037476278915,
+      "registers_per_thread": 105,
+      "registers_per_thread_allocated": 112,
+      "static_shared_bytes": 16384,
+      "shared_bytes_per_block_including_driver": 17408,
+      "shared_config_bytes_per_sm": 102400,
+      "block_dimensions": [
+        16,
+        8,
+        1
+      ],
+      "grid_dimensions": [
+        32,
+        32,
+        1
+      ],
+      "occupancy_actual_pct": 32.65426237675687,
+      "occupancy_theoretical_pct": 33.33333333333333,
+      "resident_block_limits": {
+        "blocks": 24,
+        "registers": 4,
+        "shared_mem": 5,
+        "warps": 12
+      },
+      "total_instructions_source_warp": 367136768,
+      "local_load_instructions_warp": 0,
+      "local_store_instructions_warp": 0,
+      "global_memory": {
+        "load": {
+          "requests": 2097152,
+          "sectors": 33554432,
+          "sectors_per_request": 16.0
+        },
+        "store": {
+          "requests": 131072,
+          "sectors": 2097152,
+          "sectors_per_request": 16.0
+        }
+      },
+      "opcodes_warp": {
+        "FFMA": 268435456,
+        "LDS": 25165824,
+        "LEA": 10616832,
+        "IADD3": 10600448,
+        "ISETP": 9080832,
+        "BRA": 8404992,
+        "CS2R": 7368704,
+        "IMAD": 6496256,
+        "STS": 5242880,
+        "LOP3": 2695168,
+        "SHF": 2265088,
+        "BSYNC": 2113536,
+        "BSSY": 2113536,
+        "LDG": 2097152,
+        "MOV": 1642496,
+        "CALL": 1572864,
+        "BAR": 524288,
+        "WARPSYNC": 520192,
+        "STG": 131072,
+        "S2R": 20480,
+        "USHF": 8192,
+        "ULDC": 8192,
+        "EXIT": 8192,
+        "S2UR": 4096
+      },
+      "memory_instruction_widths_warp": {
+        "LDS.128": 25165824,
+        "STS": 4194304,
+        "LDG.E.128": 2097152,
+        "STS.128": 1048576,
+        "STG.E": 131072
+      },
+      "shared_wavefronts_by_opcode": {
+        "STS": {
+          "instructions_executed_warp": 4194304,
+          "wavefronts_actual": 16777216,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 12582912
+        },
+        "STS.128": {
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0
+        },
+        "LDS.128": {
+          "instructions_executed_warp": 25165824,
+          "wavefronts_actual": 67108864,
+          "wavefronts_ideal": 67108864,
+          "wavefronts_excessive": 0
+        }
+      }
+    },
+    "doublebuffer-opt": {
+      "original_summary": "results/doublebuffer-opt-analysis-20261023/profile-summary.json",
+      "original_key": "optimized",
+      "report_path_local_only": "results/doublebuffer_opt.ncu-rep",
+      "report_sha256": "138842055e3c9690794689d5f276740cef1fea2c876d370d690a46676eb0893d",
+      "kernel_name": "sgemm_doublebuffer_opt",
+      "duration_ms_context_only": 3.27248,
+      "sm_clock_ghz_context_only": 1.716960633321925,
+      "dram_clock_ghz_context_only": 7.261682882706693,
+      "registers_per_thread": 119,
+      "registers_per_thread_allocated": 120,
+      "static_shared_bytes": 16384,
+      "shared_bytes_per_block_including_driver": 17408,
+      "shared_config_bytes_per_sm": 102400,
+      "block_dimensions": [
+        16,
+        8,
+        1
+      ],
+      "grid_dimensions": [
+        32,
+        32,
+        1
+      ],
+      "occupancy_actual_pct": 32.61369754074119,
+      "occupancy_theoretical_pct": 33.33333333333333,
+      "resident_block_limits": {
+        "blocks": 24,
+        "registers": 4,
+        "shared_mem": 5,
+        "warps": 12
+      },
+      "total_instructions_source_warp": 411312128,
+      "local_load_instructions_warp": 0,
+      "local_store_instructions_warp": 0,
+      "global_memory": {
+        "load": {
+          "requests": 2097152,
+          "sectors": 33554432,
+          "sectors_per_request": 16.0
+        },
+        "store": {
+          "requests": 32768,
+          "sectors": 524288,
+          "sectors_per_request": 16.0
+        }
+      },
+      "opcodes_warp": {
+        "FFMA": 268435456,
+        "LOP3": 27369472,
+        "LDS": 25165824,
+        "IMAD": 19267584,
+        "IADD3": 16822272,
+        "ISETP": 9531392,
+        "BRA": 9515008,
+        "CS2R": 7401472,
+        "LEA": 6995968,
+        "STS": 5242880,
+        "SHF": 3862528,
+        "BSYNC": 2142208,
+        "BSSY": 2142208,
+        "UIADD3": 2097152,
+        "LDG": 2097152,
+        "USHF": 532480,
+        "UMOV": 524288,
+        "CALL": 524288,
+        "BAR": 524288,
+        "WARPSYNC": 520192,
+        "ULOP3": 520192,
+        "STG": 32768,
+        "S2R": 20480,
+        "ULDC": 8192,
+        "EXIT": 8192,
+        "S2UR": 4096,
+        "MOV": 4096
+      },
+      "memory_instruction_widths_warp": {
+        "LDS.128": 25165824,
+        "STS": 4194304,
+        "LDG.E.128": 2097152,
+        "STS.128": 1048576,
+        "STG.E.128": 32768
+      },
+      "shared_wavefronts_by_opcode": {
+        "STS": {
+          "instructions_executed_warp": 4194304,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0
+        },
+        "STS.128": {
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0
+        },
+        "LDS.128": {
+          "instructions_executed_warp": 25165824,
+          "wavefronts_actual": 67108864,
+          "wavefronts_ideal": 67108864,
+          "wavefronts_excessive": 0
+        }
+      }
+    },
+    "doublebuffer-reference": {
+      "original_summary": "results/asyncpipeline-slowdown-20261023/profile-summary.json",
+      "original_key": "doublebuffer",
+      "report_path_local_only": "results/asyncpipeline-slowdown-20261023/doublebuffer.ncu-rep",
+      "report_sha256": "f4c2695404dc911e40c0fce306178ca99943b2b633e46eefcd05ea4a42f32a88",
+      "kernel_name": "sgemm_doublebuffer",
+      "duration_ms_context_only": 3.95392,
+      "sm_clock_ghz_context_only": 1.3715947717707997,
+      "dram_clock_ghz_context_only": 5.801553900938815,
+      "registers_per_thread": 105,
+      "registers_per_thread_allocated": 112,
+      "static_shared_bytes": 16384,
+      "shared_bytes_per_block_including_driver": 17408,
+      "shared_config_bytes_per_sm": 102400,
+      "block_dimensions": [
+        16,
+        8,
+        1
+      ],
+      "grid_dimensions": [
+        32,
+        32,
+        1
+      ],
+      "occupancy_actual_pct": 32.647367952119644,
+      "occupancy_theoretical_pct": 33.33333333333333,
+      "resident_block_limits": {
+        "blocks": 24,
+        "registers": 4,
+        "shared_mem": 5,
+        "warps": 12
+      },
+      "total_instructions_source_warp": 367136768,
+      "local_load_instructions_warp": 0,
+      "local_store_instructions_warp": 0,
+      "global_memory": {
+        "load": {
+          "requests": 2097152,
+          "sectors": 33554432,
+          "sectors_per_request": 16.0
+        },
+        "store": {
+          "requests": 131072,
+          "sectors": 2097152,
+          "sectors_per_request": 16.0
+        }
+      },
+      "opcodes_warp": {
+        "FFMA": 268435456,
+        "LDS": 25165824,
+        "LEA": 10616832,
+        "IADD3": 10600448,
+        "ISETP": 9080832,
+        "BRA": 8404992,
+        "CS2R": 7368704,
+        "IMAD": 6496256,
+        "STS": 5242880,
+        "LOP3": 2695168,
+        "SHF": 2265088,
+        "BSYNC": 2113536,
+        "BSSY": 2113536,
+        "LDG": 2097152,
+        "MOV": 1642496,
+        "CALL": 1572864,
+        "BAR": 524288,
+        "WARPSYNC": 520192,
+        "STG": 131072,
+        "S2R": 20480,
+        "USHF": 8192,
+        "ULDC": 8192,
+        "EXIT": 8192,
+        "S2UR": 4096
+      },
+      "memory_instruction_widths_warp": {
+        "LDS.128": 25165824,
+        "STS": 4194304,
+        "LDG.E.128": 2097152,
+        "STS.128": 1048576,
+        "STG.E": 131072
+      },
+      "shared_wavefronts_by_opcode": {
+        "STS": {
+          "instructions_executed_warp": 4194304,
+          "wavefronts_actual": 16777216,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 12582912
+        },
+        "STS.128": {
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0
+        },
+        "LDS.128": {
+          "instructions_executed_warp": 25165824,
+          "wavefronts_actual": 67108864,
+          "wavefronts_ideal": 67108864,
+          "wavefronts_excessive": 0
+        }
+      }
+    },
+    "scalar-async": {
+      "original_summary": "results/asyncpipeline-slowdown-20261023/profile-summary.json",
+      "original_key": "asyncpipeline",
+      "report_path_local_only": "results/asyncpipeline-slowdown-20261023/asyncpipeline.ncu-rep",
+      "report_sha256": "8232b89148f7d4fb57b41ac7404abf926db982c69d2f5626aecbf4570f66dbc9",
+      "kernel_name": "sgemm_asyncpipeline",
+      "duration_ms_context_only": 4.38144,
+      "sm_clock_ghz_context_only": 1.889936185363716,
+      "dram_clock_ghz_context_only": 7.992871749926965,
+      "registers_per_thread": 71,
+      "registers_per_thread_allocated": 72,
+      "static_shared_bytes": 16384,
+      "shared_bytes_per_block_including_driver": 17408,
+      "shared_config_bytes_per_sm": 102400,
+      "block_dimensions": [
+        16,
+        8,
+        1
+      ],
+      "grid_dimensions": [
+        32,
+        32,
+        1
+      ],
+      "occupancy_actual_pct": 40.526953830777046,
+      "occupancy_theoretical_pct": 41.66666666666667,
+      "resident_block_limits": {
+        "blocks": 24,
+        "registers": 7,
+        "shared_mem": 5,
+        "warps": 12
+      },
+      "total_instructions_source_warp": 485765120,
+      "local_load_instructions_warp": 0,
+      "local_store_instructions_warp": 0,
+      "global_memory": {
+        "load": {
+          "requests": 5242880,
+          "sectors": 33554432,
+          "sectors_per_request": 6.4
+        },
+        "store": {
+          "requests": 131072,
+          "sectors": 2097152,
+          "sectors_per_request": 16.0
+        }
+      },
+      "opcodes_warp": {
+        "FFMA": 268435456,
+        "IMAD": 49410048,
+        "LDS": 40894464,
+        "SHF": 21069824,
+        "IADD3": 17854464,
+        "LEA": 16904192,
+        "ISETP": 15343616,
+        "BRA": 11513856,
+        "LOP3": 9461760,
+        "LDGSTS": 5242880,
+        "STS": 4194304,
+        "BSYNC": 4194304,
+        "BSSY": 4194304,
+        "UIADD3": 2621440,
+        "UISETP": 2097152,
+        "PLOP3": 2097152,
+        "ULEA": 2093056,
+        "CALL": 1572864,
+        "USHF": 1069056,
+        "UMOV": 1052672,
+        "IMNMX": 1052672,
+        "ULDC": 540672,
+        "ULOP3": 524288,
+        "NOP": 524288,
+        "LDGDEPBAR": 524288,
+        "DEPBAR": 524288,
+        "BAR": 524288,
+        "STG": 131072,
+        "CS2R": 61440,
+        "S2R": 16384,
+        "S2UR": 8192,
+        "PRMT": 8192,
+        "EXIT": 8192
+      },
+      "memory_instruction_widths_warp": {
+        "LDS.128": 25165824,
+        "LDS": 15728640,
+        "STS": 4194304,
+        "LDGSTS.E": 4194304,
+        "LDGSTS.E.BYPASS.128": 1048576,
+        "LDGDEPBAR": 524288,
+        "STG.E": 131072
+      },
+      "shared_wavefronts_by_opcode": {
+        "STS": {
+          "instructions_executed_warp": 4194304,
+          "wavefronts_actual": 0,
+          "wavefronts_ideal": 0,
+          "wavefronts_excessive": 0
+        },
+        "LDS": {
+          "instructions_executed_warp": 15728640,
+          "wavefronts_actual": 0,
+          "wavefronts_ideal": 0,
+          "wavefronts_excessive": 0
+        },
+        "LDGSTS.E": {
+          "instructions_executed_warp": 4194304,
+          "wavefronts_actual": 71303168,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 67108864
+        },
+        "LDGSTS.E.BYPASS.128": {
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0
+        },
+        "LDS.128": {
+          "instructions_executed_warp": 25165824,
+          "wavefronts_actual": 67108864,
+          "wavefronts_ideal": 67108864,
+          "wavefronts_excessive": 0
+        }
+      }
+    },
+    "a4-scalar-async": {
+      "original_summary": "results/asyncpipeline-a4-20261023/profile-summary.json",
+      "original_key": "after",
+      "report_path_local_only": "results/asyncpipeline-a4-20261023/asyncpipeline-a4.ncu-rep",
+      "report_sha256": "12e7d5018e7010059655ac5558c3385ae5ddf37b2aaa82b187c88f956100610c",
+      "kernel_name": "sgemm_asyncpipeline",
+      "duration_ms_context_only": 4.420544,
+      "sm_clock_ghz_context_only": 1.7529838710650394,
+      "dram_clock_ghz_context_only": 7.4141101185736416,
+      "registers_per_thread": 65,
+      "registers_per_thread_allocated": 72,
+      "static_shared_bytes": 16384,
+      "shared_bytes_per_block_including_driver": 17408,
+      "shared_config_bytes_per_sm": 102400,
+      "block_dimensions": [
+        16,
+        8,
+        1
+      ],
+      "grid_dimensions": [
+        32,
+        32,
+        1
+      ],
+      "occupancy_actual_pct": 40.468709855747,
+      "occupancy_theoretical_pct": 41.66666666666667,
+      "resident_block_limits": {
+        "blocks": 24,
+        "registers": 7,
+        "shared_mem": 5,
+        "warps": 12
+      },
+      "total_instructions_source_warp": 423419904,
+      "local_load_instructions_warp": 0,
+      "local_store_instructions_warp": 0,
+      "global_memory": {
+        "load": {
+          "requests": 5242880,
+          "sectors": 83886080,
+          "sectors_per_request": 16.0
+        },
+        "store": {
+          "requests": 131072,
+          "sectors": 2097152,
+          "sectors_per_request": 16.0
+        }
+      },
+      "opcodes_warp": {
+        "FFMA": 268435456,
+        "LDS": 40894464,
+        "IMAD": 19058688,
+        "LEA": 13754368,
+        "ISETP": 12705792,
+        "IADD3": 11042816,
+        "BRA": 9940992,
+        "SHF": 8486912,
+        "LOP3": 5795840,
+        "LDGSTS": 5242880,
+        "STS": 4194304,
+        "BSYNC": 3670016,
+        "BSSY": 3670016,
+        "UIADD3": 2621440,
+        "UISETP": 2097152,
+        "PLOP3": 2097152,
+        "ULEA": 2093056,
+        "CALL": 1572864,
+        "ULOP3": 1560576,
+        "USHF": 1069056,
+        "ULDC": 540672,
+        "UMOV": 532480,
+        "NOP": 524288,
+        "LDGDEPBAR": 524288,
+        "DEPBAR": 524288,
+        "BAR": 524288,
+        "STG": 131072,
+        "CS2R": 61440,
+        "S2R": 16384,
+        "IMNMX": 12288,
+        "S2UR": 8192,
+        "PRMT": 8192,
+        "EXIT": 8192
+      },
+      "memory_instruction_widths_warp": {
+        "LDS.128": 25165824,
+        "LDS": 15728640,
+        "STS": 4194304,
+        "LDGSTS.E": 4194304,
+        "LDGSTS.E.BYPASS.128": 1048576,
+        "LDGDEPBAR": 524288,
+        "STG.E": 131072
+      },
+      "shared_wavefronts_by_opcode": {
+        "STS": {
+          "instructions_executed_warp": 4194304,
+          "wavefronts_actual": 0,
+          "wavefronts_ideal": 0,
+          "wavefronts_excessive": 0
+        },
+        "LDS": {
+          "instructions_executed_warp": 15728640,
+          "wavefronts_actual": 0,
+          "wavefronts_ideal": 0,
+          "wavefronts_excessive": 0
+        },
+        "LDGSTS.E": {
+          "instructions_executed_warp": 4194304,
+          "wavefronts_actual": 46137344,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 41943040
+        },
+        "LDGSTS.E.BYPASS.128": {
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0
+        },
+        "LDS.128": {
+          "instructions_executed_warp": 25165824,
+          "wavefronts_actual": 67108864,
+          "wavefronts_ideal": 67108864,
+          "wavefronts_excessive": 0
+        }
+      }
+    },
+    "float4-hybrid": {
+      "original_summary": "results/asyncpipeline-float4-a-20261023/profile-summary.json",
+      "original_key": "float4",
+      "report_path_local_only": "results/asyncpipeline-float4-a-20261023/asyncpipeline-float4-a.ncu-rep",
+      "report_sha256": "a99158d0f4b0713a7ae1d258bd7ee0bce80a5a94e506fcec6f597909074c31fa",
+      "kernel_name": "sgemm_asyncpipeline",
+      "duration_ms_context_only": 3.893888,
+      "sm_clock_ghz_context_only": 1.441155900392273,
+      "dram_clock_ghz_context_only": 6.096380789586141,
+      "registers_per_thread": 79,
+      "registers_per_thread_allocated": 80,
+      "static_shared_bytes": 16384,
+      "shared_bytes_per_block_including_driver": 17408,
+      "shared_config_bytes_per_sm": 102400,
+      "block_dimensions": [
+        16,
+        8,
+        1
+      ],
+      "grid_dimensions": [
+        32,
+        32,
+        1
+      ],
+      "occupancy_actual_pct": 40.45807278816337,
+      "occupancy_theoretical_pct": 41.66666666666667,
+      "resident_block_limits": {
+        "blocks": 24,
+        "registers": 6,
+        "shared_mem": 5,
+        "warps": 12
+      },
+      "total_instructions_source_warp": 394256384,
+      "local_load_instructions_warp": 0,
+      "local_store_instructions_warp": 0,
+      "global_memory": {
+        "load": {
+          "requests": 2097152,
+          "sectors": 33554432,
+          "sectors_per_request": 16.0
+        },
+        "store": {
+          "requests": 131072,
+          "sectors": 2097152,
+          "sectors_per_request": 16.0
+        }
+      },
+      "opcodes_warp": {
+        "FFMA": 268435456,
+        "LDS": 28311552,
+        "IMAD": 14471168,
+        "BRA": 10997760,
+        "ISETP": 9580544,
+        "IADD3": 9461760,
+        "LEA": 7495680,
+        "LOP3": 7372800,
+        "BSSY": 4714496,
+        "SHF": 4345856,
+        "STS": 4194304,
+        "BSYNC": 4194304,
+        "CS2R": 2146304,
+        "UIADD3": 2097152,
+        "ULEA": 2093056,
+        "PRMT": 2093056,
+        "CALL": 1572864,
+        "USHF": 1069056,
+        "UISETP": 1048576,
+        "PLOP3": 1048576,
+        "LDGSTS": 1048576,
+        "LDG": 1048576,
+        "ULOP3": 1040384,
+        "UMOV": 528384,
+        "NOP": 524288,
+        "LDGDEPBAR": 524288,
+        "IMNMX": 524288,
+        "DEPBAR": 524288,
+        "BAR": 524288,
+        "WARPSYNC": 520192,
+        "BREAK": 520192,
+        "STG": 131072,
+        "S2R": 20480,
+        "ULDC": 16384,
+        "S2UR": 8192,
+        "EXIT": 8192
+      },
+      "memory_instruction_widths_warp": {
+        "LDS.128": 25165824,
+        "STS": 4194304,
+        "LDS": 3145728,
+        "LDGSTS.E.BYPASS.128": 1048576,
+        "LDG.E.128": 1048576,
+        "LDGDEPBAR": 524288,
+        "STG.E": 131072
+      },
+      "shared_wavefronts_by_opcode": {
+        "STS": {
+          "instructions_executed_warp": 4194304,
+          "wavefronts_actual": 16777216,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 12582912
+        },
+        "LDS": {
+          "instructions_executed_warp": 3145728,
+          "wavefronts_actual": 0,
+          "wavefronts_ideal": 0,
+          "wavefronts_excessive": 0
+        },
+        "LDGSTS.E": {
+          "instructions_executed_warp": 0,
+          "wavefronts_actual": 0,
+          "wavefronts_ideal": 0,
+          "wavefronts_excessive": 0
+        },
+        "LDGSTS.E.BYPASS.128": {
+          "instructions_executed_warp": 1048576,
+          "wavefronts_actual": 4194304,
+          "wavefronts_ideal": 4194304,
+          "wavefronts_excessive": 0
+        },
+        "LDS.128": {
+          "instructions_executed_warp": 25165824,
+          "wavefronts_actual": 67108864,
+          "wavefronts_ideal": 67108864,
+          "wavefronts_excessive": 0
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "doublebuffer_opt": {
+      "baseline": "doublebuffer-low-clock",
+      "variant": "doublebuffer-opt",
+      "dynamic_warp_instruction_delta": 44175360,
+      "dynamic_warp_instruction_change_pct": 12.032398781698706,
+      "opcode_deltas": {
+        "BAR": 0,
+        "BRA": 1110016,
+        "BSSY": 28672,
+        "BSYNC": 28672,
+        "CALL": -1048576,
+        "CS2R": 32768,
+        "EXIT": 0,
+        "FFMA": 0,
+        "IADD3": 6221824,
+        "IMAD": 12771328,
+        "ISETP": 450560,
+        "LDG": 0,
+        "LDS": 0,
+        "LEA": -3620864,
+        "LOP3": 24674304,
+        "MOV": -1638400,
+        "S2R": 0,
+        "S2UR": 0,
+        "SHF": 1597440,
+        "STG": -98304,
+        "STS": 0,
+        "UIADD3": 2097152,
+        "ULDC": 0,
+        "ULOP3": 520192,
+        "UMOV": 524288,
+        "USHF": 524288,
+        "WARPSYNC": 0
+      }
+    },
+    "a4_mapping": {
+      "baseline": "scalar-async",
+      "variant": "a4-scalar-async",
+      "dynamic_warp_instruction_delta": -62345216,
+      "dynamic_warp_instruction_change_pct": -12.834436527678228,
+      "opcode_deltas": {
+        "BAR": 0,
+        "BRA": -1572864,
+        "BSSY": -524288,
+        "BSYNC": -524288,
+        "CALL": 0,
+        "CS2R": 0,
+        "DEPBAR": 0,
+        "EXIT": 0,
+        "FFMA": 0,
+        "IADD3": -6811648,
+        "IMAD": -30351360,
+        "IMNMX": -1040384,
+        "ISETP": -2637824,
+        "LDGDEPBAR": 0,
+        "LDGSTS": 0,
+        "LDS": 0,
+        "LEA": -3149824,
+        "LOP3": -3665920,
+        "NOP": 0,
+        "PLOP3": 0,
+        "PRMT": 0,
+        "S2R": 0,
+        "S2UR": 0,
+        "SHF": -12582912,
+        "STG": 0,
+        "STS": 0,
+        "UIADD3": 0,
+        "UISETP": 0,
+        "ULDC": 0,
+        "ULEA": 0,
+        "ULOP3": 1036288,
+        "UMOV": -520192,
+        "USHF": 0
+      }
+    },
+    "float4_a": {
+      "baseline": "a4-scalar-async",
+      "variant": "float4-hybrid",
+      "dynamic_warp_instruction_delta": -29163520,
+      "dynamic_warp_instruction_change_pct": -6.887611972062613,
+      "opcode_deltas": {
+        "BAR": 0,
+        "BRA": 1056768,
+        "BREAK": 520192,
+        "BSSY": 1044480,
+        "BSYNC": 524288,
+        "CALL": 0,
+        "CS2R": 2084864,
+        "DEPBAR": 0,
+        "EXIT": 0,
+        "FFMA": 0,
+        "IADD3": -1581056,
+        "IMAD": -4587520,
+        "IMNMX": 512000,
+        "ISETP": -3125248,
+        "LDG": 1048576,
+        "LDGDEPBAR": 0,
+        "LDGSTS": -4194304,
+        "LDS": -12582912,
+        "LEA": -6258688,
+        "LOP3": 1576960,
+        "NOP": 0,
+        "PLOP3": -1048576,
+        "PRMT": 2084864,
+        "S2R": 4096,
+        "S2UR": 0,
+        "SHF": -4141056,
+        "STG": 0,
+        "STS": 0,
+        "UIADD3": -524288,
+        "UISETP": -1048576,
+        "ULDC": -524288,
+        "ULEA": 0,
+        "ULOP3": -520192,
+        "UMOV": -4096,
+        "USHF": 0,
+        "WARPSYNC": 520192
+      }
+    },
+    "hybrid_vs_doublebuffer": {
+      "baseline": "doublebuffer-reference",
+      "variant": "float4-hybrid",
+      "dynamic_warp_instruction_delta": 27119616,
+      "dynamic_warp_instruction_change_pct": 7.386788348041451,
+      "opcode_deltas": {
+        "BAR": 0,
+        "BRA": 2592768,
+        "BREAK": 520192,
+        "BSSY": 2600960,
+        "BSYNC": 2080768,
+        "CALL": 0,
+        "CS2R": -5222400,
+        "DEPBAR": 524288,
+        "EXIT": 0,
+        "FFMA": 0,
+        "IADD3": -1138688,
+        "IMAD": 7974912,
+        "IMNMX": 524288,
+        "ISETP": 499712,
+        "LDG": -1048576,
+        "LDGDEPBAR": 524288,
+        "LDGSTS": 1048576,
+        "LDS": 3145728,
+        "LEA": -3121152,
+        "LOP3": 4677632,
+        "MOV": -1642496,
+        "NOP": 524288,
+        "PLOP3": 1048576,
+        "PRMT": 2093056,
+        "S2R": 0,
+        "S2UR": 4096,
+        "SHF": 2080768,
+        "STG": 0,
+        "STS": -1048576,
+        "UIADD3": 2097152,
+        "UISETP": 1048576,
+        "ULDC": 8192,
+        "ULEA": 2093056,
+        "ULOP3": 1040384,
+        "UMOV": 528384,
+        "USHF": 1060864,
+        "WARPSYNC": 0
+      }
+    }
+  }
+}
