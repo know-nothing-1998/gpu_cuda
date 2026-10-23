@@ -7,6 +7,7 @@
 #include "tuned.cuh"
 #include "warptiled.cuh"
 #include "doublebuffer.cuh"
+#include "asyncpipeline.cuh"
 
 const std::vector<KernelEntry>& custom_kernels() {
     static const std::vector<KernelEntry> kernels{
@@ -24,6 +25,10 @@ const std::vector<KernelEntry>& custom_kernels() {
          "src/warptiled.cu", warptiled_available, launch_warptiled},
         {"doublebuffer", "Double-buffered warp tiling: user implementation",
          "src/doublebuffer.cu", doublebuffer_available, launch_doublebuffer},
+        {"doublebuffer_opt", "Double-buffered warp tiling with As swizzle and vectorized C stores",
+         "src/doublebuffer.cu", doublebuffer_opt_available, launch_doublebuffer_opt},
+        {"asyncpipeline", "Warp tiling with float4 A prefetch and hardware async B copies",
+         "src/asyncpipeline.cu", asyncpipeline_available, launch_asyncpipeline},
     };
     return kernels;
 }

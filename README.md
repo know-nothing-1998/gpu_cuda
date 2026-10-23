@@ -1,6 +1,6 @@
 # CUDA GEMM Lab
 
-从 naive 到 warp tiling、double buffer 的手写 CUDA SGEMM 学习项目。七种自写实现共用 CPU double 正确性检查、严格 FP32 cuBLAS 对照、CUDA Event 计时和固定 benchmark 矩阵。
+从 naive 到 warp tiling、double buffer 和异步流水线的手写 CUDA SGEMM 学习项目。各实现共用 CPU double 正确性检查、严格 FP32 cuBLAS 对照、CUDA Event 计时和固定 benchmark 矩阵。
 
 计算契约：`C[M,N] = A[M,K] * B[K,N]`，连续 row-major，FP32 输入/累加/输出，`alpha=1,beta=0`。当前验证范围为正整数尺寸、`K <= 4096`。
 
@@ -15,10 +15,14 @@
 | tuned | BM/BN/BK/TM/TN 五参数模板与自动搜索 | [tuned.cu](src/tuned.cu) |
 | warptiled | 显式 warp 分工、转置 As、八参数搜索和选择已编译配置 | [warptiled.cu](src/warptiled.cu) |
 | doublebuffer | 下一 tile 的寄存器预取、shared 双缓冲与软件流水线 | [doublebuffer.cu](src/doublebuffer.cu) |
+| doublebuffer_opt | doublebuffer 的独立实验核函数：As swizzle 与 C 向量化写回 | [doublebuffer.cu](src/doublebuffer.cu) |
+| asyncpipeline | A 的 float4 预取 + B 的硬件异步拷贝 + warp tiling | [asyncpipeline.cu](src/asyncpipeline.cu) |
 
-截至 **2026-10-22** 的关键结果见 [实验索引](results/published/README.md)，包含同轮 cuBLAS 对照、原始计时数据、参数和精选历史源码。性能对应特定机器与当时源码，不保证在其他机器重现相同数值；不同日期的计时不能直接解释成单项优化收益。
+截至 **2026-10-23** 的关键结果见 [实验索引](results/published/README.md)，包含同轮 cuBLAS 对照、原始计时数据、参数和精选历史源码。性能对应特定机器与当时源码，不保证在其他机器重现相同数值；不同日期的计时不能直接解释成单项优化收益。
 
-最新的 [double buffer 实验](results/published/doublebuffer-20261022/README.md) 对当前正式实现进行 P1～P4 benchmark，与同轮 warptiled 和严格 FP32 cuBLAS 对比，并记录流水原理、SASS 证据和验证结果。
+最新发布的 [异步流水线实验](results/published/asyncpipeline-20261023/README.md) 记录 `doublebuffer_opt` 的资源代价、A 加载方式的两次调整，以及当前 hybrid 与 doublebuffer、同轮 cuBLAS 的 P1 对照。当前 hybrid 相比前一版约快 33%，两遍测量仍比 doublebuffer 慢约 2%；这不是所有形状上的结论。[GPU 架构讲解](GPU_ARCHITECTURE_GUIDE.md) 结合本项目说明内存路径、SASS、调度、同步与流水线。
+
+此前的 [double buffer 实验](results/published/doublebuffer-20261022/README.md) 保留 `doublebuffer` 基线的 P1～P4 benchmark、warptiled/cuBLAS 对照、流水原理与 SASS 证据。
 
 此前的 [七版本 Roofline 对比](results/published/roofline-20261022/README.md) 是引入 doublebuffer 前的快照：在同一构建、P1=`2048³` 下采集 naive、coalesced、shared、register、tuned、warptiled 和 cuBLAS，使用默认参数，不代表 autotune 优胜配置，也不包含 doublebuffer。可直接查看 [图](results/published/roofline-20261022/roofline.svg) 和 [指标](results/published/roofline-20261022/model.json)，或按 [Roofline 说明](ROOFLINE.md) 离线重画。
 
@@ -127,6 +131,36 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\benchmark.ps1 -Kerne
 
 [double buffer 实验报告](results/published/doublebuffer-20261022/README.md) 对应当前用户编写的正式源码，包含同轮多形状计时、原始数据及复现步骤。此前助手参考预实验保留在开发机，不作为当前实现的成绩。
 
+同一文件中的 `sgemm_doublebuffer_opt` 是单独注册的对比版本。它在满足 `BM % 32 == 0`、`BK == 16`、`TM % 4 == 0` 且 `TM <= 8` 时对 As 使用 swizzle；其他参数保留原 As 布局。C 写回按四个相邻结果尝试 `float4` 存储，地址未对齐、输出边界或不足四个元素时使用标量写回。两版共用 `GEMM_DB_*` 参数。用户在默认配置的 P1 观察到退化；已归档的 NCU 数据显示寄存器和动态指令增加，理论 occupancy 仍同为 33.33%，不能把退化直接归因于 occupancy 降低。该对照未保留可审计的普通 benchmark CSV，因此不报告退化百分比。详见 [资源与指令分析](results/published/asyncpipeline-20261023/README.md)，该实验版本未替换 doublebuffer 基线。
+
+分别运行下面两条 bench 即可比较，两次都会与 cuBLAS 配对：
+
+```bat
+cmake --build build --target gemm
+build\gemm.exe --mode check --kernel doublebuffer_opt
+build\gemm.exe --mode bench --kernel doublebuffer --m 2048 --n 2048 --k 2048 --warmup 100 --iters 100 --rounds 5
+build\gemm.exe --mode bench --kernel doublebuffer_opt --m 2048 --n 2048 --k 2048 --warmup 100 --iters 100 --rounds 5
+```
+
+`doublebuffer_opt_correctness` 和 `doublebuffer_opt_boundary` 是优化版的 CTest 入口。`--mode info` 中的 `doublebuffer_opt_config` 及其计时 CSV 的 `doublebuffer_config` 列记录 `SWIZZLE_A` 和 `VECTOR_STORE_C` 编译能力开关；默认参数下均为 `1`，具体边界仍可走标量路径。使用 NCU 时将 `--kernel` 改成 `doublebuffer_opt`，并使用新的报告文件名。
+
+## 硬件异步流水线
+
+[asyncpipeline.cu](src/asyncpipeline.cu) 的 `sgemm_asyncpipeline` 使用混合流水线：A 通过普通 `float4` 全局读取预取到寄存器；B 使用 `cuda::memcpy_async` 和线程作用域的 `cuda::pipeline` 搬入下一份 shared buffer。计算当前块后，再将预取的 A 逐元素写入下一份 As。线程数按八个 tile 参数推导，默认 `BM/BN/BK/WM/WN/TM/TN/WNITER = 64/64/16/32/32/4/4/1`；独立的 CMake 参数前缀为 `GEMM_ASYNC_*`，两阶段 shared 预算为 16 KiB。
+
+保留转置的 `As[2][BK][BM]`：A 对齐且完整时一次读取四个 float，再通过四次标量 shared store 完成转置；未对齐或尾部走标量读取并补零。B 对齐且完整时使用 16 字节硬件异步拷贝，否则逐元素拷贝或补零。`consumer_wait()` 等待本线程的 B 拷贝，随后 `__syncthreads()` 同时保证 A/B 数据就绪及旧 buffer 的读取结束。配置字符串的 `A_FLOAT4_PREFETCH=1;B_ASYNC=1` 标明这条混合路径；A 的预取属于软件流水线，B 的硬件异步拷贝需要 SM 80+。
+
+实现已启用，可以直接执行：
+
+```bat
+cmake --build build --target gemm
+build\gemm.exe --mode check --kernel asyncpipeline
+build\gemm.exe --mode check --kernel asyncpipeline --m 129 --n 193 --k 67
+build\gemm.exe --mode bench --kernel asyncpipeline --m 2048 --n 2048 --k 2048 --warmup 100 --iters 100 --rounds 5
+```
+
+`asyncpipeline_correctness` / `asyncpipeline_boundary` 以及 CLI 检查已接入。八参数通过 CMake 设置，exe 的 `--bm/...` 参数仍仅用于 warptiled。
+
 ## Profiling
 
 安装 Nsight Compute 并启用 GPU performance counters 权限后：
@@ -141,8 +175,9 @@ ncu-ui
 
 ## 仓库与证据
 
-- [实验汇总](REPORT.md) / [精选结果](results/published/README.md)：从 naive 到 double buffer 的关键记录。
+- [实验汇总](REPORT.md) / [精选结果](results/published/README.md)：从 naive 到异步流水线的关键记录。
 - [GPU 资源速查](GPU_DEVICE.md) / [Roofline](ROOFLINE.md)：本机资源、公式和采样口径。
+- [从手写 GEMM 理解 GPU 架构](GPU_ARCHITECTURE_GUIDE.md)：内存路径、指令、bank conflict、warp 调度、驻留、流水线和官方阅读路线。
 - [项目任务书](GEMM_PROJECT_BRIEF.md) / [分支工作流](CONTRIBUTING.md)：阶段目标、计算契约与 Git Flow。
 - `src/`：kernel 与公共 harness；`scripts/`：构建、测量和调参工具；`tests/`：数值及接口检查。
 - `results/published/`：精选实验及各采样版本的 Roofline 证据。其余 `results/`、build、NCU 二进制、临时文件默认忽略；运行产生的新结果不会自动进入 Git。
