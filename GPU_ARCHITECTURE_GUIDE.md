@@ -6,6 +6,8 @@
 
 建议先顺序读到第 9 部分，再用后面的 GEMM 推导和阅读路线查漏补缺。需要单独查设备数字时用 [GPU_DEVICE.md](GPU_DEVICE.md)，查现有测量时用 [实验索引](results/published/README.md)。
 
+接下来可按 [NCU 与 CUTLASS CuTe 四天学习路线](NCU_CUTLASS_CUTE_STUDY_GUIDE.md)，把这里的架构知识用于性能报告分析和布局抽象练习；包含三天压缩版与本项目的真实案例。
+
 ## 阅读导航
 
 1. [先区分地址空间和缓存层级](#memory-model)
