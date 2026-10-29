@@ -178,6 +178,7 @@ ncu-ui
 - [实验汇总](REPORT.md) / [精选结果](results/published/README.md)：从 naive 到异步流水线的关键记录。
 - [GPU 资源速查](GPU_DEVICE.md) / [Roofline](ROOFLINE.md)：本机资源、公式和采样口径。
 - [从手写 GEMM 理解 GPU 架构](GPU_ARCHITECTURE_GUIDE.md)：内存路径、指令、bank conflict、warp 调度、驻留、流水线和官方阅读路线。
+- [NCU 与 CUTLASS CuTe 四天学习路线](NCU_CUTLASS_CUTE_STUDY_GUIDE.md)：结合本项目练习指标分析、SASS 证据、布局与线程分工，包含三天压缩版、操作命令和自检题。
 - [项目任务书](GEMM_PROJECT_BRIEF.md) / [分支工作流](CONTRIBUTING.md)：阶段目标、计算契约与 Git Flow。
 - `src/`：kernel 与公共 harness；`scripts/`：构建、测量和调参工具；`tests/`：数值及接口检查。
 - `results/published/`：精选实验及各采样版本的 Roofline 证据。其余 `results/`、build、NCU 二进制、临时文件默认忽略；运行产生的新结果不会自动进入 Git。
